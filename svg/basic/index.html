@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>덧셈을 하시오</title>
+</head>
+<body>
+    <svg viewBox="0 0 800 500">
+        <defs>
+            <circle id="pinkCircle" cx="100" cy="100" r="3" fill="palevioletred" />
+            <circle id="blueCircle" cx="100" cy="100" r="3" fill="skyblue" />
+            <rect id="firstBox" rx="10" ry="10" hight="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <rect id="secondBox" rx="10" ry="10" width="20" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <path id="curve" d="M 115 90 q 17 -20 35 0" stroke="blue" stroke-width="1" fill="none" />
+            <path id="answerLine" d="M 240 110 l 30 0" stroke="green" stroke-width="1" />
+            <text class="answer" x="248" y="105" font-size="20" ></text>
+        </defs>
+
+        <!--Q.1-->
+        <!-- <use href="#firstBox" x="90" y="90" width="35" /> -->
+        <g id="num1">
+            <rect x="90" y="90" rx="10" ry="10" width="35" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" />
+            <use href="#pinkCircle" x="15" />
+
+            <use href="#secondBox" x="140" y="90" />
+            <use href="#blueCircle" x="50"/>
+            <use href="#curve"/>
+
+            <text x="180" y="105" font-size="20" style="cursor:pointer">2 + 1 =</text>
+            <use href="#answerLine" />
+        </g>
+
+        <!--Q.2-->
+        <g id="num2">
+            <rect x="90" y="210" rx="10" ry="10" width="65" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" y="120"/>
+            <use href="#pinkCircle" x="15" y="120" />
+            <use href="#pinkCircle" x="30" y="120" />
+            <use href="#pinkCircle" x="45" y="120" />
+
+            <use href="#secondBox" x="170" y="210" />
+            <use href="#blueCircle" x="80" y="120" />
+            <use href="#curve" x="30" y="120"/>
+
+            <text x="210" y="225" font-size="20" style="cursor:pointer">4 + 1 =</text>
+            <use href="#answerLine" x="30" y="120" />
+        </g>
+
+        <!--Q.3-->
+        <g id="num3">
+            <rect x="90" y="330" rx="10" ry="10" width="95" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" y="240" />
+            <use href="#pinkCircle" x="15" y="240" />
+            <use href="#pinkCircle" x="30" y="240" />
+            <use href="#pinkCircle" x="45" y="240" />
+            <use href="#pinkCircle" x="60" y="240" />
+            <use href="#pinkCircle" x="75" y="240" />
+
+            <use href="#secondBox" x="200" y="330" />
+            <use href="#blueCircle" x="110" y="240" />
+            <use href="#curve" x="60" y="240"/>
+
+            <text x="240" y="345" font-size="20" style="cursor:pointer">6 + 1 =</text>
+            <use href="#answerLine" x="60" y="240" />
+        </g>
+
+        <!--Q.4-->
+        <g id="num4">
+            <rect x="90" y="450" rx="10" ry="10" width="125" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" y="360" />
+            <use href="#pinkCircle" x="15" y="360" />
+            <use href="#pinkCircle" x="30" y="360" />
+            <use href="#pinkCircle" x="45" y="360" />
+            <use href="#pinkCircle" x="60" y="360" />
+            <use href="#pinkCircle" x="75" y="360" />
+            <use href="#pinkCircle" x="90" y="360" />
+            <use href="#pinkCircle" x="105" y="360" />
+
+            <use href="#secondBox" x="230" y="450" />
+            <use href="#blueCircle" x="140" y="360" />
+            <use href="#curve" x="90" y="360"/>
+
+            <text x="275" y="465" font-size="20" style="cursor:pointer">8 + 1 =</text>
+            <use href="#answerLine" x="95" y="360" />
+        </g>
+
+        <!--Q.5-->
+        <g id="num5">
+            <rect x="490" y="90" rx="10" ry="10" width="110" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" x="400"/>
+            <use href="#pinkCircle" x="415" />
+            <use href="#pinkCircle" x="430" />
+            <use href="#pinkCircle" x="445" />
+            <use href="#pinkCircle" x="460" />
+            <use href="#pinkCircle" x="475" />
+            <use href="#pinkCircle" x="490" />
+
+            <use href="#secondBox" x="615" y="90" />
+            <use href="#blueCircle" x="525"/>
+            <use href="#curve" x="475"/>
+
+            <text x="655" y="105" font-size="20" style="cursor:pointer">7 + 1 =</text>
+            <use href="#answerLine" x="475" />
+        </g>
+
+        <!--Q.6-->
+        <g id="num6">
+            <rect x="490" y="210" rx="10" ry="10" width="80" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" x="400" y="120" />
+            <use href="#pinkCircle" x="415" y="120" />
+            <use href="#pinkCircle" x="430" y="120" />
+            <use href="#pinkCircle" x="445" y="120" />
+            <use href="#pinkCircle" x="460" y="120" />
+
+            <use href="#secondBox" x="585" y="210" />
+            <use href="#blueCircle" x="495" y="120" />
+            <use href="#curve" x="445" y="120"/>
+
+            <text x="625" y="225" font-size="20" style="cursor:pointer">5 + 1 =</text>
+            <use href="#answerLine" x="445" y="120" />
+        </g>
+
+        <!--Q.7-->
+        <g id="num7">
+            <rect x="490" y="330" rx="10" ry="10" width="50" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" x="400" y="240" />
+            <use href="#pinkCircle" x="415" y="240" />
+            <use href="#pinkCircle" x="430" y="240" />
+
+            <use href="#secondBox" x="555" y="330" />
+            <use href="#blueCircle" x="465" y="240" />
+            <use href="#curve" x="415" y="240"/>
+
+            <text x="595" y="345" font-size="20" style="cursor:pointer">3 + 1 =</text>
+            <use href="#answerLine" x="415" y="240" />
+        </g>
+
+        <!--Q.8-->
+        <g id="num8">
+            <rect x="490" y="450" rx="10" ry="10" width="20" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+            <use href="#pinkCircle" x="400" y="360" />
+
+            <use href="#secondBox" x="525" y="450" />
+            <use href="#blueCircle" x="435" y="360" />
+            <use href="#curve" x="385" y="360"/>
+
+            <text x="565" y="465" font-size="20" style="cursor:pointer">1 + 1 =</text>
+            <use href="#answerLine" x="385" y="360" />
+        </g>
+    </svg>
+    <script src="./main.js"></script>
+</body>
+</html>
