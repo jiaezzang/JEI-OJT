@@ -8,6 +8,7 @@ window.onload = () => {
         let btn = document.querySelector('.btn' + i);
         btn.onclick = btnClick;
     }
+    next.style.display = 'none';
     hideAnswer(1, 8)
 }
 
@@ -21,8 +22,22 @@ function hideAnswer(start, end){
 
 // 버튼 클릭시 실행 이벤트
 function btnClick() {
+    //버튼 색상 변경
     let box = this.querySelector('rect');
     box.setAttribute('fill', 'darkgray');
+    this.style = '';
+
+    //정답 비교
+    let number = this.querySelector('text').innerHTML;
+    const question = document.querySelector('#currentPage');
+    const pageNumber = question.getAttribute('href');
+    const answer = document.querySelector(pageNumber + " text").innerHTML;
+    if(number === answer){
+        document.querySelector(pageNumber + ' .answer').style.display = '';
+        next.style.display = '';
+    } else {
+    }
+
 }
 
 //다음 문제로 넘어가는 버튼 
@@ -33,6 +48,7 @@ next.onclick =(e) => {
     if(nextNum < 9){
         question.setAttribute('href', '#num' + nextNum)
     }
+    next.style.display = 'none';
     resetBtn()
 }
 
