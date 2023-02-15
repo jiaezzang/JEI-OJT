@@ -158,7 +158,7 @@
                 <use href="#answerLine" />
             </g>
 
-            <!--buttons-->
+            <!--숫자 버튼-->
             <g id="btns">
                 <rect width="565" height="70" fill="grey" x="10" y="30" />
                 <g id="btn0" style="cursor:pointer">
@@ -202,16 +202,21 @@
                     <text id="number9" x="528" y="80" font-size="40">9</text>
                 </g>
             </g>
+
+            <!--다음 문제 버튼-->
             <g id="next" style="cursor:pointer">
                 <circle cx="660" cy="80" r="20" fill="ivory" stroke="orange" stroke-width="2"/>
                 <polygon  points="653, 90 653, 70 673, 80" fill="orange" />
             </g>
-            <circle cx="100" cy="90" r="20" fill="gray" />
+
+            <!--정오표시-->
             <circle id="correct" cx="450" cy="280" r="30" stroke="red" stroke-width="5" fill="none" />
             <g id="wrong">
                 <path d="M 428 260 l 40 40" stroke="blue" stroke-width="5" />
                 <path d="M 468 260 l -40 40" stroke="blue" stroke-width="5" />
             </g>
+
+            <!--학습 마무리 메세지-->
             <g id="finish">
                 <rect width="400" height="300" fill="white" stroke="lightblue" stroke-width="12" x="200" y="150" rx="10" ry="10" />
                 <text x="220" y="310" font-size="40" style="cursor:pointer; fill:pink;">학습을 완료하였습니다.</text>
