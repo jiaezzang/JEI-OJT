@@ -7,52 +7,53 @@
     <title>다음 덧셈을 하세요.</title>
 </head>
 <body>
+    <svg viewBox="0 0 800 50" style="background-color:rgb(87, 186, 203)"></svg>
     <svg viewBox="0 0 800 500">
         <defs>
             <!--공통 요소-->
-            <text id="guide" x="120" y="90" font-size="30">다음 덧셈을 하세요</text>
-            <circle id="pinkCircle" cx="150" cy="100" r="3" fill="palevioletred" />
-            <circle id="blueCircle" cx="150" cy="100" r="3" fill="skyblue" />
+            <text id="guide" x="120" y="40" font-size="30">다음 덧셈을 하세요</text>
+            <circle id="pinkCircle" cx="150" cy="70" r="3" fill="palevioletred" />
+            <circle id="blueCircle" cx="150" cy="70" r="3" fill="skyblue" />
             <rect id="firstBox" rx="60" ry="10" hight="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
             <rect id="secondBox" rx="60" ry="10" width="20" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
-            <path id="curve" d="M 165 90 q 17 -20 35 0" stroke="blue" stroke-width="1" fill="none" />
-            <path id="answerLine" d="M 210 143 l 30 0" stroke="green" stroke-width="1" />
+            <path id="curve" d="M 165 60 q 17 -20 35 0" stroke="blue" stroke-width="1" fill="none" />
+            <path id="answerLine" d="M 210 133 l 30 0" stroke="green" stroke-width="1" />
             
             <!--Q.1-->
             <g id="num1">
-                <rect x="140" y="90" rx="10" ry="10" width="35" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="35" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
 
-                <use href="#secondBox" x="190" y="90" />
+                <use href="#secondBox" x="190" y="60" />
                 <use href="#blueCircle" x="50"/>
                 <use href="#curve"/>
 
-                <text id="answer" x="220" y="140" font-size="20" >3</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">2 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >3</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">2 + 1 =</text>
                 <use href="#answerLine" />
             </g>
 
             <!--Q.2-->
             <g id="num2">
-                <rect x="140" y="90" rx="10" ry="10" width="65" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="65" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
                 <use href="#pinkCircle" x="30" />
                 <use href="#pinkCircle" x="45" />
 
-                <use href="#secondBox" x="220" y="90" />
+                <use href="#secondBox" x="220" y="60" />
                 <use href="#blueCircle" x="80"  />
                 <use href="#curve" x="30" />
 
-                <text id="answer" x="220" y="140" font-size="20" >5</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">4 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >5</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">4 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
 
             <!--Q.3-->
             <g id="num3">
-                <rect x="140" y="90" rx="10" ry="10" width="95" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="95" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
                 <use href="#pinkCircle" x="30" />
@@ -60,18 +61,18 @@
                 <use href="#pinkCircle" x="60" />
                 <use href="#pinkCircle" x="75" />
 
-                <use href="#secondBox" x="250" y="90" />
+                <use href="#secondBox" x="250" y="60" />
                 <use href="#blueCircle" x="110" />
                 <use href="#curve" x="60" />
 
-                <text id="answer" x="220" y="140" font-size="20" >7</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">6 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >7</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">6 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
 
             <!--Q.4-->
             <g id="num4">
-                <rect x="140" y="90" rx="10" ry="10" width="125" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="125" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
                 <use href="#pinkCircle" x="30" />
@@ -81,18 +82,18 @@
                 <use href="#pinkCircle" x="90" />
                 <use href="#pinkCircle" x="105" />
 
-                <use href="#secondBox" x="280" y="90" />
+                <use href="#secondBox" x="280" y="60" />
                 <use href="#blueCircle" x="140" />
                 <use href="#curve" x="90" />
 
-                <text id="answer" x="220" y="140" font-size="20" >9</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">8 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >9</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">8 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
 
             <!--Q.5-->
             <g id="num5">
-                <rect x="140" y="90" rx="10" ry="10" width="110" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="110" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
                 <use href="#pinkCircle" x="30" />
@@ -101,60 +102,60 @@
                 <use href="#pinkCircle" x="75" />
                 <use href="#pinkCircle" x="90" />
 
-                <use href="#secondBox" x="265" y="90" />
+                <use href="#secondBox" x="265" y="60" />
                 <use href="#blueCircle" x="125"/>
                 <use href="#curve" x="75"/>
 
-                <text id="answer" x="220" y="140" font-size="20" >8</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">7 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >8</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">7 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
 
             <!--Q.6-->
             <g id="num6">
-                <rect x="140" y="90" rx="10" ry="10" width="80" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="80" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
                 <use href="#pinkCircle" x="30" />
                 <use href="#pinkCircle" x="45" />
                 <use href="#pinkCircle" x="60" />
 
-                <use href="#secondBox" x="235" y="90" />
+                <use href="#secondBox" x="235" y="60" />
                 <use href="#blueCircle" x="95"  />
                 <use href="#curve" x="45" />
 
-                <text id="answer" x="220" y="140" font-size="20" >6</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">5 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >6</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">5 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
 
             <!--Q.7-->
             <g id="num7">
-                <rect x="140" y="90" rx="10" ry="10" width="50" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="50" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
                 <use href="#pinkCircle" x="15" />
                 <use href="#pinkCircle" x="30" />
 
-                <use href="#secondBox" x="205" y="90" />
+                <use href="#secondBox" x="205" y="60" />
                 <use href="#blueCircle" x="65" />
                 <use href="#curve" x="15" />
 
-                <text id="answer" x="220" y="140" font-size="20" >4</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">3 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >4</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">3 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
 
             <!--Q.8-->
             <g id="num8">
-                <rect x="140" y="90" rx="10" ry="10" width="20" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
+                <rect x="140" y="60" rx="10" ry="10" width="20" height="20" style="fill:none;stroke:blue;stroke-width:1;opacity:0.5" />
                 <use href="#pinkCircle" />
 
-                <use href="#secondBox" x="175" y="90" />
+                <use href="#secondBox" x="175" y="60" />
                 <use href="#blueCircle" x="35" />
                 <use href="#curve" x="-15" />
 
-                <text id="answer" x="220" y="140" font-size="20" >2</text>
-                <text x="150" y="140" font-size="20" style="cursor:pointer">1 + 1 =</text>
+                <text id="answer" x="220" y="130" font-size="20" >2</text>
+                <text x="150" y="130" font-size="20" style="cursor:pointer">1 + 1 =</text>
                 <use href="#answerLine" />
             </g>
 
@@ -205,15 +206,15 @@
 
             <!--다음 문제 버튼-->
             <g id="next" style="cursor:pointer">
-                <circle cx="660" cy="80" r="20" fill="ivory" stroke="orange" stroke-width="2"/>
-                <polygon  points="653, 90 653, 70 673, 80" fill="orange" />
+                <circle cx="660" cy="30" r="20" fill="ivory" stroke="orange" stroke-width="2"/>
+                <polygon  points="653, 40 653, 20 673, 30" fill="orange" />
             </g>
 
             <!--정오표시-->
-            <circle id="correct" cx="450" cy="280" r="30" stroke="red" stroke-width="5" fill="none" />
+            <circle id="correct" cx="450" cy="270" r="30" stroke="red" stroke-width="5" fill="none" />
             <g id="wrong">
-                <path d="M 428 260 l 40 40" stroke="blue" stroke-width="5" />
-                <path d="M 468 260 l -40 40" stroke="blue" stroke-width="5" />
+                <path d="M 428 250 l 40 40" stroke="blue" stroke-width="5" />
+                <path d="M 468 250 l -40 40" stroke="blue" stroke-width="5" />
             </g>
 
             <!--학습 마무리 메세지-->
