@@ -46,7 +46,7 @@ function btnClick() {
             document.querySelector("#success").style.display = "none";
         }, 700);
 
-    } else if(next.style.display !== "" && box.getAttribute("fill") !== "darkgray"){
+    } else if(next.style.display !== "" && box.getAttribute("fill") !== "gray"){
         //오답일 때
         document.querySelector("#wrong").style.display = "";
         setTimeout(function(){
@@ -55,14 +55,14 @@ function btnClick() {
     }
 
     //버튼 클릭 시 색상 변경    
-    box.setAttribute("fill", "darkgray");
+    box.setAttribute("fill", "gray");
     this.style = "";
 
     //3번 오답 시 주의
-    const list = document.querySelectorAll('[fill="darkgray"]');
+    const list = document.querySelectorAll('[fill="gray"]');
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
         document.querySelector("#miss").style.display = "";
-        document.querySelector("#content").style = "background-color:lightgray";
+        document.querySelector("#content").style = "background-color:#e9ecef";
         setTimeout(function(){
             document.querySelector("#content").style = "";
             document.querySelector("#miss").style.display = "none";
@@ -92,7 +92,7 @@ next.onclick =(e) => {
 function resetBtn() {
     for(let i=0; i<=9; i++) {
         let btn = document.querySelector("#btn"+i);
-        btn.querySelector("rect").setAttribute("fill", "lightgray");
+        btn.querySelector("rect").setAttribute("fill", "#e3fafc");
         btn.style = "cursor:pointer";
     }
 }
