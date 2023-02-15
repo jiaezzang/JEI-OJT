@@ -44,7 +44,7 @@ function btnClick() {
         next.style.display = "";
         setTimeout(function(){
             document.querySelector("#success").style.display = "none";
-        }, 500);
+        }, 700);
 
     } else if(next.style.display !== "" && box.getAttribute("fill") !== "darkgray"){
         //오답일 때
@@ -62,10 +62,12 @@ function btnClick() {
     const list = document.querySelectorAll('[fill="darkgray"]');
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
         document.querySelector("#miss").style.display = "";
+        document.querySelector("#content").style = "background-color:lightgray";
         setTimeout(function(){
+            document.querySelector("#content").style = "";
             document.querySelector("#miss").style.display = "none";
             resetBtn();
-        }, 500);
+        }, 700);
     }
 }
 
