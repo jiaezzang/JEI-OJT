@@ -222,6 +222,18 @@
                 <rect width="400" height="300" fill="white" stroke="lightblue" stroke-width="12" x="200" y="150" rx="10" ry="10" />
                 <text x="220" y="310" font-size="40" style="cursor:pointer; fill:pink;">학습을 완료하였습니다.</text>
             </g>
+
+            <!--아쉬워요-->
+            <g id="miss">
+                <rect width="200" height="40" fill="red" stroke-width="12" x="80" y="430" rx="2" ry="2" />
+                <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">조금 아쉬워요!</text>
+            </g>
+
+            <!--훌륭해요-->
+            <g id="success">
+                <rect width="200" height="40" fill="orange" stroke-width="12" x="80" y="430" rx="2" ry="2" />
+                <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">아주 훌륭해요!</text>
+            </g>
         </defs>
         <use href="#guide" />
         <use href="#num1" id="currentPage" y="10" transform="scale(2)"/>
@@ -230,6 +242,8 @@
         <use href="#correct" />
         <use href="#wrong" />
         <use href="#finish" />
+        <use href="#miss" />
+        <use href="#success" />
         
     </svg>
     <script src="./main.js"></script>

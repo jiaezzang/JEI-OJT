@@ -10,6 +10,8 @@ window.onload = () => {
     document.querySelector("#correct").style.display = "none";
     document.querySelector("#wrong").style.display = "none";
     document.querySelector("#finish").style.display = "none";
+    document.querySelector("#miss").style.display = "none";
+    document.querySelector("#success").style.display = "none";
     next.style.display = "none";
     hideAnswer()
 }
@@ -34,20 +36,36 @@ function btnClick() {
     const answer = document.querySelector(pageNumber + " text").innerHTML;
 
     if(number === answer){
+        //정답일 때 
         document.querySelector(pageNumber + " #answer").style.display = "";
+        document.querySelector("#correct").style.display = "";
+        document.querySelector("#success").style.display = "";
+        next.style.display = "";
         setTimeout(function(){
-            document.querySelector("#correct").style.display = "";
-            next.style.display = "";
-        }, 500);
+            document.querySelector("#success").style.display = "none";
+        }, 1000);
+
     } else if(next.style.display !== "" && box.getAttribute("fill") !== "darkgray"){
+        //오답일 때
         document.querySelector("#wrong").style.display = "";
         setTimeout(function(){
             document.querySelector("#wrong").style.display = "none";
-        }, 500);
+        }, 1000);
     }
 
     //버튼 클릭 시 색상 변경    
     box.setAttribute("fill", "darkgray");
+
+    //3번 오답 시 주의
+    const list = document.querySelectorAll('[fill="darkgray"]');
+    console.log(list);
+    if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
+        document.querySelector("#miss").style.display = "";
+        setTimeout(function(){
+            document.querySelector("#miss").style.display = "none";
+            resetBtn();
+        }, 500);
+    }
 }
 
 //다음 문제로 넘어가는 버튼 
@@ -59,7 +77,7 @@ next.onclick =(e) => {
         question.setAttribute("href", "#num" + nextNum)
         next.style.display = "none";
         document.querySelector("#correct").style.display = "none";
-        resetBtn()
+        resetBtn();
     } else if(nextNum === 9){           //마지막 문제에서 클릭 시 학습 마무리 메세지
         next.style.display = "none";
         document.querySelector("#finish").style.display = "";
