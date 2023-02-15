@@ -1,4 +1,3 @@
-const answer = document.querySelector(".answer");
 const next = document.querySelector("#next");
 
 //페이지 생성 시점에 모든 버튼 가져와서 onclick이벤트
@@ -8,6 +7,8 @@ window.onload = () => {
         let btn = document.querySelector(".btn" + i);
         btn.onclick = btnClick;
     }
+    document.querySelector("#correct").style.display = "none";
+    document.querySelector("#wrong").style.display = "none";
     next.style.display = "none";
     hideAnswer(1, 8)
 }
@@ -34,8 +35,15 @@ function btnClick() {
     const answer = document.querySelector(pageNumber + " text").innerHTML;
     if(number === answer){
         document.querySelector(pageNumber + " .answer").style.display = "";
-        next.style.display = "";
-    } else {
+        setTimeout(function(){
+            document.querySelector("#correct").style.display = "";
+            next.style.display = "";
+        }, 500);
+    } else if(next.style.display !== ""){
+        document.querySelector("#wrong").style.display = "";
+        setTimeout(function(){
+            document.querySelector("#wrong").style.display = "none";
+        }, 500);
     }
 
 }
@@ -49,6 +57,7 @@ next.onclick =(e) => {
         question.setAttribute("href", "#num" + nextNum)
     }
     next.style.display = "none";
+    document.querySelector("#correct").style.display = "none";
     resetBtn()
 }
 
