@@ -1,4 +1,5 @@
 const next = document.querySelector("#next");
+const retry = document.querySelector("#retry");
 
 //페이지 생성 시점에 모든 버튼 가져와서 onclick이벤트
 window.onload = () => {
@@ -43,18 +44,19 @@ function btnClick() {
         next.style.display = "";
         setTimeout(function(){
             document.querySelector("#success").style.display = "none";
-        }, 1000);
+        }, 500);
 
     } else if(next.style.display !== "" && box.getAttribute("fill") !== "darkgray"){
         //오답일 때
         document.querySelector("#wrong").style.display = "";
         setTimeout(function(){
             document.querySelector("#wrong").style.display = "none";
-        }, 1000);
+        }, 300);
     }
 
     //버튼 클릭 시 색상 변경    
     box.setAttribute("fill", "darkgray");
+    this.style = "";
 
     //3번 오답 시 주의
     const list = document.querySelectorAll('[fill="darkgray"]');
@@ -89,5 +91,14 @@ function resetBtn() {
     for(let i=0; i<=9; i++) {
         let btn = document.querySelector("#btn"+i);
         btn.querySelector("rect").setAttribute("fill", "lightgray");
+        btn.style = "cursor:pointer";
     }
+}
+
+//Retry 버튼 클릭 시
+retry.onclick = () => {
+    window.onload();
+    const question = document.querySelector("#currentPage");
+    question.setAttribute("href", "#num1"); //첫번째 문제로 돌아가기
+    resetBtn();
 }
