@@ -23,29 +23,31 @@ function hideAnswer(start, end){
 
 // 버튼 클릭시 실행 이벤트
 function btnClick() {
-    //버튼 색상 변경
+    
     let box = this.querySelector("rect");
-    box.setAttribute("fill", "darkgray");
-    this.style = "";
 
     //정답 비교
     let number = this.querySelector("text").innerHTML;
     const question = document.querySelector("#currentPage");
     const pageNumber = question.getAttribute("href");
     const answer = document.querySelector(pageNumber + " text").innerHTML;
+
     if(number === answer){
         document.querySelector(pageNumber + " .answer").style.display = "";
         setTimeout(function(){
             document.querySelector("#correct").style.display = "";
             next.style.display = "";
         }, 500);
-    } else if(next.style.display !== ""){
+    } else if(next.style.display !== "" && box.getAttribute("fill") !== "darkgray"){
         document.querySelector("#wrong").style.display = "";
         setTimeout(function(){
             document.querySelector("#wrong").style.display = "none";
         }, 500);
     }
 
+    //버튼 색상 변경    
+    box.setAttribute("fill", "darkgray");
+    this.style = "";
 }
 
 //다음 문제로 넘어가는 버튼 
