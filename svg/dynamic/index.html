@@ -211,13 +211,18 @@
                 <path d="M 428 260 l 40 40" stroke="blue" stroke-width="5" />
                 <path d="M 468 260 l -40 40" stroke="blue" stroke-width="5" />
             </g>
+            <g id="finish">
+                <rect width="400" height="300" fill="white" stroke="lightblue" stroke-width="12" x="200" y="150" rx="10" ry="10" />
+                <text x="220" y="310" font-size="40" style="cursor:pointer; fill:pink;">학습을 완료하였습니다.</text>
+            </g>
         </defs>
         <use href="#guide" />
         <use href="#num1" id="currentPage" y="10" transform="scale(2)"/>
         <use x="110" y="320" href="#btns" />
         <use href="#next" />
-        <use href="#correct"/>
-        <use href="#wrong"/>
+        <use href="#correct" />
+        <use href="#wrong" />
+        <use href="#finish" />
         
     </svg>
     <script src="./main.js"></script>
