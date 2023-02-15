@@ -4,7 +4,7 @@ const next = document.querySelector("#next");
 window.onload = () => {
     for(let i=0; i<=9; i++) {
         //모든 버튼 생성
-        let btn = document.querySelector(".btn" + i);
+        let btn = document.querySelector("#btn" + i);
         btn.onclick = btnClick;
     }
     document.querySelector("#correct").style.display = "none";
@@ -70,7 +70,7 @@ next.onclick =(e) => {
 //버튼 리셋
 function resetBtn() {
     for(let i=0; i<=9; i++) {
-        let btn = document.querySelector(".btn"+i);
+        let btn = document.querySelector("#btn"+i);
         btn.querySelector("rect").setAttribute("fill", "lightgray")
     }
 }
