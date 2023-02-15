@@ -9,6 +9,7 @@ window.onload = () => {
     }
     document.querySelector("#correct").style.display = "none";
     document.querySelector("#wrong").style.display = "none";
+    document.querySelector("#finish").style.display = "none";
     next.style.display = "none";
     hideAnswer(1, 8)
 }
@@ -47,7 +48,6 @@ function btnClick() {
 
     //버튼 색상 변경    
     box.setAttribute("fill", "darkgray");
-    this.style = "";
 }
 
 //다음 문제로 넘어가는 버튼 
@@ -57,10 +57,14 @@ next.onclick =(e) => {
     const nextNum = Number([...id].pop()) + 1;
     if(nextNum < 9){
         question.setAttribute("href", "#num" + nextNum)
+        next.style.display = "none";
+        document.querySelector("#correct").style.display = "none";
+        resetBtn()
+    } else if(nextNum === 9){
+        next.style.display = "none";
+        document.querySelector("#finish").style.display = "";
     }
-    next.style.display = "none";
-    document.querySelector("#correct").style.display = "none";
-    resetBtn()
+    
 }
 
 //버튼 리셋
