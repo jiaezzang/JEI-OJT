@@ -58,7 +58,6 @@ function btnClick() {
 
     //3번 오답 시 주의
     const list = document.querySelectorAll('[fill="darkgray"]');
-    console.log(list);
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
         document.querySelector("#miss").style.display = "";
         setTimeout(function(){
@@ -74,7 +73,7 @@ next.onclick =(e) => {
     const id = question.getAttribute("href");
     const nextNum = Number([...id].pop()) + 1;
     if(nextNum < 9){                    //버튼 클릭 시 다음 문제 노출
-        question.setAttribute("href", "#num" + nextNum)
+        question.setAttribute("href", "#num" + nextNum);
         next.style.display = "none";
         document.querySelector("#correct").style.display = "none";
         resetBtn();
@@ -89,6 +88,6 @@ next.onclick =(e) => {
 function resetBtn() {
     for(let i=0; i<=9; i++) {
         let btn = document.querySelector("#btn"+i);
-        btn.querySelector("rect").setAttribute("fill", "lightgray")
+        btn.querySelector("rect").setAttribute("fill", "lightgray");
     }
 }
