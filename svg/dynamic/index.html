@@ -206,12 +206,18 @@
                 <polygon  points="653, 90 653, 70 673, 80" fill="orange" />
             </g>
             <circle cx="100" cy="90" r="20" fill="gray" />
-            <circle cx="130" cy="130" r="30" stroke="red" stroke-width="4" />
+            <circle id="correct" cx="450" cy="280" r="30" stroke="red" stroke-width="5" fill="none" />
+            <g id="wrong">
+                <path d="M 425 260 l 40 40" stroke="blue" stroke-width="5" />
+                <path d="M 465 260 l -40 40" stroke="blue" stroke-width="5" />
+            </g>
         </defs>
         <use href="#guide" />
         <use href="#num1" id="currentPage" y="10" transform="scale(2)"/>
         <use x="110" y="320" href="#btns" />
         <use href="#next" />
+        <use href="#correct"/>
+        <use href="#wrong"/>
         
     </svg>
     <script src="./main.js"></script>
