@@ -46,7 +46,7 @@ function btnClick() {
         }, 500);
     }
 
-    //버튼 색상 변경    
+    //버튼 클릭 시 색상 변경    
     box.setAttribute("fill", "darkgray");
 }
 
@@ -55,12 +55,12 @@ next.onclick =(e) => {
     const question = document.querySelector("#currentPage");
     const id = question.getAttribute("href");
     const nextNum = Number([...id].pop()) + 1;
-    if(nextNum < 9){
+    if(nextNum < 9){                    //버튼 클릭 시 다음 문제 노출
         question.setAttribute("href", "#num" + nextNum)
         next.style.display = "none";
         document.querySelector("#correct").style.display = "none";
         resetBtn()
-    } else if(nextNum === 9){
+    } else if(nextNum === 9){           //마지막 문제에서 클릭 시 학습 마무리 메세지
         next.style.display = "none";
         document.querySelector("#finish").style.display = "";
     }
