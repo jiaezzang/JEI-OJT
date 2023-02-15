@@ -11,14 +11,14 @@ window.onload = () => {
     document.querySelector("#wrong").style.display = "none";
     document.querySelector("#finish").style.display = "none";
     next.style.display = "none";
-    hideAnswer(1, 8)
+    hideAnswer()
 }
 
 //모든 답안 가리기
-function hideAnswer(start, end){
-    for(let i=start; i<=end; i++){
+function hideAnswer(){
+    for(let i=1; i<=8; i++){
         let gTag = document.querySelector("#num" + i);
-        gTag.querySelector(".answer").style.display = "none";
+        gTag.querySelector("#answer").style.display = "none";
     }
 }
 
@@ -34,7 +34,7 @@ function btnClick() {
     const answer = document.querySelector(pageNumber + " text").innerHTML;
 
     if(number === answer){
-        document.querySelector(pageNumber + " .answer").style.display = "";
+        document.querySelector(pageNumber + " #answer").style.display = "";
         setTimeout(function(){
             document.querySelector("#correct").style.display = "";
             next.style.display = "";
