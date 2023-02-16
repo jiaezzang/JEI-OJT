@@ -11,6 +11,13 @@ window.onload = () => {
     }
 }
 
+//모든 답안 가리기
+function hideAnswer(){
+    for(let i=1; i<=8; i++){
+        let gTag = document.querySelector("#num" + i);
+        gTag.querySelector("#answer").style.display = "none";
+    }
+}
 
 // 버튼 클릭시 실행 이벤트
 function btnClick() {
@@ -31,6 +38,8 @@ function btnClick() {
         document.querySelector("#correct").style.display = "";
         document.querySelector("#success").style.display = "";
         next.style.display = "";
+        const magicAudio = new Audio('./audio/magic.wav');
+        magicAudio.play();
         setTimeout(function(){
             document.querySelector("#success").style.display = "none";
         }, 700);
@@ -67,6 +76,8 @@ next.onclick =(e) => {
     const question = document.querySelector("#currentPage");
     const id = question.getAttribute("href");
     const nextNum = Number([...id].pop()) + 1;
+    const nextAudio = new Audio('./audio/next.wav');
+    nextAudio.play();
     if(nextNum < 9){                    //버튼 클릭 시 다음 문제 노출
         question.setAttribute("href", "#num" + nextNum);
         next.style.display = "none";
@@ -94,9 +105,17 @@ function resetBtn() {
 
 //Retry 버튼 클릭 시
 retry.onclick = () => {
-    window.onload();
+    document.querySelector("#correct").style.display = "none";
+    document.querySelector("#wrong").style.display = "none";
+    document.querySelector("#finish").style.display = "none";
+    document.querySelector("#miss").style.display = "none";
+    document.querySelector("#success").style.display = "none";
+    next.style.display = "none";
     const question = document.querySelector("#currentPage");
     question.setAttribute("href", "#num1"); //첫번째 문제로 돌아가기
+    const nextAudio = new Audio('./audio/next.wav');
+    nextAudio.play();
+    hideAnswer()
     resetBtn();
 }
 
