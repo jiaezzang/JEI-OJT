@@ -9,22 +9,8 @@ window.onload = () => {
         let btn = document.querySelector("#btn" + i);
         btn.onclick = btnClick;
     }
-    document.querySelector("#correct").style.display = "none";
-    document.querySelector("#wrong").style.display = "none";
-    document.querySelector("#finish").style.display = "none";
-    document.querySelector("#miss").style.display = "none";
-    document.querySelector("#success").style.display = "none";
-    next.style.display = "none";
-    hideAnswer()
 }
 
-//모든 답안 가리기
-function hideAnswer(){
-    for(let i=1; i<=8; i++){
-        let gTag = document.querySelector("#num" + i);
-        gTag.querySelector("#answer").style.display = "none";
-    }
-}
 
 // 버튼 클릭시 실행 이벤트
 function btnClick() {

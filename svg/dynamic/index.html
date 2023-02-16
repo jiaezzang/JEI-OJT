@@ -29,7 +29,7 @@
                 <use href="#blueCircle" x="50"/>
                 <use href="#curve"/>
 
-                <text id="answer" x="220" y="130" font-size="20" >3</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >3</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">2 + 1 =</text>
                 <use href="#answerLine" />
             </g>
@@ -46,7 +46,7 @@
                 <use href="#blueCircle" x="80"  />
                 <use href="#curve" x="30" />
 
-                <text id="answer" x="220" y="130" font-size="20" >5</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >5</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">4 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
@@ -65,7 +65,7 @@
                 <use href="#blueCircle" x="110" />
                 <use href="#curve" x="60" />
 
-                <text id="answer" x="220" y="130" font-size="20" >7</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >7</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">6 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
@@ -86,7 +86,7 @@
                 <use href="#blueCircle" x="140" />
                 <use href="#curve" x="90" />
 
-                <text id="answer" x="220" y="130" font-size="20" >9</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >9</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">8 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
@@ -106,7 +106,7 @@
                 <use href="#blueCircle" x="125"/>
                 <use href="#curve" x="75"/>
 
-                <text id="answer" x="220" y="130" font-size="20" >8</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >8</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">7 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
@@ -124,7 +124,7 @@
                 <use href="#blueCircle" x="95"  />
                 <use href="#curve" x="45" />
 
-                <text id="answer" x="220" y="130" font-size="20" >6</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >6</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">5 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
@@ -140,7 +140,7 @@
                 <use href="#blueCircle" x="65" />
                 <use href="#curve" x="15" />
 
-                <text id="answer" x="220" y="130" font-size="20" >4</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >4</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">3 + 1 =</text>
                 <use href="#answerLine"/>
             </g>
@@ -154,7 +154,7 @@
                 <use href="#blueCircle" x="35" />
                 <use href="#curve" x="-15" />
 
-                <text id="answer" x="220" y="130" font-size="20" >2</text>
+                <text id="answer" style="display:none" x="220" y="130" font-size="20" >2</text>
                 <text x="150" y="130" font-size="20" style="cursor:pointer">1 + 1 =</text>
                 <use href="#answerLine" />
             </g>
@@ -205,19 +205,19 @@
             </g>
 
             <!--다음 문제 버튼-->
-            <g id="next" style="cursor:pointer">
+            <g id="next" style="cursor:pointer; display:none">
                 <circle cx="660" cy="30" r="20" fill="ivory" stroke="orange" stroke-width="2"/>
                 <polygon  points="653, 40 653, 20 673, 30" fill="orange" />
             </g>
 
             <!--정오표시-->
-            <circle id="correct" cx="450" cy="265" r="30" stroke="red" stroke-width="5" fill="none" />
-            <g id="wrong">
+            <circle id="correct" style="display:none" cx="450" cy="265" r="30" stroke="red" stroke-width="5" fill="none" />
+            <g id="wrong" style="display:none">
                 <path d="M 428 250 l 40 40" stroke="blue" stroke-width="5" />
                 <path d="M 468 250 l -40 40" stroke="blue" stroke-width="5" />
             </g>
 
-            <g id="finish">
+            <g id="finish" style="display:none">
                 <!--학습 마무리 메세지-->
                 <g>
                     <rect width="400" height="300" fill="white" stroke="pink" stroke-width="8" x="200" y="70" rx="10" ry="10" />
@@ -231,13 +231,13 @@
             </g>
 
             <!--아쉬워요-->
-            <g id="miss">
+            <g id="miss" style="display:none">
                 <rect width="200" height="40" fill="red" stroke-width="12" x="80" y="430" rx="2" ry="2" />
                 <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">조금 아쉬워요!</text>
             </g>
 
             <!--훌륭해요-->
-            <g id="success">
+            <g id="success" style="display:none">
                 <rect width="200" height="40" fill="orange" stroke-width="12" x="80" y="430" rx="2" ry="2" />
                 <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">아주 훌륭해요!</text>
             </g>
@@ -250,7 +250,7 @@
         <use href="#guide" />
         <use href="#num1" id="currentPage" y="10" transform="scale(2)"/>
         <use href="#btns" />
-        <use href="#next" />
+        <use href="#next" y="30"/>
         <use href="#correct" />
         <use href="#wrong" />
         <use href="#finish" />
