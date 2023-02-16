@@ -246,6 +246,9 @@
                 <!--스피커-->
                 <polygon id="speaker" style="cursor:pointer" width="30"  points="55,50 55, 70 70, 70 80, 80 80, 40 70, 50" fill="orange" />
 
+                <!--버튼 눌림 방지-->
+                <rect id="stop" width="565" height="70" fill="white" x="120" y="350" style="display:none"/>
+
             </defs>
             <rect x="0" y="0" width="800" height="35" fill="rgb(87, 186, 203)" />
             <use href="#guide" />
@@ -258,6 +261,7 @@
             <use href="#miss" />
             <use href="#success" />
             <use href="#speaker" x="20"/>
+            <use href="#stop" />
         </svg>
     </div>
     <script src="./main.js"></script>
