@@ -36,8 +36,8 @@ function btnClick() {
     const question = document.querySelector("#currentPage");
     const pageNumber = question.getAttribute("href");
     const answer = document.querySelector(pageNumber + " text").innerHTML;
-    const audio = new Audio('./audio/button-11.wav');
-    audio.play();
+    const btnAudio = new Audio('./audio/button.wav');
+    btnAudio.play();
 
     if(number === answer){
         //정답일 때 
@@ -66,6 +66,8 @@ function btnClick() {
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
         document.querySelector("#miss").style.display = "";
         document.querySelector("#content").style = "background-color:#e9ecef";
+        const missAudio = new Audio('./audio/beep.wav');
+        missAudio.play();
         setTimeout(function(){
             document.querySelector("#content").style = "";
             document.querySelector("#miss").style.display = "none";
@@ -89,6 +91,8 @@ next.onclick =(e) => {
         document.querySelector("#finish").style.display = "";
         text = document.querySelector("#finish text").innerHTML
         speak(text);
+        const applauseAudio = new Audio('./audio/applause.wav');
+        applauseAudio.play();
     }
     
 }
