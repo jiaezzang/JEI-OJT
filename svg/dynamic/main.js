@@ -45,6 +45,9 @@ function btnClick() {
         //정답일 때 
         document.querySelector(pageNumber + " #answer").style.display = "";
         document.querySelector("#correct").style.display = "";
+        let comments = ["정말 멋진데요?", "음~ 훌륭해요!", "와! 잘했어요!", "와우~ 좋아요!", "와! 최고예요!"]
+        let cmtPick = Math.floor(Math.random() * comments.length);
+        document.querySelector("#success text").innerHTML = comments[cmtPick];
         document.querySelector("#success").style.display = "";
         next.style.display = "";
         const magicAudio = new Audio('./audio/magic.wav');
@@ -68,6 +71,9 @@ function btnClick() {
     //3번 오답 시 주의
     const list = document.querySelectorAll('[fill="gray"]');
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
+        let comments = ["조금 아쉬워요", "좀 더 집중해요", "아! 아까워요!"]
+        let cmtPick = Math.floor(Math.random() * comments.length);
+        document.querySelector("#miss text").innerHTML = comments[cmtPick];
         document.querySelector("#miss").style.display = "";
         document.querySelector("#content").style = "width:100%; height:100%; background-color:#e9ecef;";
         const missAudio = new Audio('./audio/beep.wav');
@@ -121,7 +127,7 @@ retry.onclick = () => {
     document.querySelector("#miss").style.display = "none";
     document.querySelector("#success").style.display = "none";
     next.style.display = "none";
-    
+
     const question = document.querySelector("#currentPage");
     shuffle(words);     //문제를 다시 랜덤 배치
     question.setAttribute("href", words[0]); //첫번째 문제로 돌아가기
