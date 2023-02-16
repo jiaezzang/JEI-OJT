@@ -69,11 +69,11 @@ function btnClick() {
     const list = document.querySelectorAll('[fill="gray"]');
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
         document.querySelector("#miss").style.display = "";
-        document.querySelector("#content").style = "background-color:#e9ecef";
+        document.querySelector("#content").style = "max-width:300; width:100%; background-color:#e9ecef;";
         const missAudio = new Audio('./audio/beep.wav');
         missAudio.play();
         setTimeout(function(){
-            document.querySelector("#content").style = "";
+            document.querySelector("#content").style = "max-width:300; width:100%;";
             document.querySelector("#miss").style.display = "none";
             resetBtn();
         }, 700);
