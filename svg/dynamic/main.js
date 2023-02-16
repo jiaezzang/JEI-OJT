@@ -45,6 +45,7 @@ function btnClick() {
         //정답일 때 
         document.querySelector(pageNumber + " #answer").style.display = "";
         document.querySelector("#correct").style.display = "";
+        document.querySelector("#stop").style.display = "";
         let comments = ["정말 멋진데요?", "음~ 훌륭해요!", "와! 잘했어요!", "와우~ 좋아요!", "와! 최고예요!"]
         let cmtPick = Math.floor(Math.random() * comments.length);
         document.querySelector("#success text").innerHTML = comments[cmtPick];
@@ -75,12 +76,14 @@ function btnClick() {
         let cmtPick = Math.floor(Math.random() * comments.length);
         document.querySelector("#miss text").innerHTML = comments[cmtPick];
         document.querySelector("#miss").style.display = "";
+        document.querySelector("#stop").style.display = "";
         document.querySelector("#content").style = "width:100%; height:100%; background-color:#e9ecef;";
         const missAudio = new Audio('./audio/beep.wav');
         missAudio.play();
         setTimeout(function(){
             document.querySelector("#content").style = "width:100%; height:100%";
             document.querySelector("#miss").style.display = "none";
+            document.querySelector("#stop").style.display = "none";
             resetBtn();
         }, 700);
     }
@@ -88,6 +91,7 @@ function btnClick() {
 
 //다음 문제로 넘어가는 버튼 
 next.onclick =(e) => {
+    document.querySelector("#stop").style.display = "none";
     const question = document.querySelector("#currentPage");
     const id = question.getAttribute("href");
     const nextIndex = words.indexOf(id) + 1;
