@@ -114,14 +114,16 @@ function resetBtn() {
 
 //Retry 버튼 클릭 시
 retry.onclick = () => {
+    //불필요한 요소들을 모두 숨김
     document.querySelector("#correct").style.display = "none";
     document.querySelector("#wrong").style.display = "none";
     document.querySelector("#finish").style.display = "none";
     document.querySelector("#miss").style.display = "none";
     document.querySelector("#success").style.display = "none";
     next.style.display = "none";
+    
     const question = document.querySelector("#currentPage");
-    shuffle(words);
+    shuffle(words);     //문제를 다시 랜덤 배치
     question.setAttribute("href", words[0]); //첫번째 문제로 돌아가기
     const nextAudio = new Audio('./audio/next.wav');
     nextAudio.play();
