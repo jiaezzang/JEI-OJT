@@ -69,11 +69,11 @@ function btnClick() {
     const list = document.querySelectorAll('[fill="gray"]');
     if(list.length == 3 && document.querySelector("#correct").style.display === "none"){
         document.querySelector("#miss").style.display = "";
-        document.querySelector("#content").style = "max-width:300; width:100%; background-color:#e9ecef;";
+        document.querySelector("#content").style = "width:100%; height:100%; background-color:#e9ecef;";
         const missAudio = new Audio('./audio/beep.wav');
         missAudio.play();
         setTimeout(function(){
-            document.querySelector("#content").style = "max-width:300; width:100%;";
+            document.querySelector("#content").style = "width:100%; height:100%";
             document.querySelector("#miss").style.display = "none";
             resetBtn();
         }, 700);
@@ -136,7 +136,7 @@ function speak(text) {
   
     message.voice = voices[0];
     speechSynthesis.speak(message);
-  }
+}
 
 //텍스트 읽기
 speaker.onclick = () => {
