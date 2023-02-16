@@ -36,6 +36,8 @@ function btnClick() {
     const question = document.querySelector("#currentPage");
     const pageNumber = question.getAttribute("href");
     const answer = document.querySelector(pageNumber + " text").innerHTML;
+    const audio = new Audio('./audio/button-11.wav');
+    audio.play();
 
     if(number === answer){
         //정답일 때 
