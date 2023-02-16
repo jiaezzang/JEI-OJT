@@ -137,3 +137,9 @@ speaker.onclick = () => {
         speaker.setAttribute("fill", "orange");
     }, 1500);
 }
+
+//랜덤하게 문제 주기
+// const words = ['num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8']
+// const selected = words[Math.floor(Math.random() * words.length)]
+// const question = document.querySelector("#currentPage");
+// question.setAttribute("href", selected);
