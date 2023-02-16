@@ -1,5 +1,6 @@
 const next = document.querySelector("#next");
 const retry = document.querySelector("#retry");
+const speaker = document.querySelector("#speaker");
 
 //페이지 생성 시점에 모든 버튼 가져와서 onclick이벤트
 window.onload = () => {
@@ -84,6 +85,8 @@ next.onclick =(e) => {
     } else if(nextNum === 9){           //마지막 문제에서 클릭 시 학습 마무리 메세지
         next.style.display = "none";
         document.querySelector("#finish").style.display = "";
+        text = document.querySelector("#finish text").innerHTML
+        speak(text);
     }
     
 }
@@ -103,4 +106,23 @@ retry.onclick = () => {
     const question = document.querySelector("#currentPage");
     question.setAttribute("href", "#num1"); //첫번째 문제로 돌아가기
     resetBtn();
+}
+
+//SpeechSynthesis API
+function speak(text) {
+    const message = new SpeechSynthesisUtterance(text);
+    const voices = speechSynthesis.getVoices();
+  
+    message.voice = voices[0];
+    speechSynthesis.speak(message);
+  }
+
+//텍스트 읽기
+speaker.onclick = () => {
+    text = document.querySelector("#guide").innerHTML
+    speak(text);
+    speaker.setAttribute("fill", "#D2B48C");
+    setTimeout(function(){
+        speaker.setAttribute("fill", "orange");
+    }, 1500);
 }

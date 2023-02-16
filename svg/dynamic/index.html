@@ -7,8 +7,8 @@
     <title>다음 덧셈을 하세요.</title>
 </head>
 <body>
-    <svg viewBox="0 0 800 50" style="background-color:rgb(87, 186, 203)"></svg>
-    <svg viewBox="0 0 800 500" id="content">
+    <svg heigth="auto" viewBox="0 0 800 50" style="background-color:rgb(87, 186, 203)" xmlns="http://www.w3.org/2000/svg"></svg>
+    <svg heigth="auto" viewBox="0 0 800 500" id="content" xmlns="http://www.w3.org/2000/svg">
         <defs>
             <!--공통 요소-->
             <text id="guide" x="120" y="50" font-size="30">다음 덧셈을 하세요</text>
@@ -241,6 +241,10 @@
                 <rect width="200" height="40" fill="orange" stroke-width="12" x="80" y="430" rx="2" ry="2" />
                 <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">아주 훌륭해요!</text>
             </g>
+
+            <!--스피커-->
+            <polygon id="speaker" style="cursor:pointer" width="30"  points="55,50 55, 70 70, 70 80, 80 80, 40 70, 50" fill="orange" />
+
         </defs>
 
         <use href="#guide" />
@@ -252,6 +256,7 @@
         <use href="#finish" />
         <use href="#miss" />
         <use href="#success" />
+        <use href="#speaker" x="20" y="-20"/>
         
     </svg>
     <script src="./main.js"></script>
