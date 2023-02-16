@@ -2,6 +2,15 @@ const next = document.querySelector("#next");
 const retry = document.querySelector("#retry");
 const speaker = document.querySelector("#speaker");
 
+//랜덤하게 문제 주기
+let words = ['#num1', '#num2', '#num3', '#num4', '#num5', '#num6', '#num7', '#num8']
+function shuffle(array) {
+    array.sort(() => Math.random() - 0.5);
+}
+shuffle(words);
+const question = document.querySelector("#currentPage");
+question.setAttribute("href", words[0]);
+
 //페이지 생성 시점에 모든 버튼 가져와서 onclick이벤트
 window.onload = () => {
     for(let i=0; i<=9; i++) {
@@ -75,15 +84,15 @@ function btnClick() {
 next.onclick =(e) => {
     const question = document.querySelector("#currentPage");
     const id = question.getAttribute("href");
-    const nextNum = Number([...id].pop()) + 1;
-    const nextAudio = new Audio('./audio/next.wav');
+    const nextIndex = words.indexOf(id) + 1;
+    const nextAudio = new Audio('./audio/next.wav')
     nextAudio.play();
-    if(nextNum < 9){                    //버튼 클릭 시 다음 문제 노출
-        question.setAttribute("href", "#num" + nextNum);
+    if(nextIndex < 8){                    //버튼 클릭 시 다음 문제 노출
+        question.setAttribute("href", words[nextIndex]);
         next.style.display = "none";
         document.querySelector("#correct").style.display = "none";
         resetBtn();
-    } else if(nextNum === 9){           //마지막 문제에서 클릭 시 학습 마무리 메세지
+    } else if(nextIndex === 8){           //마지막 문제에서 클릭 시 학습 마무리 메세지
         next.style.display = "none";
         document.querySelector("#finish").style.display = "";
         text = document.querySelector("#finish text").innerHTML
@@ -112,7 +121,8 @@ retry.onclick = () => {
     document.querySelector("#success").style.display = "none";
     next.style.display = "none";
     const question = document.querySelector("#currentPage");
-    question.setAttribute("href", "#num1"); //첫번째 문제로 돌아가기
+    shuffle(words);
+    question.setAttribute("href", words[0]); //첫번째 문제로 돌아가기
     const nextAudio = new Audio('./audio/next.wav');
     nextAudio.play();
     hideAnswer()
@@ -138,8 +148,3 @@ speaker.onclick = () => {
     }, 1500);
 }
 
-//랜덤하게 문제 주기
-// const words = ['num1', 'num2', 'num3', 'num4', 'num5', 'num6', 'num7', 'num8']
-// const selected = words[Math.floor(Math.random() * words.length)]
-// const question = document.querySelector("#currentPage");
-// question.setAttribute("href", selected);
