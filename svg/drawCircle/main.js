@@ -167,20 +167,13 @@ function closestPoint(pathNode, point) {
   }
 }
 
-//SpeechSynthesis API
-function speak(text) {
-  const message = new SpeechSynthesisUtterance(text);
-  const voices = speechSynthesis.getVoices();
-  message.lang = "ko_KR";
-  message.voice = voices[0];
-}
-
 const speaker = document.querySelector("#speaker");
 //텍스트 읽기
 speaker.onclick = () => {
-  text = document.querySelector("#guideLine").innerHTML;
-  speak(text);
+  const voice = new Audio('./audio/voice.mp3');
+  voice.play();
   speaker.setAttribute("fill", "#D2B48C");
+  console.log(voice);
   setTimeout(function(){
       speaker.setAttribute("fill", "orange");
   }, 1500);
