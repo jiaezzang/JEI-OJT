@@ -40,8 +40,8 @@ let startPoint;
 
 let drawLine;
 scratchPad.addEventListener("mousedown", (event) => {
-    event.preventDefault();
     dragging = true;
+    event.preventDefault();
     alert_coords(event);
     startPoint = "M "+ stX + ", " + stY + " ";
     drawLine = document.createElementNS(svgNS,"path");
@@ -56,9 +56,8 @@ scratchPad.addEventListener("mousemove", (event) => {
         console.log(dragging);
     }
 })
-scratchPad.addEventListener("mouseup", () => {
+document.addEventListener("mouseup", () => {
     dragging = false;
-    console.log("mouseUp");
 })
 
 //그리기
