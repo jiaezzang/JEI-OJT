@@ -82,6 +82,7 @@ function soundEffect() {
   if(circle.style.strokeDashoffset < 2.5){
     const magicAudio = new Audio('./audio/magic-chime-01.mp3');
     magicAudio.play();
+    document.querySelector("#wait").style.display = "";
     removeEvent();
   }
 }
@@ -104,6 +105,9 @@ function mMove(event){
       //진행 시 +값으로만 나아가도록
       if(bestLength - beforeValue >= 0 && bestLength - beforeValue < 90){
         progress(bestLength);
+      }
+      if(circle.style.strokeDashoffset < 10){
+        circle.style.strokeDashoffset = 0;
       }
     }
 }
@@ -167,10 +171,8 @@ function closestPoint(pathNode, point) {
 function speak(text) {
   const message = new SpeechSynthesisUtterance(text);
   const voices = speechSynthesis.getVoices();
-  console.log(message)
   message.lang = "ko_KR";
-  message.voice = voices[1];
-  message.rate = 1;
+  message.voice = voices[0];
 }
 
 const speaker = document.querySelector("#speaker");
