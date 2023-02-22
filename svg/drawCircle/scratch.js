@@ -24,12 +24,19 @@ paintBtn.onclick = () => {
     }
 }
 
+//휴지통 버튼 눌렀을 때
 deleteBtn.onclick = () => {
     while(realPad.hasChildNodes()){
         realPad.removeChild(realPad.firstChild)
     }
 }
 
+//되돌리기 버튼 눌렀을 때 
+undoBtn.onclick = () => {
+    realPad.lastElementChild.remove();
+}
+
+//마우스 동작
 let dragging = false;
 let msX = 0;
 let msY = 0;
@@ -43,7 +50,7 @@ scratchPad.addEventListener("mousedown", (event) => {
 
 
 scratchPad.addEventListener("mousemove", (event) => {
-    if(dragging == true){
+    if(dragging === true){
         let nowX = event.clientX;
         let nowY = event.clientY;
         msX = nowX;
@@ -56,7 +63,6 @@ scratchPad.addEventListener("mousemove", (event) => {
 })
 scratchPad.addEventListener("mouseup", () => {
     dragging = false;
-    
     console.log(document);
 })
 
@@ -72,4 +78,4 @@ function drawing(currPath) {
     drawLine.setAttributeNS(null,"stroke-width","2");
     realPad.appendChild(drawLine);
     i++;
-  }
+}
