@@ -5,8 +5,6 @@ const realPad = document.getElementById("pad")
 const deleteBtn = document.querySelector("#delete");
 const undoBtn = document.querySelector("#undo");
 
-
-
 //그리기 버튼 눌렀을 때 
 paintBtn.onclick = () => {
     if(scratchPad.style.display === "none"){
@@ -42,6 +40,7 @@ let startPoint;
 
 let drawLine;
 scratchPad.addEventListener("mousedown", (event) => {
+    event.preventDefault();
     dragging = true;
     alert_coords(event);
     startPoint = "M "+ stX + ", " + stY + " ";
@@ -49,31 +48,28 @@ scratchPad.addEventListener("mousedown", (event) => {
     realPad.appendChild(drawLine);
 })
 
-
-
 scratchPad.addEventListener("mousemove", (event) => {
     if(dragging === true){
-        let nowX = event.clientX;
-        let nowY = event.clientY;
-        msX = nowX;
-        msY = nowY;
         alert_coords(event);
-        
-
-        currPath = startPoint + " L" + stX + "," + stY + " "; 
+        currPath = "L" + stX + "," + stY + " "; 
         drawing(currPath);
+        console.log(dragging);
     }
 })
 scratchPad.addEventListener("mouseup", () => {
     dragging = false;
-    console.log(document);
+    console.log("mouseUp");
 })
 
 //그리기
 function drawing(currPath) {
     drawLine.setAttributeNS(null,"d", startPoint + currPath);
-    drawLine.setAttributeNS(null,"fill"  ,"none");
-    drawLine.setAttributeNS(null,"stroke","black");
-    drawLine.setAttributeNS(null,"stroke-width","2");
+    drawLine.setAttributeNS(null,"fill", "none");
+    drawLine.setAttributeNS(null,"stroke", "black");
+    drawLine.setAttributeNS(null,"stroke-width", "2");
+
+    let nowPath = startPoint + currPath;
+    startPoint = nowPath;
+    
     
 }
