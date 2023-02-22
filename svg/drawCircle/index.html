@@ -9,7 +9,7 @@
 </head>
 <body>
     <div>
-        <svg id="content" viewBox="0 0 800 500">
+        <svg id="content" >
             <defs>
                 <polygon id="play" points="653, 40 653, 20 673, 30" fill="white" />
                 <polygon id="try" points="653, 40 653, 20 673, 30" fill="white" style="display:none"/>
@@ -27,15 +27,29 @@
                 <circle id="controller" cx="480" cy="250" r="15" fill="plum" style="cursor:pointer" stroke="plum"/>
                 <use href="#try" x="-180" y="220" />
             </g>
+            <!--버튼 먼저 누름 방지-->
+            <circle id="wait" cx="480" cy="250" r="20" opacity="0" stroke="plum"/>
+
+            <!--헤더-->
             <rect x="0" y="0" width="800" height="35" fill="rgb(87, 186, 203)" />
 
             <!--스피커-->
             <polygon id="speaker" style="cursor:pointer" width="30"  points="55,50 55, 70 70, 70 80, 80 80, 40 70, 50" fill="orange" />
-            <text id="guide" x="120" y="70" font-size="30">점선을 따라 동그라미를 그리세요</text>
+            <text id="guideLine" x="120" y="70" font-size="30">점선을 따라 동그라미를 그리세요</text>
 
             <!--scratch pad-->
             <rect id="scratchPad" x="0" y="0" width="800" height="500" fill="white" opacity="0.5" style="display:none"/>
             <image id="paintBtn" style="cursor:pointer" href="./img/LI00013392.svg" width="40" x="750" y="450"/>
+            <g id="undo" style="display:none">
+                <circle class="st0" cx="769.1" cy="369.1" r="20" fill="#007A84" />
+                <image id="paintBtn" x="756" y="354" style="cursor:pointer" href="./img/undo-s-svgrepo-com.svg" width="28"/>
+            </g>
+            <g id="delete" style="display:none">
+                <circle class="st0" cx="769.1" cy="419.1" r="20" fill="#007A84"/>
+                <image id="paintBtn" x="756" y="404" style="cursor:pointer" href="./img/trash-svgrepo-com.svg" width="28" />
+            </g>
+            <g id="pad" >
+            </g>
         </svg>
     </div>
     <script src="//d3js.org/d3.v3.min.js"></script>

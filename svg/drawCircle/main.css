@@ -1,9 +1,10 @@
+
 div {
   position:fixed; 
   inset:0;
 }
 
-#guide {
+#guideLine {
   -ms-user-select: none; 
   -moz-user-select: none;
   -khtml-user-select: none;
