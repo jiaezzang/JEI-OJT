@@ -7,6 +7,8 @@ const undoBtn = document.querySelector("#undo");
 
 //그리기 버튼 눌렀을 때 
 paintBtn.onclick = () => {
+    const buttonAudio = new Audio('./audio/door-6-close.mp3');
+    buttonAudio.play();
     if(scratchPad.style.display === "none"){
         scratchPad.style.display = "";
         undoBtn.style.display = "";
@@ -23,6 +25,8 @@ paintBtn.onclick = () => {
 
 //휴지통 버튼 눌렀을 때
 deleteBtn.onclick = () => {
+    const buttonAudio = new Audio('./audio/paper-throw-1.mp3');
+    buttonAudio.play();
     while(realPad.hasChildNodes()){
         realPad.removeChild(realPad.firstChild)
     }
@@ -30,7 +34,11 @@ deleteBtn.onclick = () => {
 
 //되돌리기 버튼 눌렀을 때 
 undoBtn.onclick = () => {
-    realPad.lastElementChild.remove();
+    const buttonAudio = new Audio('./audio/page-flip-02.mp3');
+    buttonAudio.play();
+    if(document.querySelector("#pad path") !== null){
+        realPad.lastElementChild.remove();
+    }
 }
 
 //마우스 동작
