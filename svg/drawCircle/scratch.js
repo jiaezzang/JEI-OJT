@@ -1,10 +1,10 @@
 const svgNS = "http://www.w3.org/2000/svg";  
 const paintBtn = document.querySelector("#paintBtn");
 const scratchPad = document.querySelector("#scratchPad");
-const svg = document.getElementById("content");
 const realPad = document.getElementById("pad")
 const deleteBtn = document.querySelector("#delete");
 const undoBtn = document.querySelector("#undo");
+
 
 
 //그리기 버튼 눌렀을 때 
@@ -38,13 +38,15 @@ undoBtn.onclick = () => {
 
 //마우스 동작
 let dragging = false;
-let msX = 0;
-let msY = 0;
 let startPoint;
 
+let drawLine;
 scratchPad.addEventListener("mousedown", (event) => {
     dragging = true;
-    startPoint = "M "+ event.clientX + ", " + event.clientY + " ";
+    alert_coords(event);
+    startPoint = "M "+ stX + ", " + stY + " ";
+    drawLine = document.createElementNS(svgNS,"path");
+    realPad.appendChild(drawLine);
 })
 
 
@@ -55,9 +57,10 @@ scratchPad.addEventListener("mousemove", (event) => {
         let nowY = event.clientY;
         msX = nowX;
         msY = nowY;
+        alert_coords(event);
         
 
-        currPath = startPoint + " " + msX + "," + msY + " "; 
+        currPath = startPoint + " L" + stX + "," + stY + " "; 
         drawing(currPath);
     }
 })
@@ -67,15 +70,10 @@ scratchPad.addEventListener("mouseup", () => {
 })
 
 //그리기
-var drawLine = document.createElementNS(svgNS,"path");
-
 function drawing(currPath) {
-    let i = 1;
     drawLine.setAttributeNS(null,"d", startPoint + currPath);
     drawLine.setAttributeNS(null,"fill"  ,"none");
-    drawLine.setAttributeNS(null,"class"  ,"draw " + i);
     drawLine.setAttributeNS(null,"stroke","black");
     drawLine.setAttributeNS(null,"stroke-width","2");
-    realPad.appendChild(drawLine);
-    i++;
+    
 }
