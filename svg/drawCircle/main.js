@@ -38,6 +38,7 @@ guide.onclick = () => {
     setTimeout(function(){
       document.querySelector("#try").style.display = "";
       document.querySelector("#wait").style.display = "none";
+      document.querySelector("#wait2").style.display = "";
   }, 2500);
 }
 
@@ -64,13 +65,30 @@ tryBtn.addEventListener("mousedown", (event) => {
 });
 
 document.addEventListener("mousemove",(event) => {
-  
   mMove(event);
 });
 
 document.addEventListener("mouseup", (event) => {
     drag = false;
+
 });
+
+
+//조건에 해당할 시 효과음 이벤트
+function soundEffect() {
+  if(circle.style.strokeDashoffset < 2.5){
+    const magicAudio = new Audio('./audio/magic-chime-01.mp3');
+    magicAudio.play();
+    removeEvent();
+  }
+}
+
+//효과음 이벤트가 한번만 실행되도록 이벤트 제거
+svg.addEventListener('mouseup', soundEffect);
+function removeEvent(){
+  svg.removeEventListener('mouseup', soundEffect);
+}
+
 
 //마우스를 드래그 할 때 마우스 좌표를 받아와 넘주는 함수
 function mMove(event){
@@ -84,7 +102,6 @@ function mMove(event){
       if(bestLength - beforeValue >= 0){
         progress(bestLength);
       }
-        
     }
 }
 
