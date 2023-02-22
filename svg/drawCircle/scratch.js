@@ -18,7 +18,6 @@ paintBtn.onclick = () => {
         scratchPad.style.display = "none";
         undoBtn.style.display = "none";
         deleteBtn.style.display = "none";
-        console.log(document);
     }
 }
 
@@ -53,7 +52,6 @@ scratchPad.addEventListener("mousemove", (event) => {
         alert_coords(event);
         currPath = "L" + stX + "," + stY + " "; 
         drawing(currPath);
-        console.log(dragging);
     }
 })
 document.addEventListener("mouseup", () => {
