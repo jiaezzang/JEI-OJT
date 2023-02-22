@@ -7,6 +7,7 @@ const outerCircle = document.querySelector("#outerCircle");
 const div = document.querySelector("div");
 const tryBtn = document.querySelector("#tryBtn");
 const svg = document.getElementById("content");
+const guideController = document.querySelector("#guideController")
 
 circle.style.strokeDasharray = circle.getTotalLength();
 circle.style.strokeDashoffset = circle.getTotalLength();
@@ -30,8 +31,10 @@ function alert_coords(event) {
 
 //예시 버튼을 클릭했을 때 
 guide.onclick = () => {
+  
     if(outerCircle.style.display === "none"){
         outerCircle.style.display = "";
+        guideController.style.display = "none";
         document.querySelector("#play").style.display = "none";
         guide.style = ""
     }
