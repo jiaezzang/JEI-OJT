@@ -102,7 +102,7 @@ function mMove(event){
 
       mousemoved(now);
       //진행 시 +값으로만 나아가도록
-      if(bestLength - beforeValue >= 0){
+      if(bestLength - beforeValue >= 0 && bestLength - beforeValue < 90){
         progress(bestLength);
       }
     }
@@ -120,7 +120,7 @@ var before,
 
 function mousemoved(now) {
   var p = closestPoint(path, now);
-  if(beforeValue <= bestLength){
+  if(bestLength - beforeValue >= 0 && bestLength - beforeValue < 90){
     controller.setAttribute("cx", p[0]);
     controller.setAttribute("cy", p[1]);
   }
@@ -167,10 +167,10 @@ function closestPoint(pathNode, point) {
 function speak(text) {
   const message = new SpeechSynthesisUtterance(text);
   const voices = speechSynthesis.getVoices();
-
-  message.lang = "ko-KR";
-  message.voice = voices[0];
-  speechSynthesis.speak(message);
+  console.log(message)
+  message.lang = "ko_KR";
+  message.voice = voices[1];
+  message.rate = 1;
 }
 
 const speaker = document.querySelector("#speaker");
