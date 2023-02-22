@@ -31,12 +31,13 @@ function alert_coords(event) {
 
 //예시 버튼을 클릭했을 때 
 guide.onclick = () => {
-  
     if(outerCircle.style.display === "none"){
         outerCircle.style.display = "";
         guideController.style.display = "none";
         document.querySelector("#play").style.display = "none";
         guide.style = ""
+        const buttonAudio = new Audio('./audio/button-09a.mp3');
+        buttonAudio.play();
     }
     setTimeout(function(){
       document.querySelector("#try").style.display = "";
@@ -64,6 +65,11 @@ tryBtn.addEventListener("mousedown", (event) => {
         circle.style.display = "";
         drag = true;
         circle.style.dispaly = "";
+    }
+    
+    if(bestLength === Infinity){
+      const buttonAudio = new Audio('./audio/button-09a.mp3');
+      buttonAudio.play();
     }
 });
 
