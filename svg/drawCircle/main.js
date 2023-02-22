@@ -5,11 +5,28 @@ const path = document.querySelector("#dashCircle");
 const guide = document.querySelector("#guide")
 const outerCircle = document.querySelector("#outerCircle");
 const div = document.querySelector("div");
-const tryBtn = document.querySelector("#tryBtn")
+const tryBtn = document.querySelector("#tryBtn");
+const svg = document.getElementById("content");
 
 circle.style.strokeDasharray = circle.getTotalLength();
 circle.style.strokeDashoffset = circle.getTotalLength();
 circle.pathLength = path.getTotalLength();
+
+//svg좌표 변환
+var pt = svg.createSVGPoint();  // Created once for document
+let stX = 0;
+let stY = 0;
+
+function alert_coords(event) {
+    pt.x = event.clientX;
+    pt.y = event.clientY;
+
+    // The cursor point, translated into svg coordinates
+    let cursorpt =  pt.matrixTransform(svg.getScreenCTM().inverse());
+
+    stX = cursorpt.x;
+    stY = cursorpt.y;
+}
 
 //예시 버튼을 클릭했을 때 
 guide.onclick = () => {
@@ -35,8 +52,6 @@ progress(0);
 
 
 //직접 진행하는 버튼을 눌렀을 때 + 드래그할 때  
-let stX = 0;
-let stY = 0;
 let drag = false;
 
 tryBtn.addEventListener("mousedown", (event) => {
@@ -61,10 +76,7 @@ document.addEventListener("mouseup", (event) => {
 function mMove(event){
     if(drag === true){
       document.querySelector("#try").style.display = "none";
-        let nowX = event.clientX;
-        let nowY = event.clientY;
-        stX = nowX;
-        stY = nowY;
+        alert_coords(event);
         let now = [stX, stY];
 
         mousemoved(now);
