@@ -20,11 +20,12 @@ guide.onclick = () => {
     }
     setTimeout(function(){
       document.querySelector("#try").style.display = "";
+      document.querySelector("#wait").style.display = "none";
   }, 2500);
 }
 
 //학습자가 그리는 동그라미의 진행
-let beforeValue = 0;
+let beforeValue = circle.getTotalLength();
 function progress(best){
   let dashoffset = path.getTotalLength() - best;
   circle.style.strokeDashoffset = dashoffset;
@@ -60,15 +61,15 @@ document.addEventListener("mouseup", (event) => {
 function mMove(event){
     if(drag === true){
       document.querySelector("#try").style.display = "none";
-        let nowX = event.offsetX;
-        let nowY = event.offsetY;
+        let nowX = event.clientX;
+        let nowY = event.clientY;
         stX = nowX;
         stY = nowY;
         let now = [stX, stY];
 
         mousemoved(now);
         //진행 시 +값으로만 나아가도록
-        if(beforeValue <= bestLength){
+        if(bestLength - beforeValue >= 0){
           progress(bestLength);
         }
         
@@ -135,6 +136,7 @@ function speak(text) {
   const message = new SpeechSynthesisUtterance(text);
   const voices = speechSynthesis.getVoices();
 
+  message.lang = "ko-KR";
   message.voice = voices[0];
   speechSynthesis.speak(message);
 }
@@ -142,7 +144,7 @@ function speak(text) {
 const speaker = document.querySelector("#speaker");
 //텍스트 읽기
 speaker.onclick = () => {
-  text = document.querySelector("#guide").innerHTML;
+  text = document.querySelector("#guideLine").innerHTML;
   speak(text);
   speaker.setAttribute("fill", "#D2B48C");
   setTimeout(function(){
