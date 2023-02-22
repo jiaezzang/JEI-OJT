@@ -53,18 +53,25 @@ scratchPad.addEventListener("mousedown", (event) => {
     startPoint = "M "+ stX + ", " + stY + " ";
     drawLine = document.createElementNS(svgNS,"path");
     realPad.appendChild(drawLine);
-})
+});
 
 scratchPad.addEventListener("mousemove", (event) => {
     if(dragging === true){
         alert_coords(event);
-        currPath = "L" + stX + "," + stY + " "; 
+        currPath = "L" + stX + ", " + stY + " "; 
         drawing(currPath);
     }
-})
+});
+
+
 document.addEventListener("mouseup", () => {
     dragging = false;
-})
+
+    //점만 찍어서 그림이 그려지지 않았을 떄
+    if(realPad.lastElementChild.getAttribute("d") === null){
+        realPad.lastElementChild.remove();
+    }
+});
 
 //그리기
 function drawing(currPath) {
@@ -75,6 +82,4 @@ function drawing(currPath) {
 
     let nowPath = startPoint + currPath;
     startPoint = nowPath;
-    
-    
 }
