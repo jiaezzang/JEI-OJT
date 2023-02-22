@@ -63,14 +63,15 @@ scratchPad.addEventListener("mousemove", (event) => {
     }
 });
 
-
-document.addEventListener("mouseup", () => {
-    dragging = false;
-
+scratchPad.addEventListener("mouseup", () => {
     //점만 찍어서 그림이 그려지지 않았을 떄
     if(realPad.lastElementChild.getAttribute("d") === null){
         realPad.lastElementChild.remove();
     }
+});
+
+document.addEventListener("mouseup", () => {
+    dragging = false;
 });
 
 //그리기
