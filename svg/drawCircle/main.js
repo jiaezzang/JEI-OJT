@@ -76,14 +76,14 @@ document.addEventListener("mouseup", (event) => {
 function mMove(event){
     if(drag === true){
       document.querySelector("#try").style.display = "none";
-        alert_coords(event);
-        let now = [stX, stY];
+      alert_coords(event);
+      let now = [stX, stY];
 
-        mousemoved(now);
-        //진행 시 +값으로만 나아가도록
-        if(bestLength - beforeValue >= 0){
-          progress(bestLength);
-        }
+      mousemoved(now);
+      //진행 시 +값으로만 나아가도록
+      if(bestLength - beforeValue >= 0){
+        progress(bestLength);
+      }
         
     }
 }
