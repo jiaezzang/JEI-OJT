@@ -28,26 +28,23 @@ svg {
   stroke-width:5;
   stroke-dasharray: 630;
   animation: stroke-ani 3s forwards;
-  /* transform-box: fill-box;
+  transform-box: fill-box;
   transform-origin: center;
-  transform: rotate(90deg); */
+  transform: rotate(90deg);
 }
 
 #dashCircle {
   stroke:plum;
   stroke-width:2; 
-  /* transform-box: fill-box;
-  transform-origin: center;
-  transform: rotate(90deg); */
 }
 
 #tryCircle {
   stroke: plum; 
   stroke-width:5;
   stroke-dasharray: 630;
-  /* transform-box: fill-box;
+  transform-box: fill-box;
   transform-origin: center;
-  transform: rotate(90deg); */
+  transform: rotate(90deg);
 }
 
 
@@ -88,6 +85,12 @@ svg {
 }
 
 #guide {
+  -webkit-animation: blink 0.5s ease-in-out infinite alternate;
+  -moz-animation: blink 0.5s ease-in-out infinite alternate;
+  animation: blink 0.5s ease-in-out infinite alternate;
+}
+
+#try {
   -webkit-animation: blink 0.5s ease-in-out infinite alternate;
   -moz-animation: blink 0.5s ease-in-out infinite alternate;
   animation: blink 0.5s ease-in-out infinite alternate;
