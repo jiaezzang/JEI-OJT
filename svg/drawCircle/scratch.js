@@ -7,15 +7,12 @@ const undoBtn = document.querySelector("#undo");
 
 //그리기 버튼 눌렀을 때 
 paintBtn.onclick = () => {
-    const buttonAudio = new Audio('./audio/door-6-close.mp3');
-    buttonAudio.play();
     if(scratchPad.style.display === "none"){
         scratchPad.style.display = "";
         undoBtn.style.display = "";
         deleteBtn.style.display = "";
         realPad.style.display = "";
     }else if(scratchPad.style.display === "") {
-
         realPad.style.display = "none";
         scratchPad.style.display = "none";
         undoBtn.style.display = "none";
