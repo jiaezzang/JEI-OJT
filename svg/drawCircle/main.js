@@ -94,8 +94,9 @@ function mMove(event){
       progress(bestLength);
     }
     //끝지점에 다다랐을 때 마무리
-    if(circle.style.strokeDashoffset < 10){
+    if(circle.style.strokeDashoffset < 8){
       circle.style.strokeDashoffset = 0;
+      document.querySelector("#controller").style.display = "none";
       controller.setAttribute("cx", 600);
       controller.setAttribute("cy", 130);
     }
