@@ -20,21 +20,21 @@ paintBtn.onclick = () => {
     }
 }
 
-//휴지통 버튼 눌렀을 때
-deleteBtn.onclick = () => {
-    const buttonAudio = new Audio('./audio/paper-throw-1.mp3');
-    buttonAudio.play();
-    while(realPad.hasChildNodes()){
-        realPad.removeChild(realPad.firstChild)
+//이전으로 돌아가기 버튼 눌렀을 때 
+undoBtn.onclick = () => {
+    if(document.querySelector("#pad path") !== null){
+        const buttonAudio = new Audio('./audio/page-flip-02.mp3');
+        buttonAudio.play();
+        realPad.lastElementChild.remove();
     }
 }
 
-//되돌리기 버튼 눌렀을 때 
-undoBtn.onclick = () => {
-    const buttonAudio = new Audio('./audio/page-flip-02.mp3');
-    buttonAudio.play();
-    if(document.querySelector("#pad path") !== null){
-        realPad.lastElementChild.remove();
+//휴지통 버튼 눌렀을 때
+deleteBtn.onclick = () => {
+    while(realPad.hasChildNodes()){
+        const buttonAudio = new Audio('./audio/paper-throw-1.mp3');
+        buttonAudio.play();
+        realPad.removeChild(realPad.firstChild);
     }
 }
 
