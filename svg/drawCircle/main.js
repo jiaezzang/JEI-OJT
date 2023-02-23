@@ -164,9 +164,11 @@ speaker.onclick = () => {
   const voice = new Audio('./audio/voice.mp3');
   voice.play();
   speaker.setAttribute("fill", "#D2B48C");
+  document.querySelector("#speakerWait").style.display = "";
   setTimeout(function(){
       speaker.setAttribute("fill", "orange");
-  }, 1500);
+      document.querySelector("#speakerWait").style.display = "none";
+  }, 3500);
 }
 
 //조건에 해당할 시 효과음 이벤트
