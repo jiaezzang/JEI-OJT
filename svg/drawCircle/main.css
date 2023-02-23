@@ -48,15 +48,6 @@ svg {
 }
 
 
-
-#example {
-  transform: rotate(-0deg);
-}
-
-#tryIt {
-  transform: rotate(-0deg);
-}
-
 @keyframes stroke-ani {
   from {
     stroke-dashoffset: 630;
