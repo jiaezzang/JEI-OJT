@@ -40,7 +40,7 @@ guide.onclick = () => {
         buttonAudio.play();
     }
     setTimeout(function(){
-      document.querySelector("#try").style.display = "";
+      document.querySelector("#try").setAttribute("style", "");
       document.querySelector("#wait").style.display = "none";
       document.querySelector("#wait2").style.display = "";
   }, 2500);
@@ -73,8 +73,13 @@ tryBtn.addEventListener("mousedown", (event) => {
     }
 });
 
+let value;
+let value2;
+
 document.addEventListener("mousemove",(event) => {
   mMove(event);
+  value = circle.style.strokeDashoffset;
+  value2 = value.slice(0, -2);
 });
 
 document.addEventListener("mouseup", (event) => {
@@ -84,7 +89,7 @@ document.addEventListener("mouseup", (event) => {
 //마우스를 드래그 할 때 마우스 좌표를 받아와 넘주는 함수
 function mMove(event){
   if(drag === true){
-    document.querySelector("#try").style.display = "none";
+    document.querySelector("#try").setAttribute("style", "visibility: hidden");
     alert_coords(event);
     let now = [stX, stY];
 
@@ -94,11 +99,9 @@ function mMove(event){
       progress(bestLength);
     }
     //끝지점에 다다랐을 때 마무리
-    if(circle.style.strokeDashoffset < 8){
+    if(value2 < 8){
       circle.style.strokeDashoffset = 0;
-      document.querySelector("#controller").style.display = "none";
-      controller.setAttribute("cx", 600);
-      controller.setAttribute("cy", 130);
+      controller.setAttribute("style", "visibility: hidden");
     }
   }
 }
@@ -174,7 +177,7 @@ speaker.onclick = () => {
 
 //조건에 해당할 시 효과음 이벤트
 function soundEffect() {
-  if(circle.style.strokeDashoffset < 2.5){
+  if(value2 < 2.5){
     const magicAudio = new Audio('./audio/magic-chime-01.mp3');
     magicAudio.play();
     document.querySelector("#wait").style.display = "";
