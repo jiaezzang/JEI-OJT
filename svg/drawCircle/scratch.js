@@ -45,7 +45,6 @@ let startPoint;
 let drawLine;
 scratchPad.addEventListener("mousedown", (event) => {
     dragging = true;
-    event.preventDefault();
     alert_coords(event);
     startPoint = "M "+ stX + ", " + stY + " ";
     drawLine = document.createElementNS(svgNS,"path");
