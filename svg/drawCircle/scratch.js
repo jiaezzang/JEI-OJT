@@ -75,7 +75,7 @@ function drawing(currPath) {
     drawLine.setAttributeNS(null,"d", startPoint + currPath);
     drawLine.setAttributeNS(null,"fill", "none");
     drawLine.setAttributeNS(null,"stroke", "black");
-    drawLine.setAttributeNS(null,"stroke-width", "2");
+    drawLine.setAttributeNS(null,"stroke-width", "3");
 
     let totalPath = startPoint + currPath;
     startPoint = totalPath;
