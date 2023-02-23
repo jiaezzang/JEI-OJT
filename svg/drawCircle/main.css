@@ -25,7 +25,7 @@ svg {
 
 #outerCircle {
   stroke: pink; 
-  stroke-width:5;
+  stroke-width:8;
   stroke-dasharray: 630;
   animation: stroke-ani 3s forwards;
   transform-box: fill-box;
@@ -40,7 +40,7 @@ svg {
 
 #tryCircle {
   stroke: plum; 
-  stroke-width:5;
+  stroke-width:8;
   stroke-dasharray: 630;
   transform-box: fill-box;
   transform-origin: center;
