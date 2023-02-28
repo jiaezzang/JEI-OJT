@@ -63,6 +63,12 @@ dogHurt.alt = "hurt";
 dogHurt.frameCount = 10;
 dogHurt.frameRate = 18;
 
+const dogIdle = new Image();
+dogIdle.src = "./img/dog_idle.png"
+dogIdle.alt = "idle";
+dogIdle.frameCount = 10;
+dogIdle.frameRate = 18;
+
 let currFrame = 0;
 let startTime;
 let z = 0;
@@ -187,16 +193,17 @@ const circleAnimation = () => {
         ctx.fillText(`5 + 1 =`, 300, 300); 
         drawBtn();
         stopContent = true;
+
     }
 }
  
 //오답 선택 시 애니메이션
 const wrongAnimation =() => {
     if(stopContent === true){
-        ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);   
+        ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150); 
+        animation(dogIdle);  
         if(xPos > -350){
             xPos -= 2;
-            animation(dogRun);
             ctx.drawImage(imgQMark, 520, 240, 50, 90);
             ctx.save();
         }else if(xPos == -350){
@@ -258,6 +265,7 @@ const correctAnimation = () => {
 
 const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     drawBase();
     drawCircle();
     circleAnimation();
@@ -269,10 +277,15 @@ const update = () => {
 
 const start = () => {
     startTime = Date.now();
-    requestAnimationFrame(update);
+    update();
 };
 
 const pause = () => {
     cancelAnimationFrame(currentAnimationFrame);
 };
+
+// const resume = () => {
+//     ctx.restore();
+//     requestAnimationFrame(update);
+// }
 
