@@ -13,6 +13,50 @@ const imgCheck = new Image();
 imgCheck.src = "./img/check.png"
 imgPointer.alt = "check";
 
+const dogRun = new Image();
+dogRun.src = "./img/dog_run.png"
+dogRun.alt = "run";
+dogRun.frameCount = 8;
+dogRun.frameRate = 17;
+
+const dogJump = new Image();
+dogJump.src = "./img/dog_jump.png"
+dogJump.alt = "jump";
+dogJump.frameCount = 16;
+dogJump.frameRate = 17;
+
+const dogHurt = new Image();
+dogHurt.src = "./img/dog_hurt.png"
+dogHurt.alt = "hurt";
+dogHurt.frameCount = 10;
+dogHurt.frameRate = 18;
+
+let currFrame = 0;
+let startTime;
+let z = 0;
+
+const animation = (img) => {
+    ctx.clearRect(20, 120, 200, 200);
+    ctx.drawImage(img, img.width / img.frameCount * currFrame, 0, img.width / img.frameCount, img.height, 20, 120, 200, 200);
+
+    // if(Date.now() - startTime > img.frameRate){
+    //     currFrame += 1;
+    //     startTime = Date.now()
+    // }
+    // if(currFrame === img.frameCount){
+    //     currFrame = 0;
+    // };
+
+    z++;
+    if(z === 12){
+    currFrame += 1;
+    z = 0;
+    }
+    if(currFrame === img.frameCount){
+        currFrame = 0;
+    };
+}
+
 const drawBase = () => {
     //헤더
     ctx.beginPath();
@@ -97,7 +141,7 @@ let xPos2 = 0;
 let count = 0;
 
 //떨어지는 동그라미
-const fallDownCircle = () => {
+const circleAnimation = () => {
     if(yPos1 < 200){
         yPos1 +=2;
     } else if(yPos2 < 200){
@@ -120,7 +164,7 @@ const fallDownCircle = () => {
 }
  
 //오답 선택 시 애니메이션
-const wrongNum =() => {
+const wrongAnimation =() => {
     if(stopContent === true){
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);   
         if(xPos > -350){
@@ -157,7 +201,7 @@ const wrongNum =() => {
 }
 
 // 정답 선택 시 애니메이션
-const correctNum = () => {
+const correctAnimation = () => {
     if(count === 200 && xPos < -230){
         xPos += 2;
     }else if(count === 200 && xPos === -230){
@@ -185,8 +229,8 @@ const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBase();
     drawCircle();
-    fallDownCircle();
-    wrongNum();
-    correctNum();
+    circleAnimation();
+    wrongAnimation();
+    correctAnimation();
     requestAnimationFrame(update);
 }
