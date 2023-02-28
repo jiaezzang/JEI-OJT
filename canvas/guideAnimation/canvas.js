@@ -17,25 +17,25 @@ const dogRun = new Image();
 dogRun.src = "./img/dog_run.png"
 dogRun.alt = "run";
 dogRun.frameCount = 8;
-dogRun.frameRate = 17;
+dogRun.frameRate = 15;
 
 const dogJump = new Image();
 dogJump.src = "./img/dog_jump.png"
 dogJump.alt = "jump";
 dogJump.frameCount = 16;
-dogJump.frameRate = 17;
+dogJump.frameRate = 15;
 
 const dogHurt = new Image();
 dogHurt.src = "./img/dog_hurt.png"
 dogHurt.alt = "hurt";
 dogHurt.frameCount = 10;
-dogHurt.frameRate = 18;
+dogHurt.frameRate = 15;
 
 const dogIdle = new Image();
 dogIdle.src = "./img/dog_idle.png"
 dogIdle.alt = "idle";
 dogIdle.frameCount = 10;
-dogIdle.frameRate = 18;
+dogIdle.frameRate = 15;
 
 let currFrame = 0;
 let startTime;
@@ -138,7 +138,7 @@ const drawBtn = () => {
     ctx.fill();
 }
 
-let stopContent = false;
+let stopDraw = false;
 let xPos = 0, xPos2 = 0, count = 0;
 
 //동그라미가 떨어지는 애니메이션
@@ -160,14 +160,15 @@ const circleAnimation = () => {
         ctx.font = "50px Verdana";
         ctx.fillText(`5 + 1 =`, 300, 300); 
         drawBtn();
-        stopContent = true;
+        stopDraw = true;
+        startTime = Date.now();
 
     }
 }
  
 //오답 선택 시 애니메이션
 const wrongAnimation =() => {
-    if(stopContent === true){
+    if(stopDraw === true){
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150); 
         animation(dogIdle);  
         if(xPos > -350){

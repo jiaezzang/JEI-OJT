@@ -13,7 +13,6 @@ const update = () => {
 }
 
 const start = () => {
-    startTime = Date.now();
     update();
 };
 
@@ -22,6 +21,6 @@ const pause = () => {
 };
 
 const resume = () => {
-    ctx.restore();
-    requestAnimationFrame(update);
+    pause();
+    start();
 }
