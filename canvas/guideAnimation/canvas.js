@@ -57,6 +57,7 @@ const animation = (img) => {
     };
 }
 
+//베이스 이미지 그리기 
 const drawBase = () => {
     //헤더
     ctx.beginPath();
@@ -79,12 +80,8 @@ const drawBase = () => {
     ctx.stroke();
 }
 
-let yPos1 = 100;
-let yPos2 = 100;
-let yPos3 = 100;
-let yPos4 = 100;
-let yPos5 = 100;
-let yPos6 = 100;
+//동그라미 그리기
+let yPos1 = 100, yPos2 = 100, yPos3 = 100, yPos4 = 100, yPos5 = 100, yPos6 = 100;
 const drawCircle = () => {
    //왼쪽 동그라미들
    ctx.fillStyle = "pink";
@@ -111,7 +108,7 @@ const drawCircle = () => {
    ctx.fill();
 }
 
-//j
+//버튼 그리기
 const drawBtn = () => {
     ctx.fillStyle = "rgb(87, 186, 203)"
     ctx.beginPath();
@@ -140,7 +137,7 @@ let xPos = 0;
 let xPos2 = 0;
 let count = 0;
 
-//떨어지는 동그라미
+//동그라미가 떨어지는 애니메이션
 const circleAnimation = () => {
     if(yPos1 < 200){
         yPos1 +=2;
@@ -232,5 +229,6 @@ const update = () => {
     circleAnimation();
     wrongAnimation();
     correctAnimation();
+    
     requestAnimationFrame(update);
 }
