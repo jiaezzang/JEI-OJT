@@ -1,6 +1,35 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
+const playBtn = document.querySelector("#playBtn");
+const stopBtn = document.querySelector("#stopBtn");
+const playTxt = document.querySelector("#play");
+const pauseTxt = document.querySelector("#pause");
+const btnRect1 = document.querySelector("#btnRect1");
+const btnRect2 = document.querySelector("#btnRect1");
+
+let currentAnimationFrame;
+let isPaused, isStopped = false;
+
+playBtn.onclick = () => {
+    if(playTxt.style.display === ""){
+        start();
+        playTxt.style.display = "none";
+        pauseTxt.style.display= "";
+    } else {
+        pauseTxt.style.display = "none";
+        playTxt.style.display= "";
+        pause();
+    }
+}
+
+stopBtn.onclick = () => {
+    pause();
+    pauseTxt.style.display = "none";
+    playTxt.style.display= "";
+
+}
+
 const imgQMark = new Image();
 imgQMark.src = "./img/Qmark2.png";
 imgQMark.alt = "question";
@@ -133,9 +162,7 @@ const drawBtn = () => {
 }
 
 let stopContent = false;
-let xPos = 0;
-let xPos2 = 0;
-let count = 0;
+let xPos = 0, xPos2 = 0, count = 0;
 
 //동그라미가 떨어지는 애니메이션
 const circleAnimation = () => {
@@ -166,9 +193,11 @@ const wrongAnimation =() => {
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);   
         if(xPos > -350){
             xPos -= 2;
+            animation(dogRun);
             ctx.drawImage(imgQMark, 520, 240, 50, 90);
             ctx.save();
         }else if(xPos == -350){
+            animation(dogHurt);
             ctx.beginPath();
             ctx.fillStyle = "gray"
             ctx.roundRect(130 + 55 * 4, 360, 50, 50, 10);
@@ -201,7 +230,10 @@ const wrongAnimation =() => {
 const correctAnimation = () => {
     if(count === 200 && xPos < -230){
         xPos += 2;
+        animation(dogRun);
     }else if(count === 200 && xPos === -230){
+        animation(dogJump);
+
         ctx.beginPath();
         ctx.fillStyle = "gray"
         ctx.roundRect(130 + 55*6, 360, 50, 50, 10);
@@ -217,7 +249,6 @@ const correctAnimation = () => {
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
         ctx.clearRect(520, 240, 50, 90);
         ctx.drawImage(imgCheck, 251, 0, 250, 231, 510, 240, 90, 90);
-        cancelAnimationFrame(requestAnimationFrame(update));
     }
 }
 
@@ -229,6 +260,24 @@ const update = () => {
     circleAnimation();
     wrongAnimation();
     correctAnimation();
-    
-    requestAnimationFrame(update);
+
+    currentAnimationFrame = requestAnimationFrame(update);
 }
+
+const start = () => {
+    startTime = Date.now();
+    requestAnimationFrame(update);
+};
+
+const pause = () => {
+    currentPausedTime = Date.now() - startTime;
+    isPaused = true;
+    cancelAnimationFrame(currentAnimationFrame);
+};
+
+const stop = () => {
+    currentPausedTime = 0;
+    isStopped = true;
+
+    cancelAnimationFrame(update);
+};
