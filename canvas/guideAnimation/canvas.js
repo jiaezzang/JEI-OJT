@@ -6,7 +6,7 @@ const stopBtn = document.querySelector("#stopBtn");
 const playTxt = document.querySelector("#play");
 const pauseTxt = document.querySelector("#pause");
 const btnRect1 = document.querySelector("#btnRect1");
-const btnRect2 = document.querySelector("#btnRect1");
+const btnRect2 = document.querySelector("#btnRect2");
 
 let currentAnimationFrame;
 let isPaused, isStopped = false;
@@ -16,6 +16,7 @@ playBtn.onclick = () => {
         start();
         playTxt.style.display = "none";
         pauseTxt.style.display= "";
+        btnRect2.setAttribute("fill", "rgb(87, 186, 203)");
     } else {
         pauseTxt.style.display = "none";
         playTxt.style.display= "";
@@ -24,14 +25,16 @@ playBtn.onclick = () => {
 }
 
 stopBtn.onclick = () => {
-    pause();
-    pauseTxt.style.display = "none";
-    playTxt.style.display= "";
-
+    if(btnRect2.getAttribute("fill") === "rgb(87, 186, 203)"){
+        pause();
+        pauseTxt.style.display = "none";
+        playTxt.style.display= "";
+        btnRect2.setAttribute("fill", "#007A84");
+    }
 }
 
 const imgQMark = new Image();
-imgQMark.src = "./img/Qmark2.png";
+imgQMark.src = "./img/Qmark.png";
 imgQMark.alt = "question";
 
 const imgPointer = new Image();
@@ -270,14 +273,6 @@ const start = () => {
 };
 
 const pause = () => {
-    currentPausedTime = Date.now() - startTime;
-    isPaused = true;
     cancelAnimationFrame(currentAnimationFrame);
 };
 
-const stop = () => {
-    currentPausedTime = 0;
-    isStopped = true;
-
-    cancelAnimationFrame(update);
-};
