@@ -19,7 +19,7 @@ playBtn.onclick = () => {
 }
 
 replayBtn.onclick = () => {
-    pause();
+    resume();
     // pauseTxt.style.display = "";
     // playTxt.style.display= "";
 }
