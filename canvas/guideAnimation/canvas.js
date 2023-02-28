@@ -1,9 +1,6 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
-let currentAnimationFrame;
-let isPaused, isStopped = false;
-
 const imgQMark = new Image();
 imgQMark.src = "./img/Qmark.png";
 imgQMark.alt = "question";
