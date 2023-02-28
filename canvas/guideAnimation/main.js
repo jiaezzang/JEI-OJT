@@ -1,5 +1,5 @@
 const playBtn = document.querySelector("#playBtn");
-const stopBtn = document.querySelector("#stopBtn");
+const replayBtn = document.querySelector("#replayBtn");
 const playTxt = document.querySelector("#play");
 const pauseTxt = document.querySelector("#pause");
 const btnRect1 = document.querySelector("#btnRect1");
@@ -18,11 +18,8 @@ playBtn.onclick = () => {
     }
 }
 
-stopBtn.onclick = () => {
-    if(btnRect2.getAttribute("fill") === "rgb(87, 186, 203)"){
-        pause();
-        pauseTxt.style.display = "none";
-        playTxt.style.display= "";
-        btnRect2.setAttribute("fill", "#007A84");
-    }
+replayBtn.onclick = () => {
+    pause();
+    // pauseTxt.style.display = "";
+    // playTxt.style.display= "";
 }
