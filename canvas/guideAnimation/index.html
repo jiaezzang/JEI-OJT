@@ -7,7 +7,8 @@
     <title>Document</title>
 </head>
 <body>
-    <canvas class="canvas" width="800" height="500" style="border:4px solid rgb(87, 186, 203)"></canvas>    
+    <canvas class="canvas" width="800" height="500" style="border:4px solid rgb(87, 186, 203)"></canvas>
+    <button onclick="resume()">다시 시작</button>
     <svg width="800" height="100">
         <g id="playBtn" style="cursor:pointer">
             <rect id="btnRect1" x="250" y="10" width="140" height="80" rx="30" ry="30" fill="rgb(87, 186, 203)" />
@@ -19,7 +20,7 @@
             <text id="pause" x="435" y="65" font-size="40" fill="#e3fafc" >STOP</text>
         </g>
     </svg>
-    <script type="module" src="./canvas.js">
-    </script>
+    <script type="module" src="./main.js" ></script>
+    <script type="module" src="./canvas.js"></script>
 </body>
 </html>
