@@ -1,37 +1,8 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
-const playBtn = document.querySelector("#playBtn");
-const stopBtn = document.querySelector("#stopBtn");
-const playTxt = document.querySelector("#play");
-const pauseTxt = document.querySelector("#pause");
-const btnRect1 = document.querySelector("#btnRect1");
-const btnRect2 = document.querySelector("#btnRect2");
-
 let currentAnimationFrame;
 let isPaused, isStopped = false;
-
-playBtn.onclick = () => {
-    if(playTxt.style.display === ""){
-        start();
-        playTxt.style.display = "none";
-        pauseTxt.style.display= "";
-        btnRect2.setAttribute("fill", "rgb(87, 186, 203)");
-    } else {
-        pauseTxt.style.display = "none";
-        playTxt.style.display= "";
-        pause();
-    }
-}
-
-stopBtn.onclick = () => {
-    if(btnRect2.getAttribute("fill") === "rgb(87, 186, 203)"){
-        pause();
-        pauseTxt.style.display = "none";
-        playTxt.style.display= "";
-        btnRect2.setAttribute("fill", "#007A84");
-    }
-}
 
 const imgQMark = new Image();
 imgQMark.src = "./img/Qmark.png";
@@ -261,31 +232,3 @@ const correctAnimation = () => {
         ctx.drawImage(imgCheck, 251, 0, 250, 231, 510, 240, 90, 90);
     }
 }
-
-
-const update = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    drawBase();
-    drawCircle();
-    circleAnimation();
-    wrongAnimation();
-    correctAnimation();
-
-    currentAnimationFrame = requestAnimationFrame(update);
-}
-
-const start = () => {
-    startTime = Date.now();
-    update();
-};
-
-const pause = () => {
-    cancelAnimationFrame(currentAnimationFrame);
-};
-
-// const resume = () => {
-//     ctx.restore();
-//     requestAnimationFrame(update);
-// }
-
