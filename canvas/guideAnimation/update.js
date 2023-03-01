@@ -21,6 +21,5 @@ const pause = () => {
 };
 
 const resume = () => {
-    pause();
-    start();
+    console.log(currentAnimationFrame)
 }
