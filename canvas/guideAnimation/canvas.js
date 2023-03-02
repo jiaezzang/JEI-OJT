@@ -1,42 +1,6 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
-const imgQMark = new Image();
-imgQMark.src = "./img/Qmark.png";
-imgQMark.alt = "question";
-
-const imgPointer = new Image();
-imgPointer.src = "./img/pointer.png";
-imgPointer.alt = "pointer";
-
-const imgCheck = new Image();
-imgCheck.src = "./img/check.png"
-imgPointer.alt = "check";
-
-const dogRun = new Image();
-dogRun.src = "./img/dog_run.png"
-dogRun.alt = "run";
-dogRun.frameCount = 8;
-dogRun.frameRate = 15;
-
-const dogJump = new Image();
-dogJump.src = "./img/dog_jump.png"
-dogJump.alt = "jump";
-dogJump.frameCount = 16;
-dogJump.frameRate = 15;
-
-const dogHurt = new Image();
-dogHurt.src = "./img/dog_hurt.png"
-dogHurt.alt = "hurt";
-dogHurt.frameCount = 10;
-dogHurt.frameRate = 15;
-
-const dogIdle = new Image();
-dogIdle.src = "./img/dog_idle.png"
-dogIdle.alt = "idle";
-dogIdle.frameCount = 10;
-dogIdle.frameRate = 15;
-
 let currFrame = 0;
 let startTime;
 let z = 0;
@@ -139,7 +103,7 @@ const drawBtn = () => {
 }
 
 let stopDraw = false;
-let xPos = 0, xPos2 = 0, count = 0;
+let xPos = 0, xPos2 = 0, count = 0, count2 = 0;
 
 //동그라미가 떨어지는 애니메이션
 const circleAnimation = () => {
@@ -147,19 +111,29 @@ const circleAnimation = () => {
         yPos1 +=2;
     } else if(yPos2 < 200){
         yPos2 +=2;
+        fallAudio1();
     } else if(yPos3 < 200){
         yPos3 +=2;
+        fallAudio2();
     } else if(yPos4 < 200){
         yPos4 +=2;
+        fallAudio3();
     } else if(yPos5 < 200){
         yPos5 +=2;
+        fallAudio4();
     } else if(yPos6 < 200){
         yPos6 +=2;
+        fallAudio5();
     } else {
+        fallAudio6();
         ctx.fillStyle = "black";
-        ctx.font = "50px Verdana";
+        ctx.font = "40px Verdana";
         ctx.fillText(`5 + 1 =`, 300, 300); 
+        ctx.fillStyle = "black";
+        ctx.font = "35px Verdana";
+        ctx.fillText(`다음 덧셈을 하세요`, 150, 100); 
         drawBtn();
+        ctx.drawImage(imgQMark, 480, 240, 45, 81);
         stopDraw = true;
         startTime = Date.now();
 
@@ -171,10 +145,14 @@ const wrongAnimation =() => {
     if(stopDraw === true){
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150); 
         animation(dogIdle);  
+        count2++;
+
         if(xPos > -350){
-            xPos -= 2;
-            ctx.drawImage(imgQMark, 520, 240, 50, 90);
-            ctx.save();
+            if(count2 >= 100){
+                xPos -= 2;
+
+                ctx.save();
+            }
         }else if(xPos == -350){
             animation(dogHurt);
             ctx.beginPath();
@@ -190,8 +168,11 @@ const wrongAnimation =() => {
         
             ctx.restore();
             ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
-            ctx.clearRect(520, 240, 50, 90);
-            ctx.drawImage(imgCheck, 0, 0, 250, 231, 510, 240, 90, 90);
+            ctx.clearRect(480, 240, 50, 90);
+            ctx.drawImage(imgCheck, 0, 0, 250, 231, 470, 245, 80, 80);
+
+            beepAudio();
+
             if(count<=200){
                 count++;
             }
@@ -226,7 +207,24 @@ const correctAnimation = () => {
     
         ctx.restore();
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
-        ctx.clearRect(520, 240, 50, 90);
-        ctx.drawImage(imgCheck, 251, 0, 250, 231, 510, 240, 90, 90);
+        ctx.clearRect(480, 240, 50, 90);
+        ctx.drawImage(imgCheck, 251, 0, 250, 231, 470, 245, 80, 80);
+
+        magicAudio();
     }
 }
+
+//한번만 실행되는 메서드
+
+function once(fn, context) {
+let result;
+    return function () {
+        if (fn) {
+        result = fn.apply(context || this, arguments);
+        fn = null;
+        }
+        return result;
+    };
+}
+  
+
