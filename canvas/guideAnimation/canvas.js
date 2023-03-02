@@ -220,5 +220,6 @@ const init = () => {
     yPos1 = 100, yPos2 = 100, yPos3 = 100, yPos4 = 100, yPos5 = 100, yPos6 = 100;
     stopDraw = false;
     xPos = 0, xPos2 = 0, count = 0, count2 = 0;
+    startCount = 0;
 }
 
