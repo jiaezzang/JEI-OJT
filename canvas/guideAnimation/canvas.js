@@ -247,8 +247,6 @@ const init = () => {
     xPos = 0, xPos2 = 0, count = 0, count2 = 0;
     startCount = 0;
     fall1 = true, fall2 = true, fall3 = true, fall4 = true, fall5 = true, fall6 = true;
-    voice = true;
-    wrong = true;
-    correct = true;
+    voice = true, wrong = true, correct = true;
 }
 
