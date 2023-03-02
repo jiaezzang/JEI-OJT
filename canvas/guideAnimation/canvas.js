@@ -114,36 +114,36 @@ const circleAnimation = () => {
     } else if(yPos2 < 200){
         yPos2 +=2;
         if(fall1){
-            fall();
+            audio.play("fall.wav");
             fall1 = false;
         }
     } else if(yPos3 < 200){
         yPos3 +=2;
         if(fall2){
-            fall();
+            audio.play("fall.wav");
             fall2 = false;
         }
     } else if(yPos4 < 200){
         yPos4 +=2;
         if(fall3){
-            fall();
+            audio.play("fall.wav");
             fall3 = false;
         }
     } else if(yPos5 < 200){
         yPos5 +=2;
-        if(fall4){
-            fall();
+        if(fall4){   
+            audio.play("fall.wav");
             fall4 = false;
         }
     } else if(yPos6 < 200){
         yPos6 +=2;
-        if(fall5){
-            fall();
+        if(fall5){  
+            audio.play("fall.wav");
             fall5 = false;
         }
     } else {
-        if(fall6){
-            fall();
+        if(fall6){    
+            audio.play("fall.wav");
             fall6 = false;
         }
         ctx.fillStyle = "black";
@@ -190,7 +190,7 @@ const wrongAnimation =() => {
             ctx.drawImage(imgCheck, 0, 0, 250, 231, 470, 245, 80, 80);
 
             if(wrong){
-                beepAudio();
+                audio.play("beep.mp3");
                 wrong = false;
             }
 
@@ -231,7 +231,7 @@ const correctAnimation = () => {
         ctx.clearRect(480, 240, 50, 90);
         ctx.drawImage(imgCheck, 251, 0, 250, 231, 470, 245, 80, 80);
         if(correct){
-            magicAudio();
+            audio.play("magic-chime-01.mp3");
             correct = false;
         }
     }

@@ -1,22 +1,9 @@
 //오디오
-const magicAudio = () => {
-    const audio = new Audio('./audio/magic-chime-01.mp3');
-    audio.play();
-};
-
-const beepAudio = () => {
-    const audio = new Audio('./audio/beep.mp3');
-    audio.play();
-};
-
-const fall = () => {
-    const audio = new Audio('./audio/fall.wav');
-    audio.play();
-}
-
-const plus = () => {
-    const audio = new Audio('./audio/덧셈.mp3');
-    audio.play();
+const audio = {
+    play: (fileName) => {
+        const myAudio = new Audio('./audio/' + fileName);
+        myAudio.play();
+    }
 }
 
 //이미지
