@@ -15,42 +15,47 @@ function once(fn, context) {
 const magicAudio = once( () => {
     const audio = new Audio('./audio/magic-chime-01.mp3');
     audio.play();
-})
+});
 
 const beepAudio = once( () => {
     const audio = new Audio('./audio/beep.wav');
     audio.play();
-})
+});
 
 const fallAudio1 = once( () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-})
+});
 
 const fallAudio2 = once( () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-})
+});
 
 const fallAudio3 = once( () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-})
+});
 
 const fallAudio4 = once( () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-})
+});
 
 const fallAudio5 = once( () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-})
+});
 
 const fallAudio6 = once( () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-})
+});
+
+const plus = once( () => {
+    const audio = new Audio('./audio/덧셈.mp3');
+    audio.play();
+});
 
 //이미지
 const imgQMark = new Image();
