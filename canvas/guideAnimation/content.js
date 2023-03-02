@@ -52,6 +52,11 @@ const fallAudio6 = once( () => {
     audio.play();
 })
 
+const plus = once( () => {
+    const audio = new Audio('./audio/덧셈.mp3');
+    audio.play();
+})
+
 //이미지
 const imgQMark = new Image();
 imgQMark.src = "./img/Qmark.png";
