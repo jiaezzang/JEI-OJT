@@ -1,3 +1,16 @@
+//한번만 실행되는 메서드
+
+function once(fn, context) {
+    let result;
+        return function () {
+            if (fn) {
+            result = fn.apply(context || this, arguments);
+            fn = null;
+            }
+            return result;
+        };
+    }
+    
 //오디오
 const magicAudio = once( () => {
     const audio = new Audio('./audio/magic-chime-01.mp3');
