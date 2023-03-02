@@ -106,27 +106,46 @@ const drawBtn = () => {
 let stopDraw = false;
 let xPos = 0, xPos2 = 0, count = 0, count2 = 0;
 
+let fall1 = true, fall2 = true, fall3 = true, fall4 = true, fall5 = true, fall6 = true;
 //동그라미가 떨어지는 애니메이션
 const circleAnimation = () => {
     if(yPos1 < 200){
         yPos1 +=2;
     } else if(yPos2 < 200){
         yPos2 +=2;
-        fallAudio1();
+        if(fall1 === true){
+            fall();
+            fall1 = false;
+        }
     } else if(yPos3 < 200){
         yPos3 +=2;
-        fallAudio2();
+        if(fall2 === true){
+            fall();
+            fall2 = false;
+        }
     } else if(yPos4 < 200){
         yPos4 +=2;
-        fallAudio3();
+        if(fall3 === true){
+            fall();
+            fall3 = false;
+        }
     } else if(yPos5 < 200){
         yPos5 +=2;
-        fallAudio4();
+        if(fall4 === true){
+            fall();
+            fall4 = false;
+        }
     } else if(yPos6 < 200){
         yPos6 +=2;
-        fallAudio5();
+        if(fall5 === true){
+            fall();
+            fall5 = false;
+        }
     } else {
-        fallAudio6();
+        if(fall6 === true){
+            fall();
+            fall6 = false;
+        }
         ctx.fillStyle = "black";
         ctx.font = "40px Verdana";
         ctx.fillText(`5 + 1 =`, 300, 300); 
@@ -141,6 +160,7 @@ const circleAnimation = () => {
     }
 }
  
+let wrong = true, correct = true;
 //오답 선택 시 애니메이션
 const wrongAnimation =() => {
     if(stopDraw === true){
@@ -169,7 +189,10 @@ const wrongAnimation =() => {
             ctx.clearRect(480, 240, 50, 90);
             ctx.drawImage(imgCheck, 0, 0, 250, 231, 470, 245, 80, 80);
 
-            beepAudio();
+            if(wrong === true){
+                beepAudio();
+                wrong = false;
+            }
 
             if(count<=200){
                 count++;
@@ -207,8 +230,10 @@ const correctAnimation = () => {
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
         ctx.clearRect(480, 240, 50, 90);
         ctx.drawImage(imgCheck, 251, 0, 250, 231, 470, 245, 80, 80);
-
-        magicAudio();
+        if(correct === true){
+            magicAudio();
+            correct = false;
+        }
     }
 }
 
@@ -221,5 +246,9 @@ const init = () => {
     stopDraw = false;
     xPos = 0, xPos2 = 0, count = 0, count2 = 0;
     startCount = 0;
+    fall1 = true, fall2 = true, fall3 = true, fall4 = true, fall5 = true, fall6 = true;
+    voice = true;
+    wrong = true;
+    correct = true;
 }
 
