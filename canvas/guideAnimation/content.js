@@ -1,66 +1,23 @@
-//한번만 실행되는 메서드
-
-function once(fn, context) {
-    let result;
-        return function () {
-            if (fn) {
-            result = fn.apply(context || this, arguments);
-            fn = null;
-            }
-            return result;
-        };
-    }
-    
 //오디오
-const magicAudio = once( () => {
+const magicAudio = () => {
     const audio = new Audio('./audio/magic-chime-01.mp3');
     audio.play();
-});
+};
 
-const beepAudio = once( () => {
+const beepAudio = () => {
     const audio = new Audio('./audio/beep.wav');
     audio.play();
-});
+};
 
-const fallAudio1 = once( () => {
+const fall = () => {
     const audio = new Audio('./audio/fall.wav');
     audio.play();
-});
+}
 
-const fallAudio2 = once( () => {
-    const audio = new Audio('./audio/fall.wav');
-    audio.play();
-});
-
-const fallAudio3 = once( () => {
-    const audio = new Audio('./audio/fall.wav');
-    audio.play();
-});
-
-const fallAudio4 = once( () => {
-    const audio = new Audio('./audio/fall.wav');
-    audio.play();
-});
-
-const fallAudio5 = once( () => {
-    const audio = new Audio('./audio/fall.wav');
-    audio.play();
-});
-
-const fallAudio6 = once( () => {
-    const audio = new Audio('./audio/fall.wav');
-    audio.play();
-});
-
-const plus = once( () => {
+const plus = () => {
     const audio = new Audio('./audio/덧셈.mp3');
     audio.play();
-});
-
-const plus = once( () => {
-    const audio = new Audio('./audio/덧셈.mp3');
-    audio.play();
-})
+}
 
 //이미지
 const imgQMark = new Image();

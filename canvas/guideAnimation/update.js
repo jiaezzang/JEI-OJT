@@ -1,12 +1,16 @@
 let currentAnimationFrame;
 let startCount = 0;
+let voice = true;
 const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     drawBase();
     drawCircle();
     if(startCount < 160){
-        plus();
+        if(voice === true){
+            plus();
+            voice = false
+        }
         startCount++;
     }else if(startCount === 160){
         circleAnimation();
