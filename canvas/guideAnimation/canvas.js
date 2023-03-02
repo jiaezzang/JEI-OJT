@@ -1,6 +1,7 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
+
 let currFrame = 0, currFrame2 = 0;
 let startTime;
 let z = 0;
@@ -150,8 +151,6 @@ const wrongAnimation =() => {
         if(xPos > -350){
             if(count2 >= 100){
                 xPos -= 2;
-
-                ctx.save();
             }
         }else if(xPos == -350){
             animation(dogHurt);
@@ -166,7 +165,6 @@ const wrongAnimation =() => {
             ctx.fillText(4, 140 + 55 * 4, 405)
             ctx.fill();
         
-            ctx.restore();
             ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
             ctx.clearRect(480, 240, 50, 90);
             ctx.drawImage(imgCheck, 0, 0, 250, 231, 470, 245, 80, 80);
