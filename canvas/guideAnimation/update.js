@@ -7,7 +7,7 @@ const update = () => {
     drawBase();
     drawCircle();
     if(startCount < 160){
-        if(voice === true){
+        if(voice){
             plus();
             voice = false;
         }
