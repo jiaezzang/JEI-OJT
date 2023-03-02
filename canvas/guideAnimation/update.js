@@ -13,7 +13,7 @@ const update = () => {
 }
 
 const start = () => {
-    update();
+    requestAnimationFrame(update);
 };
 
 const pause = () => {
