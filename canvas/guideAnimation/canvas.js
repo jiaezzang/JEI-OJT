@@ -1,7 +1,7 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
-let currFrame = 0;
+let currFrame = 0, currFrame2 = 0;
 let startTime;
 let z = 0;
 
@@ -19,8 +19,8 @@ const animation = (img) => {
 
     z++;
     if(z === 12){
-    currFrame += 1;
-    z = 0;
+        currFrame += 1;
+        z = 0;
     }
     if(currFrame === img.frameCount){
         currFrame = 0;
@@ -144,7 +144,7 @@ const circleAnimation = () => {
 const wrongAnimation =() => {
     if(stopDraw === true){
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150); 
-        animation(dogIdle);  
+        animation(dogRun);  
         count2++;
 
         if(xPos > -350){
@@ -214,17 +214,5 @@ const correctAnimation = () => {
     }
 }
 
-//한번만 실행되는 메서드
-
-function once(fn, context) {
-let result;
-    return function () {
-        if (fn) {
-        result = fn.apply(context || this, arguments);
-        fn = null;
-        }
-        return result;
-    };
-}
   
 
