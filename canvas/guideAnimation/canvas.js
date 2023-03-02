@@ -113,36 +113,36 @@ const circleAnimation = () => {
         yPos1 +=2;
     } else if(yPos2 < 200){
         yPos2 +=2;
-        if(fall1 === true){
+        if(fall1){
             fall();
             fall1 = false;
         }
     } else if(yPos3 < 200){
         yPos3 +=2;
-        if(fall2 === true){
+        if(fall2){
             fall();
             fall2 = false;
         }
     } else if(yPos4 < 200){
         yPos4 +=2;
-        if(fall3 === true){
+        if(fall3){
             fall();
             fall3 = false;
         }
     } else if(yPos5 < 200){
         yPos5 +=2;
-        if(fall4 === true){
+        if(fall4){
             fall();
             fall4 = false;
         }
     } else if(yPos6 < 200){
         yPos6 +=2;
-        if(fall5 === true){
+        if(fall5){
             fall();
             fall5 = false;
         }
     } else {
-        if(fall6 === true){
+        if(fall6){
             fall();
             fall6 = false;
         }
@@ -189,7 +189,7 @@ const wrongAnimation =() => {
             ctx.clearRect(480, 240, 50, 90);
             ctx.drawImage(imgCheck, 0, 0, 250, 231, 470, 245, 80, 80);
 
-            if(wrong === true){
+            if(wrong){
                 beepAudio();
                 wrong = false;
             }
@@ -230,7 +230,7 @@ const correctAnimation = () => {
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
         ctx.clearRect(480, 240, 50, 90);
         ctx.drawImage(imgCheck, 251, 0, 250, 231, 470, 245, 80, 80);
-        if(correct === true){
+        if(correct){
             magicAudio();
             correct = false;
         }
