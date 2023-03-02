@@ -5,9 +5,10 @@ const update = () => {
 
     drawBase();
     drawCircle();
-    if(startCount < 100){
+    if(startCount < 160){
+        plus();
         startCount++;
-    }else if(startCount === 100){
+    }else if(startCount === 160){
         circleAnimation();
     }
     wrongAnimation();
