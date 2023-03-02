@@ -8,7 +8,7 @@ const update = () => {
     drawCircle();
     if(startCount < 160){
         if(voice){
-            plus();
+            audio.play("덧셈.mp3");
             voice = false;
         }
         startCount++;
