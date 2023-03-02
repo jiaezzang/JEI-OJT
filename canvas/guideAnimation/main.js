@@ -20,6 +20,6 @@ playBtn.onclick = () => {
 
 replayBtn.onclick = () => {
     resume();
-    // pauseTxt.style.display = "";
-    // playTxt.style.display= "";
+    pauseTxt.style.display = "";
+    playTxt.style.display= "none";
 }
