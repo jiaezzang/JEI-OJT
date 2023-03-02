@@ -1,11 +1,15 @@
 let currentAnimationFrame;
-
+let startCount = 0;
 const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     drawBase();
     drawCircle();
-    circleAnimation();
+    if(startCount < 100){
+        startCount++;
+    }else if(startCount === 100){
+        circleAnimation();
+    }
     wrongAnimation();
     correctAnimation();
 
