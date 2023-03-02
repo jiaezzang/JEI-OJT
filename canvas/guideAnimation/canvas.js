@@ -2,7 +2,7 @@ const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
 
 
-let currFrame = 0, currFrame2 = 0;
+let currFrame = 0;
 let startTime;
 let z = 0;
 
@@ -212,5 +212,13 @@ const correctAnimation = () => {
     }
 }
 
-  
+//초기화 메서드
+const init = () => {
+    currFrame = null;
+    startTime = null;
+    z = null;
+    yPos1 = 100, yPos2 = 100, yPos3 = 100, yPos4 = 100, yPos5 = 100, yPos6 = 100;
+    stopDraw = false;
+    xPos = 0, xPos2 = 0, count = 0, count2 = 0;
+}
 
