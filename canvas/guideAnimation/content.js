@@ -5,7 +5,7 @@ const magicAudio = () => {
 };
 
 const beepAudio = () => {
-    const audio = new Audio('./audio/beep.wav');
+    const audio = new Audio('./audio/beep.mp3');
     audio.play();
 };
 
