@@ -21,8 +21,8 @@ const pause = () => {
 };
 
 const resume = () => {
-    requestAnimationFrame(update) = 1;
-    console.log(currentAnimationFrame)
-    cancelAnimationFrame(currentAnimationFrame);
-
+    window.location.reload();
+    // requestAnimationFrame(update) = null;
+    // console.log(currentAnimationFrame)
+    // cancelAnimationFrame(currentAnimationFrame);
 }
