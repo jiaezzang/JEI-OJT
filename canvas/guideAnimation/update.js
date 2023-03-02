@@ -9,7 +9,7 @@ const update = () => {
     if(startCount < 160){
         if(voice === true){
             plus();
-            voice = false
+            voice = false;
         }
         startCount++;
     }else if(startCount === 160){
