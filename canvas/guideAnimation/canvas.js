@@ -6,6 +6,7 @@ let currFrame = 0;
 let startTime;
 let z = 0;
 
+//스프라이트 애니메이션
 const animation = (img) => {
     ctx.clearRect(20, 120, 200, 200);
     ctx.drawImage(img, img.width / img.frameCount * currFrame, 0, img.width / img.frameCount, img.height, 20, 120, 200, 200);
@@ -226,7 +227,6 @@ const correctAnimation = () => {
         ctx.fillText(6, 140 + 55 * 6, 405)
         ctx.fill();
     
-        ctx.restore();
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150);
         ctx.clearRect(480, 240, 50, 90);
         ctx.drawImage(imgCheck, 251, 0, 250, 231, 470, 245, 80, 80);
