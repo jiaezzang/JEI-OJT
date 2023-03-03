@@ -164,7 +164,7 @@ const circleAnimation = () => {
 let wrong = true, correct = true;
 //오답 선택 시 애니메이션
 const wrongAnimation =() => {
-    if(stopDraw === true){
+    if(stopDraw){
         ctx.drawImage(imgPointer, 650 + xPos, 340, 150, 150); 
         animation(dogRun);  
         count2++;
