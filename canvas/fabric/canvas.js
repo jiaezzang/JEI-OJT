@@ -106,7 +106,10 @@ canvas.on('mouse:down', function(option) {
         setTimeout(() =>{
             audio.play('fall.wav');
         }, 2000);
+
+        checkImg(380, 190, 1);
         a = false; 
+
       } else if(option.target === triangle2 && b){
         triangle2.animate('top', '+=340', {
             onChange: canvas.renderAll.bind(canvas),
@@ -119,7 +122,10 @@ canvas.on('mouse:down', function(option) {
         setTimeout(() =>{
             audio.play('fall.wav');
         }, 2000);
+
+        checkImg(150, 100, 1);
         b = false; 
+
     } else if(option.target === triangle3 && c){
         triangle3.animate('top', '+=380', {
             onChange: canvas.renderAll.bind(canvas),
@@ -132,6 +138,8 @@ canvas.on('mouse:down', function(option) {
         setTimeout(() =>{
             audio.play('fall.wav');
         }, 2000);
+
+        checkImg(480, 70, 1);
         c = false; 
     }
     if(!a && !b && !c){
@@ -140,6 +148,22 @@ canvas.on('mouse:down', function(option) {
         }, 2000);
     }
   });
+
+//오답 선택 시 애니메이션
+canvas.on('mouse:down', function(option) {
+    if(option.target === path1){
+        checkImg(280, 90, 0);
+    } else if(option.target === path2){
+        checkImg(260, 270, 0);
+    } else if(option.target === path3){
+        checkImg(480, 260, 0);
+    } else if(option.target === circle){
+        checkImg(130, 200, 0);
+    } else if(option.target === rect){
+        checkImg(430, 110, 0);
+    }
+});
+    
 
 //audio
 const audio = {

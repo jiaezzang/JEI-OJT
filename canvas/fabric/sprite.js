@@ -6,37 +6,58 @@ const dogIdle = new Image();
 dogIdle.src = './img/dog_idle.png';
 dogIdle.frameCount = 10;
 
-let i = 4;
-let currFrame = 0;
-let z = 0;
+const check = new Image();
+check.src = './img/check.png';
+check.frameCount = 10;
+
+// let i = 4;
+ let currFrame = 0;
+let count = 0;
 
 const animation = () => {
 
     const RunSprite = fabric.Image.fromURL(dogRun.src, (oImg) => {
         oImg.scale(0.25);
-        oImg.set({left: 30, top: 300, cropX: dogRun.naturalWidth/8 * currFrame});
+        oImg.set({left: 35, top: 300, cropX: dogRun.naturalWidth/8 * currFrame});
         oImg.selectable = false;
-        // oImg.animate('left', '+=200', {
-        //     onChange: canvas.renderAll.bind(canvas),
-        //     duration: 2000,
-        // })
+        oImg.animate('left', '+=200', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 2000
+        })
         canvas.add(oImg);
+        canvas.renderAll();
     },{
         width: dogRun.naturalWidth/dogRun.frameCount
     });
 
-    z++;
-    if(z === 8){
+    count++;
+    if(count === 8){
         currFrame += 1;
-        z = 0;
+        count = 0;
     }
     if(currFrame === dogRun.frameCount){
         currFrame = 0;
     };
+    
+}
 
-    requestAnimationFrame(animation);
+animation();
+
+//정오표시
+const checkImg = (x, y, z) => {
+    const RunSprite = fabric.Image.fromURL(check.src, (oImg) => {
+        oImg.scale(0.15);
+        oImg.set({left: x, top: y, cropX: check.naturalWidth/2 * z});
+        oImg.selectable = false;
+        canvas.add(oImg);
+        canvas.renderAll();
+        setTimeout(()=>{
+            canvas.remove(oImg);
+        }, 500);
+    },{
+        width: check.naturalWidth/2
+    });
 }
 
 
-animation();
 
