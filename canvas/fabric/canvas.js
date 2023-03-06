@@ -134,6 +134,11 @@ canvas.on('mouse:down', function(option) {
         }, 2000);
         c = false; 
     }
+    if(!a && !b && !c){
+        setTimeout(() =>{
+            //애니메이션 효과
+        }, 2000);
+    }
   });
 
 //audio
