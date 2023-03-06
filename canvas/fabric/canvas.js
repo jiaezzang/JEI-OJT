@@ -79,11 +79,23 @@ const guide = new fabric.Text('삼각형을 모두 찾아 고르세요',{
 const speakerImg = new Image();
 speakerImg.src = "./img/speaker.png"
 
+let waitting = false;
 
 const speaker = fabric.Image.fromURL(speakerImg.src, function(oImg) {
     oImg.scale(0.07);
     oImg.set({left: 85, top: 27});
     oImg.selectable = false;
+    oImg.on('mousedown', function (){
+        if(!waitting){
+            //음성파일 넣기
+            audio.play('fall.wav');
+            waitting = true;
+        }
+        setTimeout(() => {
+            waitting = false;
+        }, 3000);
+        
+    })
     canvas.add(oImg);
 });
 
