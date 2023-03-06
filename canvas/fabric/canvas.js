@@ -88,7 +88,7 @@ const speaker = fabric.Image.fromURL(speakerImg.src, function(oImg) {
     oImg.on('mousedown', function (){
         if(!waitting){
             //음성파일 넣기
-            audio.play('fall.wav');
+            audio.play('삼각형.mp3');
             waitting = true;
         }
         setTimeout(() => {
