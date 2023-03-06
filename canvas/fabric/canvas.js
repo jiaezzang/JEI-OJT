@@ -98,6 +98,7 @@ canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, circle, g
 
 //정답 선택 시 애니메이션
 let a = true, b= true, c= true;
+let correct = 0;
 
 canvas.on('mouse:down', function(option) {
     if(option.target === triangle1 && a){
@@ -111,6 +112,7 @@ canvas.on('mouse:down', function(option) {
         audio.play('magic.mp3');
         checkImg(380, 190, 1);
         a = false; 
+        correct++;
 
       } else if(option.target === triangle2 && b){
         triangle2.animate('top', '+=340', {
@@ -128,6 +130,7 @@ canvas.on('mouse:down', function(option) {
         audio.play('magic.mp3')
         checkImg(150, 100, 1);
         b = false; 
+        correct++;
 
     } else if(option.target === triangle3 && c){
         triangle3.animate('top', '+=380', {
@@ -145,6 +148,7 @@ canvas.on('mouse:down', function(option) {
         audio.play('magic.mp3')
         checkImg(480, 70, 1);
         c = false; 
+        correct++;
     }
     if(!a && !b && !c){
         setTimeout(() =>{
@@ -172,7 +176,21 @@ canvas.on('mouse:down', function(option) {
         checkImg(430, 110, 0);
     }
 });
-    
+
+
+//정답 개수에 따른 애니메이션
+let d = true, e= true, f= true;
+canvas.on('mouse:down', () => {
+    if(correct === 1 && d){
+        animation('+=200');
+        d = false;
+    } else if(correct === 2 && e){
+        e = false;
+    } else if(correct === 3 && f){
+        f = false;
+    }
+});
+
 
 //audio
 const audio = {
