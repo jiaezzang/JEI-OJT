@@ -69,9 +69,10 @@ const speakerImg = new Image();
 speakerImg.src = "./img/speaker.png"
 
 
-fabric.Image.fromURL('./img/speaker.png', function(oImg) {
+const speaker = fabric.Image.fromURL(speakerImg.src, function(oImg) {
     oImg.scale(0.07);
     oImg.set({left: 85, top: 27});
+    oImg.selectable = false;
     canvas.add(oImg);
 });
 
@@ -86,7 +87,6 @@ path3.set('selectable', false);
 rect.set('selectable', false);
 circle.set('selectable', false);
 guide.set('selectable', false);
-//speakerImg.set('selectable', false);
 
 //커서 스타일 설정
 canvas.hoverCursor = 'pointer'
@@ -103,12 +103,11 @@ canvas.on('mouse:down', function(option) {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000,
         }); 
+        setTimeout(() =>{
+            audio.play('fall.wav');
+        }, 2000);
         a = false; 
-      }
-  });
-
-canvas.on('mouse:down', function(option) {
-    if(option.target === triangle2 && b){
+      } else if(option.target === triangle2 && b){
         triangle2.animate('top', '+=340', {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000
@@ -117,12 +116,11 @@ canvas.on('mouse:down', function(option) {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000
         });
+        setTimeout(() =>{
+            audio.play('fall.wav');
+        }, 2000);
         b = false; 
-    }
-});
-
-canvas.on('mouse:down', function(option) {
-    if(option.target === triangle3 && c){
+    } else if(option.target === triangle3 && c){
         triangle3.animate('top', '+=380', {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000
@@ -131,9 +129,17 @@ canvas.on('mouse:down', function(option) {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000
         });
+        setTimeout(() =>{
+            audio.play('fall.wav');
+        }, 2000);
         c = false; 
     }
-});
+  });
 
-
-
+//audio
+const audio = {
+    play: (fileName) => {
+        const myAudio = new Audio('./audio/' + fileName);
+        myAudio.play();
+    }
+}
