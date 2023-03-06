@@ -10,17 +10,17 @@ const check = new Image();
 check.src = './img/check.png';
 check.frameCount = 10;
 
-// let i = 4;
- let currFrame = 0;
+let currFrame = 0;
 let count = 0;
 
-const animation = () => {
 
+//spriteAnimation
+const animation = (delay) => {
     const RunSprite = fabric.Image.fromURL(dogRun.src, (oImg) => {
         oImg.scale(0.25);
         oImg.set({left: 35, top: 300, cropX: dogRun.naturalWidth/8 * currFrame});
         oImg.selectable = false;
-        oImg.animate('left', '+=200', {
+        oImg.animate('left', delay, {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000
         })
@@ -41,7 +41,7 @@ const animation = () => {
     
 }
 
-animation();
+
 
 //정오표시
 const checkImg = (x, y, z) => {
