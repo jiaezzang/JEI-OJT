@@ -106,7 +106,7 @@ canvas.on('mouse:down', function(option) {
         setTimeout(() =>{
             audio.play('fall.wav');
         }, 2000);
-
+        audio.play('magic.mp3');
         checkImg(380, 190, 1);
         a = false; 
 
@@ -123,6 +123,7 @@ canvas.on('mouse:down', function(option) {
             audio.play('fall.wav');
         }, 2000);
 
+        audio.play('magic.mp3')
         checkImg(150, 100, 1);
         b = false; 
 
@@ -139,6 +140,7 @@ canvas.on('mouse:down', function(option) {
             audio.play('fall.wav');
         }, 2000);
 
+        audio.play('magic.mp3')
         checkImg(480, 70, 1);
         c = false; 
     }
@@ -152,14 +154,19 @@ canvas.on('mouse:down', function(option) {
 //오답 선택 시 애니메이션
 canvas.on('mouse:down', function(option) {
     if(option.target === path1){
+        audio.play('beep.mp3');
         checkImg(280, 90, 0);
     } else if(option.target === path2){
+        audio.play('beep.mp3');
         checkImg(260, 270, 0);
     } else if(option.target === path3){
+        audio.play('beep.mp3');
         checkImg(480, 260, 0);
     } else if(option.target === circle){
+        audio.play('beep.mp3');
         checkImg(130, 200, 0);
     } else if(option.target === rect){
+        audio.play('beep.mp3');
         checkImg(430, 110, 0);
     }
 });
