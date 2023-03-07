@@ -14,37 +14,15 @@ let currFrame = 0;
 let count = 0;
 
 
-//spriteAnimation
-const animation = (delay) => {
-    const RunSprite = fabric.Image.fromURL(dogRun.src, (oImg) => {
-        oImg.scale(0.25);
-        oImg.set({left: 35, top: 300, cropX: dogRun.naturalWidth/8 * currFrame});
-        oImg.selectable = false;
-        oImg.animate('left', delay, {
-            onChange: canvas.renderAll.bind(canvas),
-            duration: 2000
-        })
-        canvas.add(oImg);
-        //canvas.renderAll();
-    },{
-        width: dogRun.naturalWidth/dogRun.frameCount
-    });
-
-    count++;
-    if(count === 8){
-        currFrame += 1;
-        count = 0;
-    }
-    if(currFrame === dogRun.frameCount){
-        currFrame = 0;
-    };
-
-    (function render() {
-        canvas.renderAll();
-        fabric.util.requestAnimFrame(render);
-    })();
-}
-
+//Run 첫번째 프레임 
+const dogImg = fabric.Image.fromURL(dogRun.src, (oImg) => {
+    oImg.scale(0.25);
+    oImg.set({left: 35, top: 300});
+    oImg.selectable = false;
+    // canvas.add(oImg);
+},{
+    width: dogRun.naturalWidth/dogRun.frameCount
+} );
 
 //정오표시
 const checkImg = (x, y, z) => {
@@ -70,8 +48,8 @@ const runAnimation = () => {
     function createSprite() {
       return function(sprite) {
         sprite.set({
-          left: 35,
-          top: 300
+            left: 35,
+            top: 300
         });
         sprite.scale(0.25);
         sprite.selectable = false;
@@ -122,7 +100,7 @@ const jumpAnimation = () => {
 }
 
 //서있는 애니메이션
-(idleAnimation =() => {
+const idleAnimation =() => {
     fabric.Sprite.fromURL('./img/dog_idle.png', createSprite());
   
     function createSprite() {
@@ -136,17 +114,17 @@ const jumpAnimation = () => {
         sprite.set('dirty', true);
         sprite.play();
         sprite.selectable = false;
-        if(correct >= 1){
-            canvas.remove(sprite);
-        }
+
       };
     }
   
     (function render() {
-      canvas.renderAll();
-      fabric.util.requestAnimFrame(render);
+        canvas.renderAll();
+        let currentFrame = fabric.util.requestAnimFrame(render);
     })();
-})();
+};
+
+
   
 
 
