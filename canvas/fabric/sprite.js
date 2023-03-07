@@ -1,14 +1,18 @@
+//이미지
 const dogRun = new Image();
 dogRun.src = './img/dog_run.png';
-dogRun.frameCount = 8;
 
 const dogIdle = new Image();
 dogIdle.src = './img/dog_idle.png';
-dogIdle.frameCount = 10;
+
+const dogJump = new Image();
+dogJump.src = './img/dog_jump.png';
 
 const check = new Image();
 check.src = './img/check.png';
-check.frameCount = 10;
+
+const thumb = new Image();
+thumb.src = './img/thumb1.png';
 
 let currFrame = 0;
 let count = 0;
@@ -43,7 +47,7 @@ const checkImg = (x, y, z) => {
 
 //달리는 애니메이션
 const runAnimation = () => {
-    fabric.Sprite.fromURL('./img/dog_run.png', createSprite());
+    fabric.Sprite.fromURL(dogRun.src, createSprite());
   
     function createSprite() {
       return function(sprite) {
@@ -77,7 +81,7 @@ const runAnimation = () => {
 
 //점프 애니메이션
 const jumpAnimation = () => {
-    fabric.Sprite.fromURL('./img/dog_jump.png', createSprite());
+    fabric.Sprite.fromURL(dogJump.src, createSprite());
   
     function createSprite() {
       return function(sprite) {
@@ -101,7 +105,7 @@ const jumpAnimation = () => {
 
 //서있는 애니메이션
 (idleAnimation =() => {
-    fabric.Sprite.fromURL('./img/dog_idle.png', createSprite());
+    fabric.Sprite.fromURL(dogIdle.src, createSprite());
   
     function createSprite() {
       return function(sprite) {
@@ -120,7 +124,7 @@ const jumpAnimation = () => {
           if(correct >= 3){
             setTimeout(() => {
               canvas.remove(sprite);
-            }, 40)
+            }, 30)
           }
           fabric.util.requestAnimFrame(render);
       })();
@@ -133,7 +137,7 @@ const stamp = () => {
     var radius = 300;
     canvas.preserveObjectStacking = true;
   
-    fabric.Image.fromURL('./img/thumb1.png', function(img) {
+    fabric.Image.fromURL(thumb.src, function(img) {
       img.scale(0.08).set({
         left: 630,
         top: 0,
