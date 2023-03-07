@@ -133,7 +133,8 @@ canvas.on('mouse:down', function(option) {
     if(option.target === triangle1 && a){
         triangle1.animate('top', '+=200', {
             onChange: canvas.renderAll.bind(canvas),
-            duration: 2000,
+            duration: 1700,
+            easing: fabric.util.ease.easeOutBounce
         }); 
         setTimeout(() =>{
             audio.play('fall.wav');
@@ -146,11 +147,12 @@ canvas.on('mouse:down', function(option) {
       } else if(option.target === triangle2 && b){
         triangle2.animate('top', '+=340', {
             onChange: canvas.renderAll.bind(canvas),
-            duration: 2000
+            duration: 2000,
+            easing: fabric.util.ease.easeOutBounce
         });
         triangle2.animate('angle', '-=50', {
             onChange: canvas.renderAll.bind(canvas),
-            duration: 2000
+            duration: 700
         });
         setTimeout(() =>{
             audio.play('fall.wav');
@@ -164,11 +166,12 @@ canvas.on('mouse:down', function(option) {
     } else if(option.target === triangle3 && c){
         triangle3.animate('top', '+=380', {
             onChange: canvas.renderAll.bind(canvas),
-            duration: 2000
+            duration: 2000,
+            easing: fabric.util.ease.easeOutBounce
         });
         triangle3.animate('angle', '-=48', {
             onChange: canvas.renderAll.bind(canvas),
-            duration: 2000
+            duration: 700
         });
         setTimeout(() =>{
             audio.play('fall.wav');
@@ -179,11 +182,12 @@ canvas.on('mouse:down', function(option) {
         c = false; 
         correct++;
     }
-    if(!a && !b && !c){
+    if(!a && !b && !c && correct === 3){
         runAnimation();
         setTimeout(() => {
             jumpAnimation();
-        }, 4000)
+            stamp();
+        }, 4000);
     }
   });
 
@@ -251,6 +255,7 @@ canvas.on('mouse:down', () => {
     } else if(correct === 2 && e){
         e = false;
     } else if(correct === 3 && f){
+        correct++;
         f = false;
     }
 });
