@@ -1,5 +1,11 @@
 const canvas = new fabric.Canvas('canvas');
 
+//드래그 선택 금지
+canvas.selection = false;
+
+//커서 스타일 설정
+canvas.hoverCursor = 'pointer'
+
 //Triangle로 도형 그리기
 const triangle1 = new fabric.Triangle({
     left: 400,
@@ -24,25 +30,42 @@ const triangle2 = new fabric.Triangle({
 
 //Path로 도형 그리기 
 const triangle3 = new fabric.Path('M 0 0 L 130 80 L 120 130 z');
-triangle3.set({ left: 500, top: 80 });
-triangle3.set({ fill:'rgba(0,0,0,0)', stroke: 'blue'});
-triangle3.set('selectable', false);
+triangle3.set({ 
+    left: 500, 
+    top: 80,
+    fill:'rgba(0,0,0,0)', 
+    stroke: 'blue',
+    selectable: false
+ });
 
 const path1 = new fabric.Path('M 0 0 L 20 80 L 70 7 L 60 100');
-path1.set({ left: 300, top: 100});
-path1.set({ fill:'rgba(0,0,0,0)', stroke: 'orange'});
-path1.set('selectable', false);
-
+path1.set({ 
+    left: 300, 
+    top: 100,
+    fill:'rgba(0,0,0,0)', 
+    stroke: 'orange',
+    selectable: false
+});
 
 const path2 = new fabric.Path('M 0 50 L 70, 0 L 70, 50 L 0, 60 ')
-path2.set({ left: 280, top: 250});
-path2.set({ fill:'rgba(0,0,0,0)', stroke: 'yellowgreen'});
-path2.set('selectable', false);
+path2.set({ 
+    left: 280, 
+    top: 250,
+    fill:'rgba(0,0,0,0)', 
+    stroke: 'yellowgreen',
+    selectable: false
+});
 
-const path3 = new fabric.Path('M 0 50 L 70, 70 L 70, 10 L 0, 40 z')
-path3.set({ left: 500, top: 250});
-path3.set({ fill:'rgba(0,0,0,0)', stroke: 'pink'});
-path3.set('selectable', false);
+const path3 = new fabric.Path(
+    'M 0 50 L 70, 70 L 70, 10 L 0, 40 z'
+    )
+path3.set({ 
+    left: 500, 
+    top: 250,
+    fill:'rgba(0,0,0,0)', 
+    stroke: 'pink',
+    selectable: false
+});
 
 
 //rect로 도형 그리기
@@ -98,12 +121,6 @@ const speaker = fabric.Image.fromURL(speakerImg.src, function(oImg) {
     })
     canvas.add(oImg);
 });
-
-
-
-
-//커서 스타일 설정
-canvas.hoverCursor = 'pointer'
 
 //캔버스에 넣기
 canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, circle, guide);
@@ -163,9 +180,10 @@ canvas.on('mouse:down', function(option) {
         correct++;
     }
     if(!a && !b && !c){
-        setTimeout(() =>{
-            //애니메이션 효과
-        }, 2000);
+        runAnimation();
+        setTimeout(() => {
+            jumpAnimation();
+        }, 4000)
     }
   });
 
@@ -173,32 +191,62 @@ canvas.on('mouse:down', function(option) {
 canvas.on('mouse:down', function(option) {
     if(option.target === path1 && (a || b || c)){
         audio.play('beep.mp3');
+        path1.animate('opacity', '0', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 500,
+        });
+        setTimeout(()=> {
+            canvas.remove(path1)
+        }, 500);
         checkImg(280, 90, 0);
     } else if(option.target === path2 && (a || b || c)){
         audio.play('beep.mp3');
+        path2.animate('opacity', '0', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 500,
+        });
+        setTimeout(()=> {
+            canvas.remove(path2)
+        }, 500);
         checkImg(260, 270, 0);
     } else if(option.target === path3 && (a || b || c)){
         audio.play('beep.mp3');
+        path3.animate('opacity', '0', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 500,
+        });
+        setTimeout(()=> {
+            canvas.remove(path3)
+        }, 500);
         checkImg(480, 260, 0);
     } else if(option.target === circle && (a || b || c)){
         audio.play('beep.mp3');
+        circle.animate('opacity', '0', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 500,
+        });
+        setTimeout(()=> {
+            canvas.remove(circle)
+        }, 500);
         checkImg(130, 200, 0);
     } else if(option.target === rect && (a || b || c)){
         audio.play('beep.mp3');
+        rect.animate('opacity', '0', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 500,
+        });
+        setTimeout(()=> {
+            canvas.remove(rect)
+        }, 500);
         checkImg(430, 110, 0);
     }
 });
-
 
 //정답 개수에 따른 애니메이션
 let d = true, e= true, f= true;
 canvas.on('mouse:down', () => {
     if(correct === 1 && d){
-        runAnimation();
-        setTimeout(() => {
-            jumpAnimation();
-        }, 4000)
-        
+        //idleAnimation();
         d = false;
     } else if(correct === 2 && e){
         e = false;
@@ -206,7 +254,6 @@ canvas.on('mouse:down', () => {
         f = false;
     }
 });
-
 
 //audio
 const audio = {
