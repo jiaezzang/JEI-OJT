@@ -100,7 +100,7 @@ const jumpAnimation = () => {
 }
 
 //서있는 애니메이션
-const idleAnimation =() => {
+(idleAnimation =() => {
     fabric.Sprite.fromURL('./img/dog_idle.png', createSprite());
   
     function createSprite() {
@@ -115,14 +115,18 @@ const idleAnimation =() => {
         sprite.play();
         sprite.selectable = false;
 
+        (function render() {
+          canvas.renderAll();
+          if(correct >= 3){
+            setTimeout(() => {
+              canvas.remove(sprite);
+            }, 40)
+          }
+          fabric.util.requestAnimFrame(render);
+      })();
       };
     }
-  
-    (function render() {
-        canvas.renderAll();
-        let currentFrame = fabric.util.requestAnimFrame(render);
-    })();
-};
+})();
 
 //스탬프 애니메이션
 const stamp = () => {
