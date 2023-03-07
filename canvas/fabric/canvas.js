@@ -99,12 +99,9 @@ const guide = new fabric.Text('삼각형을 모두 찾아 고르세요',{
 });
 
 //이미지 사용하기
-const speakerImg = new Image();
-speakerImg.src = "./img/speaker.png"
-
 let waitting = false;
 
-const speaker = fabric.Image.fromURL(speakerImg.src, function(oImg) {
+const speakerImg = fabric.Image.fromURL("./img/speaker.png", function(oImg){
     oImg.scale(0.07);
     oImg.set({left: 85, top: 27});
     oImg.selectable = false;
@@ -121,6 +118,15 @@ const speaker = fabric.Image.fromURL(speakerImg.src, function(oImg) {
     })
     canvas.add(oImg);
 });
+
+
+const flagImg = new fabric.Image.fromURL("./img/flag.png", function(oImg){
+    oImg.scale(0.25);
+    oImg.set({left: 650, top: 280});
+    oImg.selectable = false;
+    canvas.add(oImg);
+});
+
 
 //캔버스에 넣기
 canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, circle, guide);
