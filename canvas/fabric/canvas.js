@@ -194,7 +194,11 @@ canvas.on('mouse:down', function(option) {
 let d = true, e= true, f= true;
 canvas.on('mouse:down', () => {
     if(correct === 1 && d){
-        animation('+=200');
+        runAnimation();
+        setTimeout(() => {
+            jumpAnimation();
+        }, 4000)
+        
         d = false;
     } else if(correct === 2 && e){
         e = false;
