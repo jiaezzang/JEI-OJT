@@ -11,9 +11,6 @@ dogJump.src = './img/dog_jump.png';
 const check = new Image();
 check.src = './img/check.png';
 
-const thumb = new Image();
-thumb.src = './img/thumb1.png';
-
 //정오표시
 const checkImg = (x, y, z) => {
     const RunSprite = fabric.Image.fromURL(check.src, (oImg) => {
@@ -123,7 +120,7 @@ const stamp = () => {
     var radius = 300;
     canvas.preserveObjectStacking = true;
   
-    fabric.Image.fromURL(thumb.src, function(img) {
+    fabric.Image.fromURL('./img/thumb1.png', function(img) {
       img.scale(0.08).set({
         left: 800,
         top: 0,
@@ -133,6 +130,7 @@ const stamp = () => {
           originX: 'center',
           originY: 'center',
         }),
+        selectable: false
       });
   
       (function animate() {
