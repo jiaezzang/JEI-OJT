@@ -138,13 +138,13 @@ const stamp = () => {
           startValue: Math.round(radius) === 200 ? 200 : 850,
           endValue: Math.round(radius) === 200 ? 850 : 200,
           duration: 2000,
-          onChange: function(value) {
+          onChange: function(value) { //onChange는 애니메이션의 모든 단계에서 호출
             radius = value;
             img.clipPath.set('radius', value);
             img.set('dirty', true);
             canvas.renderAll();
           },
-          onComplete: animate
+          onComplete: animate   //onComplete는 완료 시 호출됨
         });
       })();
       canvas.insertAt(img, 0)
