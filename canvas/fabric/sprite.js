@@ -14,20 +14,6 @@ check.src = './img/check.png';
 const thumb = new Image();
 thumb.src = './img/thumb1.png';
 
-let currFrame = 0;
-let count = 0;
-
-
-//Run 첫번째 프레임 
-const dogImg = fabric.Image.fromURL(dogRun.src, (oImg) => {
-    oImg.scale(0.25);
-    oImg.set({left: 35, top: 300});
-    oImg.selectable = false;
-    // canvas.add(oImg);
-},{
-    width: dogRun.naturalWidth/dogRun.frameCount
-} );
-
 //정오표시
 const checkImg = (x, y, z) => {
     const RunSprite = fabric.Image.fromURL(check.src, (oImg) => {
@@ -53,15 +39,15 @@ const runAnimation = () => {
       return function(sprite) {
         sprite.set({
             left: 35,
-            top: 300
+            top: 400
         });
-        sprite.scale(0.25);
+        sprite.scale(0.4);
         sprite.selectable = false;
         canvas.add(sprite);
         setTimeout(function() {
           sprite.set('dirty', true);
           sprite.play();
-          sprite.animate('left', "+=630", {
+          sprite.animate('left', "+=770", {
             onChange: canvas.renderAll.bind(canvas),
             duration: 3000
         })
@@ -86,10 +72,10 @@ const jumpAnimation = () => {
     function createSprite() {
       return function(sprite) {
         sprite.set({
-          left: 625,
-          top: 300
+          left: 780,
+          top: 400
         });
-        sprite.scale(0.25);
+        sprite.scale(0.4);
         canvas.add(sprite);
         sprite.set('dirty', true);
         sprite.play();
@@ -111,9 +97,9 @@ const jumpAnimation = () => {
       return function(sprite) {
         sprite.set({
           left: 35,
-          top: 300
+          top: 400
         });
-        sprite.scale(0.25);
+        sprite.scale(0.4);
         canvas.add(sprite);
         sprite.set('dirty', true);
         sprite.play();
@@ -139,7 +125,7 @@ const stamp = () => {
   
     fabric.Image.fromURL(thumb.src, function(img) {
       img.scale(0.08).set({
-        left: 630,
+        left: 800,
         top: 0,
         angle: 15,
         clipPath: new fabric.Circle({

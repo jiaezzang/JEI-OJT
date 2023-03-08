@@ -8,60 +8,59 @@ canvas.hoverCursor = 'pointer'
 
 //Triangle로 도형 그리기
 const triangle1 = new fabric.Triangle({
-    left: 400,
-    top: 200,
+    left: 430,
+    top: 300,
     stroke: 'red',
     fill: 'rgba(0,0,0,0)',
-    width: 60,
-    height: 60,
+    width: 120,
+    height: 120,
     selectable: false
 });
 
 const triangle2 = new fabric.Triangle({
-    left: 200,
+    left: 100,
     top: 80,
     stroke: 'green',
     fill: 'rgba(0,0,0,0)',
     angle: 50,
-    width: 150,
-    height: 40,
+    width: 300,
+    height: 80,
     selectable: false
 });
 
 //Path로 도형 그리기 
-const triangle3 = new fabric.Path('M 0 0 L 130 80 L 120 130 z');
+const triangle3 = new fabric.Path('M 0 0 L 260 160 L 240 260 z');
 triangle3.set({ 
-    left: 500, 
+    left: 580, 
     top: 80,
     fill:'rgba(0,0,0,0)', 
     stroke: 'blue',
     selectable: false
  });
 
-const path1 = new fabric.Path('M 0 0 L 20 80 L 70 7 L 60 100');
+const path1 = new fabric.Path('M 0 0 L 20 140 L 120 7 L 100 180');
 path1.set({ 
-    left: 300, 
-    top: 100,
+    left: 500, 
+    top: 130,
     fill:'rgba(0,0,0,0)', 
     stroke: 'orange',
     selectable: false
 });
 
-const path2 = new fabric.Path('M 0 50 L 70, 0 L 70, 50 L 0, 60 ')
+const path2 = new fabric.Path('M 0 100 L 140, 0 L 140, 100 L 0, 120');
 path2.set({ 
-    left: 280, 
-    top: 250,
+    left: 320, 
+    top: 180,
     fill:'rgba(0,0,0,0)', 
     stroke: 'yellowgreen',
+    angle: -15,
     selectable: false
 });
 
-const path3 = new fabric.Path(
-    'M 0 50 L 70, 70 L 70, 10 L 0, 40 z'
-    )
+const path3 = new fabric.Path('M 0 100 L 140, 140 L 140, 20 L 0, 80 z');
 path3.set({ 
-    left: 500, 
-    top: 250,
+    left: 600, 
+    top: 300,
     fill:'rgba(0,0,0,0)', 
     stroke: 'pink',
     selectable: false
@@ -70,12 +69,23 @@ path3.set({
 
 //rect로 도형 그리기
 const rect = new fabric.Rect({
-    left: 450,
-    top: 120,
+    left: 250,
+    top: 150,
     stroke: 'violet',
     fill: 'rgba(0,0,0,0)',
-    width: 40,
-    height: 40,
+    width: 80,
+    height: 80,
+    selectable: false
+});
+
+const rect2 = new fabric.Rect({
+    left: 850,
+    top: 200,
+    angle: -20,
+    stroke: 'brown',
+    fill: 'rgba(0,0,0,0)',
+    width: 50,
+    height: 120,
     selectable: false
 });
 
@@ -84,15 +94,15 @@ const circle = new fabric.Circle({
     angle: 30,
     stroke: 'lightblue',
     fill: 'rgba(0,0,0,0)',
-    radius: 30,
-    left: 170,
-    top: 200,
+    radius: 60,
+    left: 300,
+    top: 300,
     selectable: false
 })
 
 //text 작성하기
 const guide = new fabric.Text('삼각형을 모두 찾아 고르세요',{
-    fontSize: 28,
+    fontSize: 35,
     left: 130,
     top: 30,
     selectable: false
@@ -102,8 +112,8 @@ const guide = new fabric.Text('삼각형을 모두 찾아 고르세요',{
 let waitting = false;
 
 const speakerImg = fabric.Image.fromURL("./img/speaker.png", function(oImg){
-    oImg.scale(0.07);
-    oImg.set({left: 85, top: 27});
+    oImg.scale(0.09);
+    oImg.set({left: 70, top: 25});
     oImg.selectable = false;
     oImg.on('mousedown', function (){
         if(!waitting){
@@ -121,15 +131,15 @@ const speakerImg = fabric.Image.fromURL("./img/speaker.png", function(oImg){
 
 
 const flagImg = new fabric.Image.fromURL("./img/flag.png", function(oImg){
-    oImg.scale(0.25);
-    oImg.set({left: 650, top: 280});
+    oImg.scale(0.4);
+    oImg.set({left: 800, top: 380});
     oImg.selectable = false;
     canvas.add(oImg);
 });
 
 
 //캔버스에 넣기
-canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, circle, guide);
+canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, rect2, circle, guide);
 
 //정답 선택 시 애니메이션
 let a = true, b= true, c= true;
@@ -137,7 +147,7 @@ let correct = 0;
 
 canvas.on('mouse:down', function(option) {
     if(option.target === triangle1 && a){
-        triangle1.animate('top', '+=200', {
+        triangle1.animate('top', '+=160', {
             onChange: canvas.renderAll.bind(canvas),
             duration: 1700,
             easing: fabric.util.ease.easeOutBounce
@@ -146,12 +156,12 @@ canvas.on('mouse:down', function(option) {
             audio.play('fall.wav');
         }, 2000);
         audio.play('magic.mp3');
-        checkImg(380, 190, 1);
+        checkImg(440, 300, 1);
         a = false; 
         correct++;
 
       } else if(option.target === triangle2 && b){
-        triangle2.animate('top', '+=340', {
+        triangle2.animate('top', '+=420', {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000,
             easing: fabric.util.ease.easeOutBounce
@@ -165,12 +175,12 @@ canvas.on('mouse:down', function(option) {
         }, 2000);
 
         audio.play('magic.mp3')
-        checkImg(150, 100, 1);
+        checkImg(30, 120, 1);
         b = false; 
         correct++;
 
     } else if(option.target === triangle3 && c){
-        triangle3.animate('top', '+=380', {
+        triangle3.animate('top', '+=500', {
             onChange: canvas.renderAll.bind(canvas),
             duration: 2000,
             easing: fabric.util.ease.easeOutBounce
@@ -184,7 +194,7 @@ canvas.on('mouse:down', function(option) {
         }, 2000);
 
         audio.play('magic.mp3')
-        checkImg(480, 70, 1);
+        checkImg(570, 70, 1);
         c = false; 
         correct++;
     }
@@ -208,7 +218,7 @@ canvas.on('mouse:down', function(option) {
         setTimeout(()=> {
             canvas.remove(path1)
         }, 500);
-        checkImg(280, 90, 0);
+        checkImg(480, 110, 0);
     } else if(option.target === path2 && (a || b || c)){
         audio.play('beep.mp3');
         path2.animate('opacity', '0', {
@@ -218,7 +228,7 @@ canvas.on('mouse:down', function(option) {
         setTimeout(()=> {
             canvas.remove(path2)
         }, 500);
-        checkImg(260, 270, 0);
+        checkImg(370, 160, 0);
     } else if(option.target === path3 && (a || b || c)){
         audio.play('beep.mp3');
         path3.animate('opacity', '0', {
@@ -228,7 +238,7 @@ canvas.on('mouse:down', function(option) {
         setTimeout(()=> {
             canvas.remove(path3)
         }, 500);
-        checkImg(480, 260, 0);
+        checkImg(580, 340, 0);
     } else if(option.target === circle && (a || b || c)){
         audio.play('beep.mp3');
         circle.animate('opacity', '0', {
@@ -238,7 +248,7 @@ canvas.on('mouse:down', function(option) {
         setTimeout(()=> {
             canvas.remove(circle)
         }, 500);
-        checkImg(130, 200, 0);
+        checkImg(250, 320, 0);
     } else if(option.target === rect && (a || b || c)){
         audio.play('beep.mp3');
         rect.animate('opacity', '0', {
@@ -248,7 +258,17 @@ canvas.on('mouse:down', function(option) {
         setTimeout(()=> {
             canvas.remove(rect)
         }, 500);
-        checkImg(430, 110, 0);
+        checkImg(230, 130, 0);
+    } else if(option.target === rect2 && (a || b || c)){
+        audio.play('beep.mp3');
+        rect2.animate('opacity', '0', {
+            onChange: canvas.renderAll.bind(canvas),
+            duration: 500,
+        });
+        setTimeout(()=> {
+            canvas.remove(rect2)
+        }, 500);
+        checkImg(830, 180, 0);
     }
 });
 
