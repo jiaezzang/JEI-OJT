@@ -143,7 +143,7 @@ canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, rect2, ci
 
 //정답 선택 시 애니메이션
 let a = true, b= true, c= true;
-let correct = 0;
+let correct = 0, wrong = 0;
 
 canvas.on('mouse:down', function(option) {
     if(option.target === triangle1 && a){
@@ -219,6 +219,7 @@ canvas.on('mouse:down', function(option) {
             canvas.remove(path1)
         }, 500);
         checkImg(480, 110, 0);
+        wrong++;
     } else if(option.target === path2 && (a || b || c)){
         audio.play('beep.mp3');
         path2.animate('opacity', '0', {
@@ -229,6 +230,7 @@ canvas.on('mouse:down', function(option) {
             canvas.remove(path2)
         }, 500);
         checkImg(370, 160, 0);
+        wrong++;
     } else if(option.target === path3 && (a || b || c)){
         audio.play('beep.mp3');
         path3.animate('opacity', '0', {
@@ -239,6 +241,7 @@ canvas.on('mouse:down', function(option) {
             canvas.remove(path3)
         }, 500);
         checkImg(580, 340, 0);
+        wrong++;
     } else if(option.target === circle && (a || b || c)){
         audio.play('beep.mp3');
         circle.animate('opacity', '0', {
@@ -249,6 +252,7 @@ canvas.on('mouse:down', function(option) {
             canvas.remove(circle)
         }, 500);
         checkImg(250, 320, 0);
+        wrong++;
     } else if(option.target === rect && (a || b || c)){
         audio.play('beep.mp3');
         rect.animate('opacity', '0', {
@@ -259,6 +263,7 @@ canvas.on('mouse:down', function(option) {
             canvas.remove(rect)
         }, 500);
         checkImg(230, 130, 0);
+        wrong++;
     } else if(option.target === rect2 && (a || b || c)){
         audio.play('beep.mp3');
         rect2.animate('opacity', '0', {
@@ -269,20 +274,106 @@ canvas.on('mouse:down', function(option) {
             canvas.remove(rect2)
         }, 500);
         checkImg(830, 180, 0);
+        wrong++;
     }
 });
 
+//정답 시 메세지 
+const correctMsg = () => {
+    const txtCircle = new fabric.Circle({
+        radius: 100,
+        fill: 'skyblue',
+        scaleY: 0.5,
+        originX: 'center',
+        originY: 'center',
+        selectable: false
+    });
+
+    const text = new fabric.Text('참 잘했어요!',{
+        fontSize: 30,
+        fill: 'white',
+        originX: 'center',
+        originY: 'center',
+        selectable: false
+    });
+
+    const group = new fabric.Group([txtCircle, text], {
+        left: 750,
+        top: 20,
+        angle: 10,
+        selectable: false
+    })
+    canvas.add(group);
+
+    setTimeout(() => {
+        canvas.remove(group)
+    }, 2000);
+}
 //정답 개수에 따른 애니메이션
 let d = true, e= true, f= true;
 canvas.on('mouse:down', () => {
     if(correct === 1 && d){
         //idleAnimation();
+        correctMsg();
         d = false;
     } else if(correct === 2 && e){
+        correctMsg();
         e = false;
     } else if(correct === 3 && f){
+        correctMsg();
         correct++;
         f = false;
+    }
+});
+
+//오답 시 메세지 
+const wrongMsg = () => {
+    const cover = new fabric.Rect({
+        left: 0,
+        top: 0,
+        width: 1000,
+        height: 625,
+        fill: 'black',
+        opacity: 0.3,
+        selectable: false
+    })
+
+    const txtCircle = new fabric.Circle({
+        radius: 100,
+        fill: 'orange',
+        scaleY: 0.5,
+        originX: 'center',
+        originY: 'center',
+        selectable: false
+    });
+
+    const text = new fabric.Text('조금 아쉬워요!',{
+        fontSize: 30,
+        fill: 'white',
+        originX: 'center',
+        originY: 'center',
+        selectable: false
+    });
+
+    const group = new fabric.Group([txtCircle, text], {
+        left: 750,
+        top: 20,
+        angle: 10,
+        selectable: false
+    })
+    canvas.add(cover, group);
+
+    setTimeout(() => {
+        canvas.remove(cover, group)
+    }, 2000);
+}
+
+//오답의 개수에 따른 애니메이션
+canvas.on('mouse:down', () => {
+    console.log(wrong);
+    if(wrong === 3){
+        wrongMsg();
+        wrong = 0;
     }
 });
 
