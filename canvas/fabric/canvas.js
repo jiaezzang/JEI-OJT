@@ -42,6 +42,7 @@ const path1 = new fabric.Path('M 0 0 L 20 140 L 120 7 L 100 180');
 path1.set({ 
     left: 500, 
     top: 130,
+    angle: 5,
     fill:'rgba(0,0,0,0)', 
     stroke: 'orange',
     selectable: false
