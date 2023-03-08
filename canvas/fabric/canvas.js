@@ -313,19 +313,6 @@ const correctMsg = () => {
         canvas.remove(group)
     }, 2000);
 }
-//정답 개수에 따른 애니메이션
-let d = true, e= true, f= true;
-canvas.on('mouse:down', () => {
-    if(correct === 1 && d){
-        //idleAnimation();
-        d = false;
-    } else if(correct === 2 && e){
-        e = false;
-    } else if(correct === 3 && f){
-        correct++;
-        f = false;
-    }
-});
 
 //오답 시 메세지 
 const wrongMsg = () => {
