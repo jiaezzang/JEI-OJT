@@ -370,7 +370,6 @@ const wrongMsg = () => {
 
 //오답의 개수에 따른 애니메이션
 canvas.on('mouse:down', () => {
-    console.log(wrong);
     if(wrong === 3){
         wrongMsg();
         wrong = 0;
