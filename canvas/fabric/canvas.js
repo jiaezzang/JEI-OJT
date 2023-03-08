@@ -157,6 +157,7 @@ canvas.on('mouse:down', function(option) {
         }, 2000);
         audio.play('magic.mp3');
         checkImg(440, 300, 1);
+        correctMsg();
         a = false; 
         correct++;
 
@@ -176,6 +177,7 @@ canvas.on('mouse:down', function(option) {
 
         audio.play('magic.mp3')
         checkImg(30, 120, 1);
+        correctMsg();
         b = false; 
         correct++;
 
@@ -195,6 +197,7 @@ canvas.on('mouse:down', function(option) {
 
         audio.play('magic.mp3')
         checkImg(570, 70, 1);
+        correctMsg();
         c = false; 
         correct++;
     }
@@ -314,13 +317,10 @@ let d = true, e= true, f= true;
 canvas.on('mouse:down', () => {
     if(correct === 1 && d){
         //idleAnimation();
-        correctMsg();
         d = false;
     } else if(correct === 2 && e){
-        correctMsg();
         e = false;
     } else if(correct === 3 && f){
-        correctMsg();
         correct++;
         f = false;
     }
