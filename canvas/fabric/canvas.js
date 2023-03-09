@@ -11,6 +11,7 @@ const triangle1 = new fabric.Triangle({
     left: 430,
     top: 300,
     stroke: 'red',
+    strokeWidth: 1.5,
     fill: 'rgba(0,0,0,0)',
     width: 120,
     height: 120,
@@ -21,6 +22,7 @@ const triangle2 = new fabric.Triangle({
     left: 100,
     top: 80,
     stroke: 'green',
+    strokeWidth: 1.5,
     fill: 'rgba(0,0,0,0)',
     angle: 50,
     width: 300,
@@ -35,6 +37,7 @@ triangle3.set({
     top: 80,
     fill:'rgba(0,0,0,0)', 
     stroke: 'blue',
+    strokeWidth: 1.5,
     selectable: false
  });
 
@@ -45,6 +48,7 @@ path1.set({
     angle: 5,
     fill:'rgba(0,0,0,0)', 
     stroke: 'orange',
+    strokeWidth: 1.5,
     selectable: false
 });
 
@@ -54,6 +58,7 @@ path2.set({
     top: 180,
     fill:'rgba(0,0,0,0)', 
     stroke: 'yellowgreen',
+    strokeWidth: 1.5,
     angle: -15,
     selectable: false
 });
@@ -64,6 +69,7 @@ path3.set({
     top: 300,
     fill:'rgba(0,0,0,0)', 
     stroke: 'pink',
+    strokeWidth: 1.5,
     selectable: false
 });
 
@@ -73,6 +79,7 @@ const rect = new fabric.Rect({
     left: 250,
     top: 150,
     stroke: 'violet',
+    strokeWidth: 1.5,
     fill: 'rgba(0,0,0,0)',
     width: 80,
     height: 80,
@@ -84,9 +91,19 @@ const rect2 = new fabric.Rect({
     top: 200,
     angle: -20,
     stroke: 'brown',
+    strokeWidth: 1.5,
     fill: 'rgba(0,0,0,0)',
     width: 50,
     height: 120,
+    selectable: false
+});
+
+const land = new fabric.Rect({
+    left: 0,
+    top: 555,
+    fill: 'yellowgreen',
+    width: 1000,
+    height: 70,
     selectable: false
 });
 
@@ -94,6 +111,7 @@ const rect2 = new fabric.Rect({
 const circle = new fabric.Circle({
     angle: 30,
     stroke: 'lightblue',
+    strokeWidth: 1.5,
     fill: 'rgba(0,0,0,0)',
     radius: 60,
     left: 300,
@@ -140,7 +158,7 @@ const flagImg = new fabric.Image.fromURL("./img/flag.png", function(oImg){
 
 
 //캔버스에 넣기
-canvas.add(triangle1, triangle2, triangle3, path1, path2, path3, rect, rect2, circle, guide);
+canvas.add(land, triangle1, triangle2, triangle3, path1, path2, path3, rect, rect2, circle, guide);
 
 //정답 선택 시 애니메이션
 let a = true, b= true, c= true;
