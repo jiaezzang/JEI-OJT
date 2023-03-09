@@ -206,7 +206,9 @@ canvas.on('mouse:down', function(option) {
         runAnimation();
         setTimeout(() => {
             stamp();
+            audio.play('applause.wav');
         }, 4000);
+        correct++;
     }
   });
 
