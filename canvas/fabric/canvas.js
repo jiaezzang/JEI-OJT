@@ -100,10 +100,10 @@ const rect2 = new fabric.Rect({
 
 const land = new fabric.Rect({
     left: 0,
-    top: 555,
+    top: 535,
     fill: 'yellowgreen',
     width: 1000,
-    height: 70,
+    height: 90,
     selectable: false
 });
 
