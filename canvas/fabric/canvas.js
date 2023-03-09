@@ -335,8 +335,8 @@ const wrongMsg = () => {
         selectable: false
     });
 
-    const text = new fabric.Text('조금 아쉬워요!',{
-        fontSize: 30,
+    const text = new fabric.Text('좀 더 집중해요!',{
+        fontSize: 28,
         fill: 'white',
         originX: 'center',
         originY: 'center',
