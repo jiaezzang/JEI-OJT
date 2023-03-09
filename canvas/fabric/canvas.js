@@ -205,7 +205,6 @@ canvas.on('mouse:down', function(option) {
     if(!a && !b && !c && correct === 3){
         runAnimation();
         setTimeout(() => {
-            jumpAnimation();
             stamp();
         }, 4000);
     }

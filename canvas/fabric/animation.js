@@ -44,15 +44,16 @@ const runAnimation = () => {
         setTimeout(function() {
           sprite.set('dirty', true);
           sprite.play();
-          sprite.animate('left', "+=770", {
+          sprite.animate('left', "+=730", {
             onChange: canvas.renderAll.bind(canvas),
-            duration: 3000
+            duration: 3000,
+            onComplete: jumpAnimation
         })
         }, 1000);
 
         setTimeout(() => {
             canvas.remove(sprite);
-        }, 4000)
+        }, 4200)
       };
     }
   
