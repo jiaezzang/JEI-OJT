@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다음 덧셈을 하세요.</title>
+    <link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+<body>
+    <div>
+        <svg viewBox="0 0 800 500" id="content">
+            <defs>
+                <!--공통 요소-->
+                <text id="guide" x="120" y="70" font-size="30">다음 덧셈을 하세요</text>
+                <circle id="pinkCircle" cx="150" cy="70" r="3" fill="palevioletred" />
+                <circle id="blueCircle" cx="150" cy="70" r="3" fill="skyblue" />
+                <rect id="firstBox" rx="60" ry="10" hight="20"/>
+                <rect id="secondBox" rx="60" ry="10" width="20" height="20" />
+                <path id="curve" d="M 165 60 q 17 -20 35 0"/>
+                <path id="answerLine" d="M 210 133 l 30 0"/>
+                
+                <!--Q.1-->
+                <g id="num1">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="35" height="20" />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+
+                    <use href="#secondBox" x="190" y="60" />
+                    <use href="#blueCircle" x="50"/>
+                    <use href="#curve"/>
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >3</text>
+                    <text x="150" y="130" font-size="20">2 + 1 =</text>
+                    <use href="#answerLine" />
+                </g>
+
+                <!--Q.2-->
+                <g id="num2">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="65" height="20" />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+                    <use href="#pinkCircle" x="30" />
+                    <use href="#pinkCircle" x="45" />
+
+                    <use href="#secondBox" x="220" y="60" />
+                    <use href="#blueCircle" x="80"  />
+                    <use href="#curve" x="30" />
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >5</text>
+                    <text x="150" y="130" font-size="20">4 + 1 =</text>
+                    <use href="#answerLine"/>
+                </g>
+
+                <!--Q.3-->
+                <g id="num3">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="95" height="20"  />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+                    <use href="#pinkCircle" x="30" />
+                    <use href="#pinkCircle" x="45" />
+                    <use href="#pinkCircle" x="60" />
+                    <use href="#pinkCircle" x="75" />
+
+                    <use href="#secondBox" x="250" y="60" />
+                    <use href="#blueCircle" x="110" />
+                    <use href="#curve" x="60" />
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >7</text>
+                    <text x="150" y="130" font-size="20">6 + 1 =</text>
+                    <use href="#answerLine"/>
+                </g>
+
+                <!--Q.4-->
+                <g id="num4">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="125" height="20" />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+                    <use href="#pinkCircle" x="30" />
+                    <use href="#pinkCircle" x="45" />
+                    <use href="#pinkCircle" x="60" />
+                    <use href="#pinkCircle" x="75" />
+                    <use href="#pinkCircle" x="90" />
+                    <use href="#pinkCircle" x="105" />
+
+                    <use href="#secondBox" x="280" y="60" />
+                    <use href="#blueCircle" x="140" />
+                    <use href="#curve" x="90" />
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >9</text>
+                    <text x="150" y="130" font-size="20">8 + 1 =</text>
+                    <use href="#answerLine"/>
+                </g>
+
+                <!--Q.5-->
+                <g id="num5">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="110" height="20" />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+                    <use href="#pinkCircle" x="30" />
+                    <use href="#pinkCircle" x="45" />
+                    <use href="#pinkCircle" x="60" />
+                    <use href="#pinkCircle" x="75" />
+                    <use href="#pinkCircle" x="90" />
+
+                    <use href="#secondBox" x="265" y="60" />
+                    <use href="#blueCircle" x="125"/>
+                    <use href="#curve" x="75"/>
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >8</text>
+                    <text x="150" y="130" font-size="20">7 + 1 =</text>
+                    <use href="#answerLine"/>
+                </g>
+
+                <!--Q.6-->
+                <g id="num6">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="80" height="20" />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+                    <use href="#pinkCircle" x="30" />
+                    <use href="#pinkCircle" x="45" />
+                    <use href="#pinkCircle" x="60" />
+
+                    <use href="#secondBox" x="235" y="60" />
+                    <use href="#blueCircle" x="95"  />
+                    <use href="#curve" x="45" />
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >6</text>
+                    <text x="150" y="130" font-size="20">5 + 1 =</text>
+                    <use href="#answerLine"/>
+                </g>
+
+                <!--Q.7-->
+                <g id="num7">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="50" height="20" />
+                    <use href="#pinkCircle" />
+                    <use href="#pinkCircle" x="15" />
+                    <use href="#pinkCircle" x="30" />
+
+                    <use href="#secondBox" x="205" y="60" />
+                    <use href="#blueCircle" x="65" />
+                    <use href="#curve" x="15" />
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >4</text>
+                    <text x="150" y="130" font-size="20">3 + 1 =</text>
+                    <use href="#answerLine"/>
+                </g>
+
+                <!--Q.8-->
+                <g id="num8">
+                    <rect id="firstBox" x="140" y="60" rx="10" ry="10" width="20" height="20" />
+                    <use href="#pinkCircle" />
+
+                    <use href="#secondBox" x="175" y="60" />
+                    <use href="#blueCircle" x="35" />
+                    <use href="#curve" x="-15" />
+
+                    <text id="answer" style="display:none" x="220" y="130" font-size="20" >2</text>
+                    <text x="150" y="130" font-size="20">1 + 1 =</text>
+                    <use href="#answerLine" />
+                </g>
+
+                <!--숫자 버튼-->
+                <g id="btns">
+                    <rect width="565" height="70" fill="rgb(87, 186, 203)" x="120" y="350" />
+                    <g id="btn0" style="cursor:pointer">
+                        <rect id="box0" width="50" height="50" fill="#e3fafc" x="130" y="360" rx="10" ry="10" />
+                        <text id="number0" x="143" y="400" fill="#1098ad" font-size="40">0</text>
+                    </g>
+                    <g id="btn1" style="cursor:pointer">
+                        <rect id="box1" width="50" height="50" fill="#e3fafc" x="185" y="360" rx="10" ry="10" />
+                        <text id="number1" x="202" y="400" fill="#1098ad" font-size="40">1</text>
+                    </g>
+                    <g id="btn2" style="cursor:pointer">
+                        <rect id="box2" width="50" height="50" fill="#e3fafc" x="240" y="360" rx="10" ry="10" />
+                        <text id="number2" x="253" y="400" fill="#1098ad" font-size="40">2</text>
+                    </g>
+                    <g id="btn3" style="cursor:pointer">
+                        <rect id="box3" width="50" height="50" fill="#e3fafc" x="295" y="360" rx="10" ry="10" />
+                        <text id="number3" x="308" y="400" fill="#1098ad" font-size="40">3</text>
+                    </g>
+                    <g id="btn4" style="cursor:pointer">
+                        <rect id="box4" width="50" height="50" fill="#e3fafc" x="350" y="360" rx="10" ry="10" />
+                        <text id="number4" x="363" y="400" fill="#1098ad" font-size="40">4</text>
+                    </g>
+                    <g id="btn5" style="cursor:pointer">
+                        <rect id="box5" width="50" height="50" fill="#e3fafc" x="405" y="360" rx="10" ry="10" />
+                        <text id="number5" x="418" y="400" fill="#1098ad" font-size="40">5</text>
+                    </g>
+                    <g id="btn6" style="cursor:pointer">
+                        <rect id="box6" width="50" height="50" fill="#e3fafc" x="460" y="360" rx="10" ry="10" />
+                        <text id="number6" x="473" y="400" fill="#1098ad" font-size="40">6</text>
+                    </g>
+                    <g id="btn7" style="cursor:pointer">
+                        <rect id="box7" width="50" height="50" fill="#e3fafc" x="515" y="360" rx="10" ry="10" />
+                        <text id="number7" x="528" y="400" fill="#1098ad" font-size="40">7</text>
+                    </g>
+                    <g id="btn8" style="cursor:pointer">
+                        <rect id="box8" width="50" height="50" fill="#e3fafc" x="570" y="360" rx="10" ry="10" />
+                        <text id="number8" x="583" y="400" fill="#1098ad" font-size="40">8</text>
+                    </g>
+                    <g id="btn9" style="cursor:pointer">
+                        <rect id="box9" width="50" height="50" fill="#e3fafc" x="625" y="360" rx="10" ry="10" />
+                        <text id="number9" x="638" y="400" fill="#1098ad" font-size="40">9</text>
+                    </g>
+                </g>
+
+                <!--다음 문제 버튼-->
+                <g id="next" style="cursor:pointer; display:none">
+                    <circle cx="660" cy="30" r="20" fill="ivory" stroke="orange" stroke-width="2"/>
+                    <polygon  points="653, 40 653, 20 673, 30" fill="orange" />
+                </g>
+
+                <!--정오표시-->
+                <circle id="correct" style="display:none" cx="450" cy="265" r="30" stroke="red" stroke-width="5" fill="none" />
+                <g id="wrong" style="display:none">
+                    <path d="M 428 250 l 40 40" stroke="blue" stroke-width="5" />
+                    <path d="M 468 250 l -40 40" stroke="blue" stroke-width="5" />
+                </g>
+
+                <g id="finish" style="display:none">
+                    <!--학습 마무리 메세지-->
+                    <g>
+                        <rect width="400" height="300" fill="white" stroke="pink" stroke-width="8" x="200" y="70" rx="10" ry="10" />
+                        <text x="240" y="210" font-size="35" style="cursor:pointer; fill:rgb(87, 186, 203);">학습을 완료하였습니다.</text>
+                    </g>
+                    <!--다시 풀기-->
+                    <g id="retry" style="cursor:pointer">
+                        <rect width="100" height="50" fill="pink" stroke-width="12" x="350" y="275" rx="10" ry="10" />
+                        <text x="363" y="308" font-size="20" style="cursor:pointer; fill:white;">다시 풀기</text>
+                    </g>
+                </g>
+
+                <!--아쉬워요-->
+                <g id="miss" style="display:none">
+                    <rect width="200" height="40" fill="red" stroke-width="12" x="80" y="430" rx="2" ry="2" />
+                    <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">조금 아쉬워요!</text>
+                </g>
+
+                <!--훌륭해요-->
+                <g id="success" style="display:none">
+                    <rect width="200" height="40" fill="orange" stroke-width="12" x="80" y="430" rx="2" ry="2" />
+                    <text x="125" y="458" font-size="20" style="cursor:pointer; fill:white;">아주 훌륭해요!</text>
+                </g>
+
+                <!--스피커-->
+                <polygon id="speaker" style="cursor:pointer" width="30"  points="55,50 55, 70 70, 70 80, 80 80, 40 70, 50" fill="orange" />
+
+                <!--버튼 눌림 방지-->
+                <rect id="stop" width="565" height="70" fill="white" x="120" y="350" style="display:none"/>
+
+            </defs>
+            <rect x="0" y="0" width="800" height="35" fill="rgb(87, 186, 203)" />
+            <use href="#guide" />
+            <use id="currentPage" y="10" transform="scale(2)"/>
+            <use href="#btns" />
+            <use href="#next" y="30"/>
+            <use href="#correct" />
+            <use href="#wrong" />
+            <use href="#finish" />
+            <use href="#miss" />
+            <use href="#success" />
+            <use href="#speaker" x="20"/>
+            <use href="#stop" />
+        </svg>
+    </div>
+    <script src="./main.js"></script>
+</body>
+</html>        

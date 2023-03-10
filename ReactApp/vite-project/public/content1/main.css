@@ -1,0 +1,38 @@
+div {
+    position:fixed; 
+    inset:0;
+}
+
+#content {
+    width:100%; 
+    height:100%
+}
+
+#firstBox {
+    fill:none;
+    stroke:blue;
+    stroke-width:1;
+    opacity:0.5
+}
+
+#secondBox {
+    fill:none;
+    stroke:blue;
+    stroke-width:1;
+    opacity:0.5
+}
+
+#curve {
+    stroke:blue; 
+    stroke-width:1; 
+    fill:none; 
+}
+
+#answerLine {
+    stroke:green;
+    stroke-width:1;
+}
+
+#stop {
+    opacity: 0;
+}
