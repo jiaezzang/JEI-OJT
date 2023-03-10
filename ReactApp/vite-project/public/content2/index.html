@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>점선을 따라 동그라미를 그리세요</title>
+    <link rel="stylesheet" type="text/css" href="./main.css">
+</head>
+<body>
+    <div>
+        <svg id="content" viewbox="0 0 800 500">
+            <defs>
+                <polygon id="play" points="668, 40 668, 20 648, 30" fill="white" />
+                <polygon id="try" points="668, 40 668, 20 648, 30" fill="white" style="visibility: hidden"/>
+            </defs>
+            <path id="innerCircle" d="M80,250a120,120 0 1,0 240,0a120,120 0 1,0 -240,0" fill="none" pathlength="630" stroke-dasharray="15" />
+            <path id="outerCircle" d="M80,250a120,120 0 1,0 240,0a120,120 0 1,0 -240,0" fill="none" pathlength="630" style="display:none" />
+            <g id="guide" style="cursor:pointer">
+                <circle id="guideController"  cx="200" cy="130" r="15" fill="pink"/>
+                <use href="#play" x="-460" y="100" />
+            </g>
+
+            <path id="dashCircle" d="M600,130 A120,120 180 1,0 600,370 A120,120 0 1,0 600,130" fill="none" stroke-dasharray="15" />
+            <path id="tryCircle" d="M480,250a120,120 0 1,0 240,0a120,120 0 1,0 -240,0" fill="none"/>
+            <g id="tryBtn" style="cursor:pointer">
+                <circle id="controller" cx="600" cy="130" r="15" fill="plum" style="cursor:pointer" stroke="plum"/>
+                <use href="#try" x="-60" y="100" />
+            </g>
+            <!--버튼 누름 방지-->
+            <circle id="wait" cx="600" cy="130" r="20" opacity="0" stroke="plum"/>
+            <circle id="wait2" cx="200" cy="130" r="20" opacity="0" stroke="plum" style="display:none"/>
+
+            <!--헤더-->
+            <rect x="0" y="0" width="800" height="35" fill="rgb(87, 186, 203)" />
+
+            <!--스피커-->
+            <polygon id="speaker" style="cursor:pointer" width="30"  points="55,50 55, 70 70, 70 80, 80 80, 40 70, 50" fill="orange" />
+            <polygon id="speakerWait" style="display:none" width="30"  points="55,50 55, 70 70, 70 80, 80 80, 40 70, 50" opacity="0" />
+            <text id="guideLine" x="100" y="70" font-size="30">점선을 따라 동그라미를 그리세요</text>
+
+            <!--scratch pad-->
+            <rect id="scratchPad" x="0" y="0" width="800" height="500" fill="white" opacity="0.7" style="display:none"/>
+            <image id="paintBtn" style="cursor:pointer" href="./img/LI00013392.svg" width="40" x="750" y="450"/>
+            <g id="undo" style="display:none">
+                <circle class="st0" cx="769.1" cy="369.1" r="20" fill="#007A84" />
+                <image id="paintBtn" x="756" y="354" style="cursor:pointer" href="./img/undo-s-svgrepo-com.svg" width="28"/>
+            </g>
+            <g id="delete" style="display:none">
+                <circle class="st0" cx="769.1" cy="419.1" r="20" fill="#007A84"/>
+                <image id="paintBtn" x="756" y="404" style="cursor:pointer" href="./img/trash-svgrepo-com.svg" width="28" />
+            </g>
+            <g id="pad" >
+            </g>
+        </svg>
+    </div>
+    <script src="//d3js.org/d3.v3.min.js"></script>
+    <script src="./main.js"></script>
+    <script src="./scratch.js"></script>
+</body>
+</html>
