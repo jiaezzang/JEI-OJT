@@ -1,11 +1,17 @@
-import React from 'react'
+import React from 'react';
 
 export default function Main() {
   return (
-    <div className="iframebox width-3x md:width-5xl"> 
-    <iframe src="http://127.0.0.1:5500/canvas/guideAnimation/index.html" width="1010" height="635" scrolling='no' allowFullScreen></iframe> 
-    {/* //컨텐츠를 띄워놓고 불러오는 방식으로  */}
+    <div className="p-4 md:p-8 w-full flex justify-center items-center max-w-screen-md">
+      <div className="w-full h-0 relative" style={{ paddingTop: '56.25%' }}>
+        <iframe
+          src="http://127.0.0.1:5500/canvas/guideAnimation/index.html"
+          className="absolute top-0 left-0 w-full h-full"
+          frameBorder="0"
+          scrolling="no"
+          allowFullScreen
+        ></iframe>
+      </div>
     </div>
-
-  )
+  );
 }
