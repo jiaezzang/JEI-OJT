@@ -23,9 +23,12 @@ export default function SignIn() {
     e.preventDefault();
     const user = users.find((u) => u.id === id && u.password === password);
     if (user) {
+      window.location.replace('/main')
       console.log(`${user.name}님 환영합니다`);
+    }  else if(users.find((u) => u.id === id && u.password !== password)){
+      setErrorMessage('패스워드를 확인해 주세요');
     } else {
-      setErrorMessage('아이디 또는 패스워드를 확인해 주세요');
+      setErrorMessage('아이디를 확인해 주세요');
     }
   };
 
