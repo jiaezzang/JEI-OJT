@@ -33,7 +33,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen px-4 bg-blue-100">
+    <div className="flex items-center justify-center w-full h-screen px-10 bg-blue-100">
       <form
         className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
         onSubmit={onSubmitHandler}
