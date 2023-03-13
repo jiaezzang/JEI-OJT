@@ -21,9 +21,9 @@ const update = () => {
     currentAnimationFrame = requestAnimationFrame(update);
 }
 
-const start = () => {
+(start = () => {
     requestAnimationFrame(update);
-};
+})();
 
 const pause = () => {
     cancelAnimationFrame(currentAnimationFrame);
