@@ -1,6 +1,8 @@
 import React from 'react';
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import logoutLogo from '../../assets/img/logout_icon.png';
+import graphLogo from '../../assets/img/graph_icon.png';
 
 interface ButtonProps {
   label: string;
@@ -24,6 +26,9 @@ export default function Main() {
 
   const [content, setContent] = useState('');
 
+  const location = useLocation();
+  const { name } = location.state;
+
   const btnHandler = (e: any) => {
     setContent(e.currentTarget.value);
   }
@@ -31,9 +36,9 @@ export default function Main() {
   return (
     <div
       className="flex flex-col items-center justify-center w-full h-screen px-4 bg-blue-100">
-      <div className="">
-        <h1>안녕{}</h1>
-        <img className='logout' src={logoutLogo} />
+      <div className="flex flex-row">
+        <h1 style={{ fontSize: '24px' }}>안녕 {name}</h1>
+        <img className='logout' src={logoutLogo} width="40"/>
       </div>
       <div className="p-2 md:p-2 w-full flex flex-col items-center max-w-screen-md">
         <div className="w-full h-0 relative" style={{ paddingTop: '62.7%' }}>

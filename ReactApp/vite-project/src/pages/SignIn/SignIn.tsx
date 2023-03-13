@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const users = [
   { id: 'jiae22', password: '1234', name: '지애' },
@@ -19,12 +20,14 @@ export default function SignIn() {
     setPassword(e.currentTarget.value);
   };
 
-  const onSubmitHandler = (e: any) => {
+
+    const navigate = useNavigate();
+
+    const onSubmitHandler = (e: any) => {
     e.preventDefault();
     const user = users.find((u) => u.id === id && u.password === password);
     if (user) {
-      window.location.replace('/main')
-      console.log(`${user.name}님 환영합니다`);
+      navigate('/main', { state: { name: user.name } });
     }  else if(users.find((u) => u.id === id && u.password !== password)){
       setErrorMessage('패스워드를 확인해 주세요');
     } else {
