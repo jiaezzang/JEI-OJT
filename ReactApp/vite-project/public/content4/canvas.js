@@ -1,5 +1,19 @@
 const canvas = new fabric.Canvas('canvas');
 
+
+
+function resizeCanvas() {
+    const canvasContainer = document.getElementById('canvasContainer');
+    const width = canvasContainer.offsetWidth;
+    const height = canvasContainer.offsetHeight;
+    canvas.setWidth(width);
+    canvas.setZoom(width/1000);
+}
+
+ window.addEventListener('resize', resizeCanvas);
+  resizeCanvas();
+  
+
 //드래그 선택 금지
 canvas.selection = false;
 
