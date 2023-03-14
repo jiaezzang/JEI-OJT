@@ -30,23 +30,21 @@ export default function SignIn() {
       navigate('/main', { state: { name: user.name } });
     }  else if(users.find((u) => u.id === id && u.password !== password)){
       setErrorMessage('패스워드를 확인해 주세요');
-      openModal2();
+      openPwModal();
     } else {
       setErrorMessage('아이디를 확인해 주세요');
-      openModal();
+      openIdModal();
     }
   };
 
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
 
-  const openModal = () => {
-    setModalMsg("아이디를 올바르게 입력해주세요.")
+  const openIdModal = () => {
     setModalOpen(true);
   };
 
-  const openModal2 = () => {
-    setModalMsg("비밀번호를 올바르게 입력해주세요.")
+  const openPwModal = () => {
     setModalOpen(true);
   };
 
@@ -64,7 +62,7 @@ export default function SignIn() {
         onSubmit={onSubmitHandler}
       >
         <img className='mb-6 m-auto' src={poy} width="150"/>
-        <h2 className="text-2xl mb-6 text-center">로그인을 해주세요!</h2>
+        <h2 className="text-2xl mb-6 text-center font-gaegu">로그인을 해주세요!</h2>
         <div className="mb-4">
           <label className="block font-bold mb-2" htmlFor="username">
             아이디
@@ -97,9 +95,6 @@ export default function SignIn() {
         >
           로그인
         </button>
-        {errorMessage && (
-          <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
-        )}
       </form>
     </div>
   );
