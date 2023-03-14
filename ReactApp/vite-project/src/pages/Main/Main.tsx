@@ -70,7 +70,7 @@ export default function Main() {
           <Button label="삼각형 찾기" onClick={btnHandler} value="http://127.0.0.1:5500/ReactApp/vite-project/public/content4/index.html"/>
         </div>
       </div>
-      <div className="md:hidden flex flex-col items-center w-full" >
+      <div className="md:hidden flex flex-col items-center w-4/5" >
         <Button label="튜토리얼" onClick={btnHandler} value="http://127.0.0.1:5500/ReactApp/vite-project/public/content3/index.html"/>
         <Button label="더하기" onClick={btnHandler} value="http://127.0.0.1:5500/ReactApp/vite-project/public/content1/index.html"/>
         <Button label="원 그리기" onClick={btnHandler} value="http://127.0.0.1:5500/ReactApp/vite-project/public/content2/index.html"/>
