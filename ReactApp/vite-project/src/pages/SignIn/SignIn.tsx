@@ -41,10 +41,12 @@ export default function SignIn() {
   const [modalMsg, setModalMsg] = useState("");
 
   const openIdModal = () => {
+    setModalMsg("아이디를 올바르게 입력해주세요.")
     setModalOpen(true);
   };
 
   const openPwModal = () => {
+    setModalMsg("비밀번호를 올바르게 입력해주세요.")
     setModalOpen(true);
   };
 
