@@ -35,6 +35,10 @@ export default function Main() {
     navigate('/log-in');
   }
 
+  const MoveToMyPage = () => {
+    navigate('/mypage')
+  }
+
   const btnHandler = (e: any) => {
     setContent(e.currentTarget.value);
   }
@@ -45,7 +49,7 @@ export default function Main() {
       <div className="max-w-screen-lg flex flex-row justify-between" style={{width: '150%', justifyContent: 'space-around'}}>
         <h1 className="font-bold mr-2 text-xl md:text-2xl lg:text-3xl justify-contentflex-start">안녕 {name}</h1>
         <div className="flex justify-contantflex-end space-x-2">
-          <img className='logout cursor-pointer w-10 h-10' src={graphLogo} width="50"/>
+          <img className='logout cursor-pointer w-10 h-10' src={graphLogo} width="50" onClick={MoveToMyPage}/>
           <img className='logout cursor-pointer w-10 h-10 mt-1' src={logoutLogo} width="50" onClick={MoveToSignIn}/>
         </div>
       </div>
