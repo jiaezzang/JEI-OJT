@@ -19,26 +19,24 @@ canvas.selection = false;
 const dogRun = new Image();
 dogRun.src = './img/dog_run.png';
 
+const dogWalk = new Image();
+dogWalk.src = './img/dog_walk.png';
+
 //달리는 애니메이션
-(runAnimation = () => {
-    fabric.Sprite.fromURL(dogRun.src, createSprite());
+(walkAnimation = () => {
+    fabric.Sprite.fromURL(dogWalk.src, createSprite());
   
     function createSprite() {
       return function(sprite) {
         sprite.set({
-            left: 400,
+            left: 330,
             top: 200
         });
-        sprite.scale(0.4);
+        sprite.scale(0.6);
         sprite.selectable = false;
         canvas.add(sprite);
         sprite.set('dirty', true);
         sprite.play();
-        sprite.animate('left', "+=730", {
-        onChange: canvas.renderAll.bind(canvas),
-        duration: 3000,
-        onComplete: jumpAnimation
-        })
       };
     }
   
