@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import {default as poy} from  "../../assets/img/포이.svg";
 
 const users = [
   { id: 'jiae22', password: '1234', name: '지애' },
@@ -36,12 +37,13 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen px-10 bg-blue-100">
+    <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
       <form
         className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
         onSubmit={onSubmitHandler}
       >
-        <h2 className="text-2xl font-bold mb-6 text-center">로그인</h2>
+        <img className='mb-6 m-auto' src={poy} width="150"/>
+        <h2 className="text-2xl mb-6 text-center">로그인을 해주세요!</h2>
         <div className="mb-4">
           <label className="block font-bold mb-2" htmlFor="username">
             아이디
@@ -69,7 +71,7 @@ export default function SignIn() {
           />
         </div>
         <button
-          className="bg-blue-500 hover:bg-blue-800 text-white font-bold py-2 px-4 rounded w-full"
+          className="bg-violet-400 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded w-full"
           type="submit"
         >
           로그인
