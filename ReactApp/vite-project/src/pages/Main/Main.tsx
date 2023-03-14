@@ -43,8 +43,11 @@ export default function Main() {
     <div
       className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100" >
       <div className="max-w-screen-lg flex flex-row justify-between" style={{width: '150%', justifyContent: 'space-around'}}>
-        <h1 className="font-bold mr-2 text-xl md:text-2xl lg:text-3xl">안녕 {name}</h1>
-        <img className='logout cursor-pointer w-10 h-10' src={logoutLogo} width="50" onClick={MoveToSignIn}/>
+        <h1 className="font-bold mr-2 text-xl md:text-2xl lg:text-3xl justify-contentflex-start">안녕 {name}</h1>
+        <div className="flex justify-contantflex-end space-x-2">
+          <img className='logout cursor-pointer w-10 h-10' src={graphLogo} width="50"/>
+          <img className='logout cursor-pointer w-10 h-10 mt-1' src={logoutLogo} width="50" onClick={MoveToSignIn}/>
+        </div>
       </div>
       <div className="p-2 md:p-2 w-full flex flex-col min-w-max max-w-screen-lg">
         <div className="w-full h-0 relative" style={{ paddingTop: '62.7%' }}>
