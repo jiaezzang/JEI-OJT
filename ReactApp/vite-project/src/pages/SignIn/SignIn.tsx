@@ -56,9 +56,7 @@ export default function SignIn() {
 
   return (
     <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
-    <React.Fragment>
       <Modal open={modalOpen} close={closeModal} header="로그인 실패">{modalMsg}</Modal>
-    </React.Fragment>
       <form
         className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
         onSubmit={onSubmitHandler}

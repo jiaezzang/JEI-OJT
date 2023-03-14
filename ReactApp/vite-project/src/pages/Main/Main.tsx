@@ -24,7 +24,7 @@ const Button = ({ label, onClick, value}: ButtonProps) => {
 
 export default function Main() {
 
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("http://127.0.0.1:5500/ReactApp/vite-project/public/content5/index.html");
 
   const location = useLocation();
   const { name } = location.state;
