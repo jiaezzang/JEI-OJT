@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>삼각형을 모두 찾아 고르세요</title>
+    <style>
+    #canvasContainer {
+            width: 100%;
+            max-width: 1000px;
+            height: auto;
+            margin: 0 auto;
+        }
+    #canvas{
+        width: 100%;
+        height: 100%;
+        transform-origin: top left;
+        transform: scale(1);
+    }
+    </style>
+</head>
+<body>
+    <div id="canvasContainer"></div>
+        <canvas id="canvas" width="1000" height="625"></canvas>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="text/javascript" src="./sprite.class.js"></script>
+    <script type="text/javascript" src="./canvas.js"></script>
+    <script type="text/javascript" src="./animation.js"></script>
+</body>
+</html>
