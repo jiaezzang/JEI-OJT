@@ -1,5 +1,20 @@
 const canvas = document.querySelector('.canvas');
 const ctx = canvas.getContext('2d');
+const ratio = window.devicePixelRatio;
+
+// 캔버스 크기 조절 함수
+function resizeCanvas() {
+  const container = document.getElementById('canvasContainer');
+  const width = container.offsetWidth;
+  const height = container.offsetHeight;
+  canvas.width = width * ratio;
+  canvas.height = height * ratio;
+  ctx.scale(ratio, ratio);
+}
+
+// iframe 크기가 변경될 때마다 캔버스 크기 조절
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
 
 
 let currFrame = 0;
