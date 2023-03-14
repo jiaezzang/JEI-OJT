@@ -5,9 +5,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>삼각형을 모두 찾아 고르세요</title>
+    <style>
+        #canvasContainer {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden; 
+        }
+    </style>
 </head>
 <body>
-    <canvas id="canvas" width="1000" height="625" style="border:1px solid"></canvas>
+    <div id="canvasContainer"></div>
+        <canvas id="canvas" width="1000" height="625" style="border:1px solid"></canvas>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/5.3.1/fabric.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="./sprite.class.js"></script>
     <script type="text/javascript" src="./canvas.js"></script>
