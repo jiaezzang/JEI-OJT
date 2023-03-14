@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {default as poy} from  "../../assets/img/포이.svg";
+import Modal from '../../components/Modal'
 
 const users = [
   { id: 'jiae22', password: '1234', name: '지애' },
@@ -20,24 +21,44 @@ export default function SignIn() {
   const onPasswordHandler = (e: any) => {
     setPassword(e.currentTarget.value);
   };
+  const navigate = useNavigate();
 
-
-    const navigate = useNavigate();
-
-    const onSubmitHandler = (e: any) => {
+  const onSubmitHandler = (e: any) => {
     e.preventDefault();
     const user = users.find((u) => u.id === id && u.password === password);
     if (user) {
       navigate('/main', { state: { name: user.name } });
     }  else if(users.find((u) => u.id === id && u.password !== password)){
       setErrorMessage('패스워드를 확인해 주세요');
+      openModal2();
     } else {
       setErrorMessage('아이디를 확인해 주세요');
+      openModal();
     }
+  };
+
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMsg, setModalMsg] = useState("");
+
+  const openModal = () => {
+    setModalMsg("아이디를 올바르게 입력해주세요.")
+    setModalOpen(true);
+  };
+
+  const openModal2 = () => {
+    setModalMsg("비밀번호를 올바르게 입력해주세요.")
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
   };
 
   return (
     <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
+    <React.Fragment>
+      <Modal open={modalOpen} close={closeModal} header="로그인 실패">{modalMsg}</Modal>
+    </React.Fragment>
       <form
         className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
         onSubmit={onSubmitHandler}
