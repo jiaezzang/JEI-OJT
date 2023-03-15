@@ -18,7 +18,6 @@ export default function Main() {
 
   //iframe 메세지 수신
   window.addEventListener('message', (e) => {
-    console.log(e.data)
      if(e.data === 'success3'){
       openNextModal();
       num = 1;
