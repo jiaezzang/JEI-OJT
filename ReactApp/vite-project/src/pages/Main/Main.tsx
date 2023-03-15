@@ -9,6 +9,7 @@ import NavBar from '../../components/NavBar';
 
 
 let num = 0, count = 0;
+let a = true, b = true, c = true, d = true;
 
 export default function Main() {
 
@@ -21,19 +22,31 @@ export default function Main() {
      if(e.data === 'success3'){
       openNextModal();
       num = 1;
-      count++;
+      if(count<4 && a){
+        count++;
+        a = false;
+      }
      } else if(e.data === 'success1'){
       openNextModal();
       num = 2;
-      count++;
+      if(count<4 && b){
+        count++;
+        b = false
+      }
      } else if(e.data === 'success2'){
       openNextModal();
       num = 3;
-      count++;
+      if(count<4 && c){
+        count++;
+        c = false;
+      }
      } else if(e.data === 'success4'){
       openNextModal();
       num = 4;
-      count++;
+      if(count<4 && d){
+        count++;
+        d = false;
+      }
      }
   });
 
@@ -89,7 +102,7 @@ export default function Main() {
   }
 
   const MoveToMyPage = () => {
-    navigate('/mypage', { state: { name: name } });
+    navigate('/mypage', { state: { name: name, correct: count } });
   }
 
   //버튼 클릭 시 콘텐츠 변경
