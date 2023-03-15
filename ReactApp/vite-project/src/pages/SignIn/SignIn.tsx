@@ -67,7 +67,7 @@ export default function SignIn() {
           onSubmit={onSubmitHandler}
         >
           <img className='mb-6 m-auto' src={poy} width="150"/>
-          <h2 className="text-2xl mb-6 text-center font-gaegu">로그인을 해주세요!</h2>
+          <h2 className="text-2xl mb-6 text-center">로그인을 해주세요!</h2>
           <Input label='아이디' type='text' id='id' value={id} onChange={onIdHandler}/>
           <Input label='비밀번호' type='password' id='password' value={password} onChange={onPasswordHandler}/>
           <button
