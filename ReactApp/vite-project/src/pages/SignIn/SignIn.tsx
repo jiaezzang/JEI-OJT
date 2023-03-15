@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {default as poy} from  "../../assets/img/포이.svg";
 import Modal from '../../components/Modal'
+import Input from '../../components/Input'
+import Button from '../../components/Button'
 
 const users = [
   { id: 'jiae22', password: '1234', name: '지애' },
@@ -57,47 +59,25 @@ export default function SignIn() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
+    <React.Fragment>
       <Modal open={modalOpen} close={closeModal} submit={closeModal} header="로그인 실패">{modalMsg}</Modal>
-      <form
-        className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
-        onSubmit={onSubmitHandler}
-      >
-        <img className='mb-6 m-auto' src={poy} width="150"/>
-        <h2 className="text-2xl mb-6 text-center font-gaegu">로그인을 해주세요!</h2>
-        <div className="mb-4">
-          <label className="block font-bold mb-2" htmlFor="username">
-            아이디
-          </label>
-          <input
-            className="border rounded-lg py-2 px-3 w-full"
-            type="text"
-            name="id"
-            id="id"
-            value={id}
-            onChange={onIdHandler}
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block font-bold mb-2" htmlFor="password">
-            비밀번호
-          </label>
-          <input
-            className="border rounded-lg py-2 px-3 w-full"
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={onPasswordHandler}
-          />
-        </div>
-        <button
-          className="bg-violet-400 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded w-full"
-          type="submit"
+      <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
+        <form
+          className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
+          onSubmit={onSubmitHandler}
         >
-          로그인
-        </button>
-      </form>
-    </div>
+          <img className='mb-6 m-auto' src={poy} width="150"/>
+          <h2 className="text-2xl mb-6 text-center font-gaegu">로그인을 해주세요!</h2>
+          <Input label='아이디' type='text' id='id' value={id} onChange={onIdHandler}/>
+          <Input label='비밀번호' type='password' id='password' value={password} onChange={onPasswordHandler}/>
+          <button
+            className="bg-violet-500 hover:bg-violet-700 text-white font-bold py-2 px-4 rounded w-full"
+            type="submit"
+          >
+            로그인
+          </button>
+        </form>
+      </div>
+    </React.Fragment>
   );
 }
