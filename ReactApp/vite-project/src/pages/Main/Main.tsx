@@ -5,6 +5,7 @@ import logoutLogo from '../../assets/img/logout_icon.png';
 import graphLogo from '../../assets/img/graph_icon.png';
 import Modal from '../../components/Modal'
 import Button from '../../components/Button'
+import NavBar from '../../components/NavBar';
 
 
 let num = 0, count = 0;
@@ -87,9 +88,9 @@ export default function Main() {
     num = 5;
   }
 
-  // const MoveToMyPage = () => {
-  //   navigate('/mypage')
-  // }
+  const MoveToMyPage = () => {
+    navigate('/mypage', { state: { name: name } });
+  }
 
   //버튼 클릭 시 콘텐츠 변경
   const btnHandler = (e: any) => {
@@ -100,13 +101,7 @@ export default function Main() {
     <React.Fragment>
       <Modal open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
       <div className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100">
-        <div className="max-w-screen-lg flex flex-row justify-between" style={{width: '150%', justifyContent: 'space-around'}}>
-          <h1 className="font-bold mr-2 text-xl md:text-2xl lg:text-3xl justify-contentflex-start">안녕 {name}</h1>
-          <div className="flex justify-contantflex-end space-x-2">
-            {/* <img className='logout cursor-pointer w-10 h-10' src={graphLogo} width="50" onClick={MoveToMyPage}/> */}
-            <img className='logout cursor-pointer w-10 h-10 mt-1' src={logoutLogo} width="50" onClick={MoveToSignIn}/>
-          </div>
-        </div>
+        <NavBar src1={graphLogo} onClick1={MoveToMyPage} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
         <div className="p-2 md:p-2 w-full flex flex-col min-w-max max-w-screen-md">
           <div className="w-full h-0 relative" style={{ paddingTop: '62.7%' }}>
             <iframe
@@ -117,8 +112,6 @@ export default function Main() {
               allowFullScreen
             ></iframe>
           </div>
-
-          
           <div className="hidden md:flex flex-col" >
             <Button label="순서대로 학습하기" onClick={btnHandler} value="/content3/index.html"/>
             <div className='flex'>
