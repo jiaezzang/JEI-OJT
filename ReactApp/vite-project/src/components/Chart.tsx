@@ -6,6 +6,8 @@ const Chart = ({correct}: any) => {
                 <path d="M150,40 A110,110 180 1,0 150,260 A110,110 0 1,0 150,40" fill="none" stroke="rgb(109 40 217)" strokeWidth="60"
                 strokeDasharray={`${2 * Math.PI * 110} ${2 * Math.PI * 110}`}
                 strokeDashoffset={2 * Math.PI * 110 * (1 - correct/4)} />
+                <text id="guideLine" x="110" y="140" font-size="30">진행률</text>
+                <text text-anchor="middle" id="guideLine" x="150" y="180" font-size="30">{(correct/4)*100}%</text>
             </svg>
         </div>
     )
