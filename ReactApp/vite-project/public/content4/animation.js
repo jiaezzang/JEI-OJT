@@ -80,6 +80,10 @@ const jumpAnimation = () => {
         sprite.selectable = false;
       };
     }
+
+    setTimeout(() => {
+      window.parent.postMessage('success4', '*');
+    }, 1000)
   
     (function render() {
       canvas.renderAll();
