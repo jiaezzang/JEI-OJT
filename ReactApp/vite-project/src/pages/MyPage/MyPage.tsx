@@ -12,9 +12,6 @@ export default function MyPage() {
   const name = location.state.name;
   const correct = location.state.correct;
 
-  console.log(correct);
-  console.log(name);
-
   //페이지 이동
   const navigate = useNavigate();
 
@@ -25,7 +22,6 @@ export default function MyPage() {
     setModalOpen(true);
     setHeader("로그아웃");
     setModalMsg("로그아웃 하시겠습니까?");
-    console.log('modal')
   }
 
   const submitEvent = () => {
