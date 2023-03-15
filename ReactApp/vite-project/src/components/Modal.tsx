@@ -2,7 +2,7 @@ import React from "react";
 import '../../src/css/modal.css'
 
 const Modal = (props: any) => {
-    const { open, close, header} = props;
+    const { open, close, header, submit} = props;
 
     return (
         <div className={open ? 'openModal modal' : 'modal'}>
@@ -16,8 +16,8 @@ const Modal = (props: any) => {
                     </header>
                     <main>{props.children}</main>
                     <footer>
-                        <button className="close" onClick={close}>
-                            닫기
+                        <button className="submit" onClick={submit}>
+                            확인
                         </button>
                     </footer>
                 </section>
