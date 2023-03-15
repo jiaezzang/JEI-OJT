@@ -107,10 +107,6 @@ export default function Main() {
     setContent(e.currentTarget.value);
   }
 
-
-
-
-
   return (
     <div
       className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100" >
