@@ -74,7 +74,7 @@ export default function Main() {
   };
 
   //다음 학습으로 진행
-  const nextPage = () => {
+  const submitEvent = () => {
   setModalOpen(false);
   if(num === 1){
     setContent('content1/index.html')
@@ -84,7 +84,9 @@ export default function Main() {
     setContent('content4/index.html')
   } else if(num === 4){
     setContent('content5/index.html')
-  }
+    num = 0;
+  } else if(num === 5)
+  navigate('/log-in');
 }
 
   //로그인 페이지에서 데이터 전송받기
@@ -95,7 +97,10 @@ export default function Main() {
   const navigate = useNavigate();
 
   const MoveToSignIn = () => {
-    navigate('/log-in');
+    setModalOpen(true);
+    setHeader("로그아웃")
+    setModalMsg("로그아웃 하시겠습니까?")
+    num = 5;
   }
 
   // const MoveToMyPage = () => {
@@ -110,7 +115,7 @@ export default function Main() {
   return (
     <div
       className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100" >
-      <Modal open={modalOpen} close={closeModal} submit={nextPage} header={header}>{modalMsg}</Modal>
+      <Modal open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
       <div className="max-w-screen-lg flex flex-row justify-between" style={{width: '150%', justifyContent: 'space-around'}}>
         <h1 className="font-bold mr-2 text-xl md:text-2xl lg:text-3xl justify-contentflex-start">안녕 {name}</h1>
         <div className="flex justify-contantflex-end space-x-2">
