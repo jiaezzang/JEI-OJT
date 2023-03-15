@@ -43,10 +43,14 @@ export default function MyPage() {
        <Modal open={modalOpen} close={closeModal} header={header} submit={submitEvent}>{modalMsg}</Modal>
       <div className="flex flex-col items-center justify-center w-full h-screen bg-violet-100">
         <NavBar src1={studyLogo} onClick1={MoveToMain} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
-        <div className="flex mt-3 pt-14 justify-center bg-white rounded-lg shadow-lg p-6 h-3/4 w-full md:w-2/3 lg:w-1/2 xl:w-5/7">
+        <div className="flex-col mt-3 pt-14 bg-white rounded-lg shadow-lg p-6 h-3/4 w-full md:w-2/3 lg:w-1/2 xl:w-5/7">
           <Chart correct={correct}></Chart>
+          <div className='text-lg md:text-xl lg:text-2xl mt-8'>
+            <h1 className='mt-3'>총 컨텐츠 수 : 4개</h1>
+            <h1 className='mt-3'>학습한 컨텐츠 수 : {correct}개</h1>
+            <h1 className='mt-3'>학습한 시간 : </h1>
+          </div>
         </div>
-
       </div>
     </React.Fragment>
   )
