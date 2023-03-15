@@ -134,15 +134,18 @@ export default function Main() {
           ></iframe>
         </div>
 
+        
+        <div className="hidden md:flex flex-col" >
         <Button label="순서대로 학습" onClick={btnHandler} value="/content3/index.html"/>
-        <div className="hidden md:flex items-center space-x-1" >
+          <div className='flex'>
           <Button label="튜토리얼" onClick={btnHandler} value="/content3/index.html"/>
           <Button label="더하기" onClick={btnHandler} value="/content1/index.html"/>
           <Button label="원 그리기" onClick={btnHandler} value="/content2/index.html"/>
           <Button label="삼각형 찾기" onClick={btnHandler} value="/content4/index.html"/>
+          </div>
         </div>
       </div>
-      <div className="md:hidden flex flex-col items-center w-4/5" >
+      <div className="md:hidden flex flex-col w-4/5" >
         <Button label="순서대로 학습" onClick={btnHandler} value="/content3/index.html"/>
         <Button label="튜토리얼" onClick={btnHandler} value="/content3/index.html"/>
         <Button label="더하기" onClick={btnHandler} value="/content1/index.html"/>
