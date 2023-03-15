@@ -102,6 +102,10 @@ function mMove(event){
     if(value2 < 8){
       circle.style.strokeDashoffset = 0;
       controller.setAttribute("style", "visibility: hidden");
+
+      setTimeout(() => {
+        window.parent.postMessage('success2');
+      }, 1000)
     }
   }
 }

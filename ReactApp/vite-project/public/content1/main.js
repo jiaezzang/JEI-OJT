@@ -109,6 +109,10 @@ next.onclick =(e) => {
         speak(text);
         const applauseAudio = new Audio('./audio/applause.wav');
         applauseAudio.play();
+
+        setTimeout(() => {
+            window.parent.postMessage('success1', '*');
+        }, 1000)
     }
     
 }

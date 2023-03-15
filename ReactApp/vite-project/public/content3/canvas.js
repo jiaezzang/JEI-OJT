@@ -222,6 +222,8 @@ const wrongAnimation =() => {
     }
 }
 
+let msgSwitch = false;
+let msgCount = 0;
 // 정답 선택 시 애니메이션
 const correctAnimation = () => {
     if(count === 200 && xPos < -230){
@@ -247,7 +249,17 @@ const correctAnimation = () => {
         if(correct){
             audio.play("magic-chime-01.mp3");
             correct = false;
+            msgSwitch = true
         }
+        if(msgSwitch){
+            if(msgCount <100){
+                msgCount++;
+            }else if(msgCount === 100){
+                window.parent.postMessage('success3', '*')
+                msgCount++;
+            }
+        }
+        
     }
 }
 
