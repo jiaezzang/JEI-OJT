@@ -10,9 +10,12 @@ const users = [
 ];
 
 export default function SignIn() {
+  //페이지 이동
+  const navigate = useNavigate();
+
+  //아이디 비밀번호 업데이트 
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
 
   const onIdHandler = (e: any) => {
     setId(e.currentTarget.value);
@@ -21,22 +24,8 @@ export default function SignIn() {
   const onPasswordHandler = (e: any) => {
     setPassword(e.currentTarget.value);
   };
-  const navigate = useNavigate();
 
-  const onSubmitHandler = (e: any) => {
-    e.preventDefault();
-    const user = users.find((u) => u.id === id && u.password === password);
-    if (user) {
-      navigate('/main', { state: { name: user.name } });
-    }  else if(users.find((u) => u.id === id && u.password !== password)){
-      setErrorMessage('패스워드를 확인해 주세요');
-      openPwModal();
-    } else {
-      setErrorMessage('아이디를 확인해 주세요');
-      openIdModal();
-    }
-  };
-
+  //모달 설정
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
 
@@ -54,9 +43,22 @@ export default function SignIn() {
     setModalOpen(false);
   };
 
+  //로그인 성공 실패에 따른 결과물
+  const onSubmitHandler = (e: any) => {
+    e.preventDefault();
+    const user = users.find((u) => u.id === id && u.password === password);
+    if (user) {
+      navigate('/main', { state: { name: user.name } });
+    }  else if(users.find((u) => u.id === id && u.password !== password)){
+      openPwModal();
+    } else {
+      openIdModal();
+    }
+  };
+
   return (
     <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
-      <Modal open={modalOpen} close={closeModal} header="로그인 실패">{modalMsg}</Modal>
+      <Modal open={modalOpen} close={closeModal} submit={closeModal} header="로그인 실패">{modalMsg}</Modal>
       <form
         className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
         onSubmit={onSubmitHandler}
