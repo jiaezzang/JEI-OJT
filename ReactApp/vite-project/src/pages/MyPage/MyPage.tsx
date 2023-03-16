@@ -48,6 +48,7 @@ export default function MyPage() {
           <div className='text-lg md:text-xl lg:text-2xl mt-8'>
             <h1 className='mt-3'>총 컨텐츠 수 : 4개</h1>
             <h1 className='mt-3'>학습한 컨텐츠 수 : {correct}개</h1>
+            <h1 className='mt-3'>학습한 횟수 : {sum}번</h1>
             <h1 className='mt-3'>학습한 시간 : </h1>
           </div>
         </div>
