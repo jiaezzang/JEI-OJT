@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logoutLogo from '../../assets/img/logout_icon.png';
@@ -7,64 +7,73 @@ import Modal from '../../components/Modal'
 import Button from '../../components/Button'
 import NavBar from '../../components/NavBar';
 
-
-let num = 0, count = 0;
-let a = true, b = true, c = true, d = true;
-
 export default function Main() {
 
   //첫화면 애니메이션
   const [content, setContent] = useState("/content5/index.html");
+  const [num, setNum] = useState(0);
+  const [count, setCount] = useState(0);
+  const [sum, setSum] = useState(0);
 
   //iframe 메세지 수신
-  window.addEventListener('message', (e) => {
-     if(e.data === 'success3'){
-      openNextModal();
-      num = 1;
-      if(count<4 && a){
-        count++;
-        a = false;
-      }
-     } else if(e.data === 'success1'){
-      openNextModal();
-      num = 2;
-      if(count<4 && b){
-        count++;
-        b = false
-      }
-     } else if(e.data === 'success2'){
-      openNextModal();
-      num = 3;
-      if(count<4 && c){
-        count++;
-        c = false;
-      }
-     } else if(e.data === 'success4'){
-      openNextModal();
-      num = 4;
-      if(count<4 && d){
-        count++;
-        d = false;
-      }
-     }
-  });
+  useEffect(()=>{
+    let a = true, b = true, c = true, d = true;
+
+    const getMessage = (e : any) => {
+      if(e.data === 'success3'){   
+        setNum(1);
+        setSum(sum => sum + 1);
+        if(count<4 && a){
+          setCount(count => count + 1);
+          a = false;
+        }
+       } else if(e.data === 'success1'){
+        setNum(2);
+        setSum(sum => sum + 1);
+        if(count<4 && b){
+          setCount(count => count + 1);
+          b = false;
+        }
+       } else if(e.data === 'success2'){
+        setNum(3);
+        setSum(sum => sum + 1);
+        if(count<4 && c){
+          setCount(count => count + 1);
+          c = false;
+        }
+       } else if(e.data === 'success4'){
+        setNum(4);
+        setSum(sum => sum + 1);
+        if(count<4 && d){
+          setCount(count => count + 1);
+          d = false;
+        }
+       }
+    }
+    window.addEventListener("message",getMessage);
+
+    return ()=>{window.removeEventListener("message", getMessage)
+    }
+  },[])
 
   //모달
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMsg, setModalMsg] = useState("");
   const [header, setHeader] = useState("")
 
-  const openNextModal = () => {
-    if(num === 4){
-      setHeader("학습 완료")
-      setModalMsg("학습이 완료되었습니다.")
-      setModalOpen(true);
-    } else {
-      setHeader("학습 진행 중")
-      setModalMsg("이어서 학습하시겠습니까?")
-      setModalOpen(true);
-    }
-  };
+  useEffect(() => {
+    (() => {
+      if(num === 4){
+        setHeader("학습 완료")
+        setModalMsg("학습이 완료되었습니다.")
+        setModalOpen(true);
+      } else if(num !== 0) {
+        setHeader("학습 진행 중")
+        setModalMsg("이어서 학습하시겠습니까?")
+        setModalOpen(true);
+      }
+    })();
+  }, [num])
 
   const closeModal = () => {
     setModalOpen(false);
@@ -81,7 +90,7 @@ export default function Main() {
     setContent('content4/index.html')
   } else if(num === 4){
     setContent('content5/index.html')
-    num = 0;
+    setNum(0);
   } else if(num === 5)
   navigate('/log-in');
 }
@@ -97,21 +106,25 @@ export default function Main() {
     setModalOpen(true);
     setHeader("로그아웃")
     setModalMsg("로그아웃 하시겠습니까?")
-    num = 5;
+    setNum(5);
   }
 
   const MoveToMyPage = () => {
     navigate('/mypage', { state: { name: name, correct: count } });
   }
 
+
   //버튼 클릭 시 콘텐츠 변경
+  let type: string = "";
+
   const btnHandler = (e: any) => {
     setContent(e.currentTarget.value);
+    type = e.currentTarget.value;
   }
 
   return (
     <React.Fragment>
-      <Modal open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
+      <Modal class="md:w-1/2 md:h-1/2 w-full h-full" open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
       <div className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100">
         <NavBar src1={graphLogo} onClick1={MoveToMyPage} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
         <div className="p-2 md:p-2 w-full flex flex-col min-w-max max-w-screen-md">
