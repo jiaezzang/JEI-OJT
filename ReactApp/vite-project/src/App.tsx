@@ -5,8 +5,6 @@ import Main from './pages/Main'
 import MyPage from './pages/MyPage'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
    <BrowserRouter>
       <Routes>
