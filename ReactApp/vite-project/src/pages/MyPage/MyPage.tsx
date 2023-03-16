@@ -11,6 +11,7 @@ export default function MyPage() {
   const location = useLocation();
   const name = location.state.name;
   const correct = location.state.correct;
+  const sum = location.state.sum;
 
   //페이지 이동
   const navigate = useNavigate();

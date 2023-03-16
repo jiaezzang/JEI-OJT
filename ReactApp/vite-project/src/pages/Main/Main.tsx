@@ -110,7 +110,7 @@ export default function Main() {
   }
 
   const MoveToMyPage = () => {
-    navigate('/mypage', { state: { name: name, correct: count } });
+    navigate('/mypage', { state: { name: name, correct: count, sum: sum } });
   }
 
 
