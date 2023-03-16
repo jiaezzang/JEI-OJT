@@ -55,7 +55,6 @@ export default function Main() {
     return ()=>{window.removeEventListener("message", getMessage)
     }
   },[])
-  console.log
 
   //모달
   const [modalOpen, setModalOpen] = useState(false);
