@@ -92,7 +92,7 @@ function btnClick() {
 //다음 문제로 넘어가는 버튼 
 next.onclick =(e) => {
     document.querySelector("#stop").style.display = "none";
-    const question = document.querySelector("#currentPage");
+    const question = document.querySelector("#currentPage"); 
     const id = question.getAttribute("href");
     const nextIndex = words.indexOf(id) + 1;
     const nextAudio = new Audio('./audio/next.wav')
