@@ -5,13 +5,14 @@ import Modal from '../../components/Modal'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
 
-const users = [
-  { id: 'jiae22', password: '1234', name: '지애' },
-  { id: 'jiae33', password: '3456', name: 'jiae' },
-  { id: 'jiae44', password: '4567', name: 'kim' },
-];
-
 export default function SignIn() {
+  
+  const users = [
+    { id: 'jiae22', password: '1234', name: '지애' },
+    { id: 'jiae33', password: '3456', name: 'jiae' },
+    { id: 'jiae44', password: '4567', name: 'kim' },
+  ];
+
   //페이지 이동
   const navigate = useNavigate();
 
@@ -59,9 +60,9 @@ export default function SignIn() {
   };
 
   return (
-    <React.Fragment>
-      <Modal open={modalOpen} close={closeModal} submit={closeModal} header="로그인 실패">{modalMsg}</Modal>
+      
       <div className="flex items-center justify-center w-full h-screen px-10 bg-violet-100">
+        <Modal open={modalOpen} close={closeModal} submit={closeModal} header="로그인 실패">{modalMsg}</Modal>
         <form
           className="bg-white rounded-lg shadow-lg p-6 w-full md:w-2/3 lg:w-1/2 xl:w-1/3"
           onSubmit={onSubmitHandler}
@@ -78,6 +79,5 @@ export default function SignIn() {
           </button>
         </form>
       </div>
-    </React.Fragment>
   );
 }
