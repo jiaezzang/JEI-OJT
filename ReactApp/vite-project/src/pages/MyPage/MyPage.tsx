@@ -39,9 +39,8 @@ export default function MyPage() {
   };
 
   return (
-    <React.Fragment>
-       <Modal open={modalOpen} close={closeModal} header={header} submit={submitEvent}>{modalMsg}</Modal>
       <div className="flex flex-col items-center justify-center w-full h-screen bg-violet-100">
+        <Modal open={modalOpen} close={closeModal} header={header} submit={submitEvent}>{modalMsg}</Modal>
         <NavBar src1={studyLogo} onClick1={MoveToMain} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
         <div className="flex-col mt-3 pt-14 bg-white rounded-lg shadow-lg p-6 h-3/4 w-full md:w-2/3 lg:w-1/2 xl:w-5/7 flex justify-center items-center">
           <Chart correct={correct}></Chart>
@@ -52,6 +51,5 @@ export default function MyPage() {
           </div>
         </div>
       </div>
-    </React.Fragment>
   )
 }
