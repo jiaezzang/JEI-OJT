@@ -50,12 +50,12 @@ function btnClick() {
         let cmtPick = Math.floor(Math.random() * comments.length);
         document.querySelector("#success text").innerHTML = comments[cmtPick];
         document.querySelector("#success").style.display = "";
-        next.style.display = "";
         const magicAudio = new Audio('./audio/magic.wav');
         magicAudio.play();
         setTimeout(function(){
             document.querySelector("#success").style.display = "none";
-        }, 700);
+            nextStep();
+        }, 1000);
 
     } else if(next.style.display !== "" && box.getAttribute("fill") !== "gray"){
         //오답일 때
@@ -90,7 +90,7 @@ function btnClick() {
 }
 
 //다음 문제로 넘어가는 버튼 
-next.onclick =(e) => {
+const nextStep = () => {
     document.querySelector("#stop").style.display = "none";
     const question = document.querySelector("#currentPage"); 
     const id = question.getAttribute("href");
