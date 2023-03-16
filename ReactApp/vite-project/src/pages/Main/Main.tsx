@@ -55,6 +55,7 @@ export default function Main() {
     return ()=>{window.removeEventListener("message", getMessage)
     }
   },[])
+  console.log
 
   //모달
   const [modalOpen, setModalOpen] = useState(false);
@@ -67,7 +68,7 @@ export default function Main() {
         setHeader("학습 완료")
         setModalMsg("학습이 완료되었습니다.")
         setModalOpen(true);
-      } else if(num !== 0) {
+      } else if(num !== 0 && num !== 5) {
         setHeader("학습 진행 중")
         setModalMsg("이어서 학습하시겠습니까?")
         setModalOpen(true);
@@ -115,17 +116,13 @@ export default function Main() {
 
 
   //버튼 클릭 시 콘텐츠 변경
-  let type: string = "";
-
   const btnHandler = (e: any) => {
     setContent(e.currentTarget.value);
-    type = e.currentTarget.value;
   }
 
   return (
-    <React.Fragment>
-      <Modal class="md:w-1/2 md:h-1/2 w-full h-full" open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
       <div className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100">
+        <Modal class="md:w-1/2 md:h-1/2 w-full h-full" open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
         <NavBar src1={graphLogo} onClick1={MoveToMyPage} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
         <div className="p-2 md:p-2 w-full flex flex-col min-w-max max-w-screen-md">
           <div className="w-full h-0 relative" style={{ paddingTop: '62.7%' }}>
@@ -155,6 +152,5 @@ export default function Main() {
           <Button label="삼각형 찾기" onClick={btnHandler} value="/content4/index.html"/>
         </div>
       </div>
-    </React.Fragment>
   );
 }
