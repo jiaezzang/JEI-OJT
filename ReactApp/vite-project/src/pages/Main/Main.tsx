@@ -17,38 +17,24 @@ export default function Main() {
 
   //iframe 메세지 수신
   useEffect(()=>{
-    let a = true, b = true, c = true, d = true;
 
     const getMessage = (e : any) => {
-      if(e.data === 'success3'){   
-        setNum(1);
-        setSum(sum => sum + 1);
-        if(count<4 && a){
-          setCount(count => count + 1);
-          a = false;
+
+      for(let i=1; i<5; i++){
+        if(e.data === `success${i}`){
+          if(i === 3){
+            setNum(1);
+          }else if(i === 4){
+            setNum(4);
+          }else {
+            setNum(i + 1);
+          }
+          setSum(sum => sum + 1);
+          if(count<4){
+            setCount(count => count + 1);
+          }
         }
-       } else if(e.data === 'success1'){
-        setNum(2);
-        setSum(sum => sum + 1);
-        if(count<4 && b){
-          setCount(count => count + 1);
-          b = false;
-        }
-       } else if(e.data === 'success2'){
-        setNum(3);
-        setSum(sum => sum + 1);
-        if(count<4 && c){
-          setCount(count => count + 1);
-          c = false;
-        }
-       } else if(e.data === 'success4'){
-        setNum(4);
-        setSum(sum => sum + 1);
-        if(count<4 && d){
-          setCount(count => count + 1);
-          d = false;
-        }
-       }
+      }
     }
     window.addEventListener("message",getMessage);
 
@@ -82,17 +68,19 @@ export default function Main() {
   //다음 학습으로 진행
   const submitEvent = () => {
   setModalOpen(false);
-  if(num === 1){
-    setContent('content1/index.html')
-  } else if(num === 2){
-    setContent('content2/index.html')
-  } else if(num === 3){
-    setContent('content4/index.html')
-  } else if(num === 4){
-    setContent('content5/index.html')
-    setNum(0);
-  } else if(num === 5)
-  navigate('/log-in');
+  for(let i=1; i<5; i++){
+    if(num === i && i < 3){
+      setContent(`content${i}/index.html`)
+    }else if(num === i){
+      setContent(`content${i+1}/index.html`)
+      if(num === 4){
+        setNum(0);
+      }
+    }
+  }
+  if(num === 5){
+    navigate('/log-in', {replace: true});
+  }
 }
 
   //로그인 페이지에서 데이터 전송받기
