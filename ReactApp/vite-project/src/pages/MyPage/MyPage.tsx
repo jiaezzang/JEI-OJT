@@ -27,7 +27,7 @@ export default function MyPage() {
 
   const submitEvent = () => {
     setModalOpen(false);
-    navigate('/sign-in');
+    navigate('/sign-in', {replace: true});
   }
 
   //모달
