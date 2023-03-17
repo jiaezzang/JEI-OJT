@@ -31,6 +31,7 @@ export default function Main() {
           }
           setSum(sum => sum + 1);
           if(count<4){
+            //각 학습 컨텐츠마다 딱 한번만 count할 수 있도록 처리해주어야 함
             setCount(count => count + 1);
           }
         }
