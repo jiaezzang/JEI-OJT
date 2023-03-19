@@ -104,7 +104,7 @@ export default function Main() {
 
 
   //버튼 클릭 시 콘텐츠 변경
-  const btnHandler = (e: MouseEvent<HTMLButtonElement>) => {
+  const btnHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     setContent(e.currentTarget.value);
   }
 
