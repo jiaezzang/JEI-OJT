@@ -8,6 +8,7 @@ import Chart from '../../components/Chart';
 
 import axios from "axios";
 import AxiosMockAdapter from "axios-mock-adapter";
+import { postMyPage } from '../../api/myPage';
 
 export default function MyPage() {
   //학습 페이지에서 데이터 전송받기
@@ -16,6 +17,7 @@ export default function MyPage() {
   const correct = location.state.correct;
   const sum = location.state.sum;
 
+  postMyPage(name, correct, sum)
   //페이지 이동
   const navigate = useNavigate();
 
