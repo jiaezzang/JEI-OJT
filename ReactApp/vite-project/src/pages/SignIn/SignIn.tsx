@@ -45,10 +45,11 @@ export default function SignIn() {
   //로그인 성공 실패에 따른 결과물
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postSignIn(id,password)
+    postSignIn(id, password)
     .then(response => {
       const user = response.data;
-      navigate('/main', { state: { name: user } });
+      console.log(user)
+      navigate('/main', { state: user });
     })
     .catch((error) => {
       console.log(error.response.status)
