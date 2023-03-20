@@ -6,15 +6,7 @@ import Input from '../../components/Input'
 import Button from '../../components/Button'
 import axios from 'axios';
 
-import { fetchUsers } from '../../api/user';
-
-
-const users = [
-  { id: 'jiae22', password: '1234', name: '지애' },
-  { id: 'jiae33', password: '3456', name: 'jiae' },
-  { id: 'jiae44', password: '4567', name: 'kim' },
-];
-
+import {  postSignIn } from '../../api/user';
 
 export default function SignIn() {
   //페이지 이동
@@ -24,11 +16,11 @@ export default function SignIn() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
-  const onIdHandler = (e: any) => {
+  const onIdHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setId(e.currentTarget.value);
   };
 
-  const onPasswordHandler = (e: any) => {
+  const onPasswordHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(e.currentTarget.value);
   };
 
@@ -51,21 +43,22 @@ export default function SignIn() {
   };
 
   //로그인 성공 실패에 따른 결과물
-  const onSubmitHandler = (e: any) => {
+  const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const user = users.find((u) => u.id === id && u.password === password);
-    if (user) {
-      navigate('/main', { state: { name: user.name } });
-      fetchUsers()
-        .then(response => {
-          const users = response.data.users
-        console.log(response.data.users);
-      })
-    }  else if(users.find((u) => u.id === id && u.password !== password)){
-      openPwModal();
-    } else {
-      openIdModal();
-    }
+    postSignIn(id,password)
+    .then(response => {
+      const user = response.data;
+      navigate('/main', { state: { name: user } });
+    })
+    .catch((error) => {
+      console.log(error.response.status)
+      if(error.response.status === 400){
+        openPwModal();
+      } else if (error.response.status === 500){
+        openIdModal();
+      }
+    })
+
   };
 
   return (
