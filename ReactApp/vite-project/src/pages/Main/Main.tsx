@@ -7,8 +7,12 @@ import Modal from '../../components/Modal'
 import Button from '../../components/Button'
 import NavBar from '../../components/NavBar';
 
-export default function Main() {
+import axios from "axios";
+import AxiosMockAdapter from "axios-mock-adapter";
 
+const mock = new AxiosMockAdapter(axios);
+
+export default function Main() {
   //첫화면 애니메이션
   const [content, setContent] = useState("/content5/index.html");
   const [num, setNum] = useState(0);
@@ -17,7 +21,6 @@ export default function Main() {
 
   //iframe 메세지 수신
   useEffect(()=>{
-
     const getMessage = (e : any) => {
 
       for(let i=1; i<5; i++){
