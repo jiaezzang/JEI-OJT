@@ -6,6 +6,9 @@ import NavBar from '../../components/NavBar';
 import Modal from '../../components/Modal';
 import Chart from '../../components/Chart';
 
+import axios from "axios";
+import AxiosMockAdapter from "axios-mock-adapter";
+
 export default function MyPage() {
   //학습 페이지에서 데이터 전송받기
   const location = useLocation();
@@ -38,6 +41,7 @@ export default function MyPage() {
   const closeModal = () => {
     setModalOpen(false);
   };
+  
 
   return (
       <div className="flex flex-col items-center justify-center w-full h-screen bg-violet-100">

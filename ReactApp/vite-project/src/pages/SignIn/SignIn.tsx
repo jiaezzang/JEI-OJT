@@ -4,15 +4,19 @@ import {default as poy} from  "../../assets/img/포이.svg";
 import Modal from '../../components/Modal'
 import Input from '../../components/Input'
 import Button from '../../components/Button'
+import axios from 'axios';
+
+import { fetchUsers } from '../../api/user';
+
+
+const users = [
+  { id: 'jiae22', password: '1234', name: '지애' },
+  { id: 'jiae33', password: '3456', name: 'jiae' },
+  { id: 'jiae44', password: '4567', name: 'kim' },
+];
+
 
 export default function SignIn() {
-  
-  const users = [
-    { id: 'jiae22', password: '1234', name: '지애' },
-    { id: 'jiae33', password: '3456', name: 'jiae' },
-    { id: 'jiae44', password: '4567', name: 'kim' },
-  ];
-
   //페이지 이동
   const navigate = useNavigate();
 
@@ -52,6 +56,11 @@ export default function SignIn() {
     const user = users.find((u) => u.id === id && u.password === password);
     if (user) {
       navigate('/main', { state: { name: user.name } });
+      fetchUsers()
+        .then(response => {
+          const users = response.data.users
+        console.log(response.data.users);
+      })
     }  else if(users.find((u) => u.id === id && u.password !== password)){
       openPwModal();
     } else {
