@@ -21,7 +21,7 @@ export default function Main() {
 
   //iframe 메세지 수신
   useEffect(()=>{
-    const getMessage = (e : any) => {
+    const getMessage = (e: MessageEvent<any>) => {
 
       for(let i=1; i<5; i++){
         if(e.data === `success${i}`){
