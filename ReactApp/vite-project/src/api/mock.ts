@@ -64,25 +64,12 @@ export const createFakeAPI = (client:AxiosInstance)=>{
         const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
         let users2 = [...users];
         const user: any = users2.find(el=>el.name === body.name) || undefined
-        if(body.message === 'success1'){
-            if(user.a){
-                user.count++;
-                user.a = false;
-            }
-        }else if(body.message === 'success2'){
-            if(user.b){
-                user.count++;
-                user.b = false;
-            }
-        }else if(body.message === 'success3'){
-            if(user.c){
-                user.count++;
-                user.c = false;
-            }
-        }else if(body.message === 'success4'){
-            if(user.d){
-                user.count++;
-                user.d = false;
+        const userCount = [user.a, user.b, user.c, user.d];
+
+        for(let i=0; i<4; i++){
+            if(body.message === `success${i+1}`){
+                user.count++
+                userCount[i] = false;
             }
         }
         
