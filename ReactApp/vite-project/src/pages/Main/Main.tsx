@@ -6,11 +6,7 @@ import graphLogo from '../../assets/img/graph_icon.png';
 import Modal from '../../components/Modal'
 import Button from '../../components/Button'
 import NavBar from '../../components/NavBar';
-
-import axios from "axios";
-import AxiosMockAdapter from "axios-mock-adapter";
-
-const mock = new AxiosMockAdapter(axios);
+import { postMain } from '../../api/main';
 
 export default function Main() {
   //첫화면 애니메이션
@@ -90,6 +86,13 @@ export default function Main() {
   //로그인 페이지에서 데이터 전송받기
   const location = useLocation();
   const { name } = location.state;
+
+    postMain(name, count, sum)
+    .then(response => {
+  
+    })
+  
+
 
   //페이지 이동
   const navigate = useNavigate();

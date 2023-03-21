@@ -2,11 +2,12 @@ import axios from 'axios';
 import AxiosMockAdapter from "axios-mock-adapter";
 import { createFakeAPI } from './mock';
 
+const axiosInstance = axios.create();
 
 export const postSignIn = (id:string, password:string) =>
-    axios.post("/sign-in",{id, password})
+  axiosInstance.post("/sign-in",{id, password})
 
-  createFakeAPI(axios)  
+  createFakeAPI(axiosInstance)  
 
 // export function fetchUsers() {
 //     const mock = new AxiosMockAdapter(axios);

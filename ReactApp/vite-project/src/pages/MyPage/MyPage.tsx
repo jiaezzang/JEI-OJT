@@ -14,10 +14,15 @@ export default function MyPage() {
   //학습 페이지에서 데이터 전송받기
   const location = useLocation();
   const name = location.state.name;
-  const correct = location.state.correct;
-  const sum = location.state.sum;
+  let count = 0;
+  let sum = 0;
 
-  postMyPage(name, correct, sum)
+  postMyPage(name)
+  .then(response => {
+    count = response.data.count;
+    sum = response.data.sum;
+  });
+
   //페이지 이동
   const navigate = useNavigate();
 
@@ -50,10 +55,10 @@ export default function MyPage() {
         <Modal open={modalOpen} close={closeModal} header={header} submit={submitEvent}>{modalMsg}</Modal>
         <NavBar src1={studyLogo} onClick1={MoveToMain} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
         <div className="flex-col mt-3 pt-14 bg-white rounded-lg shadow-lg p-6 h-3/4 w-full md:w-2/3 lg:w-1/2 xl:w-5/7 flex justify-center items-center">
-          <Chart correct={correct}></Chart>
+          <Chart correct={count}></Chart>
           <div className='text-lg md:text-xl lg:text-2xl mt-8'>
             <h1 className='mt-3'>총 컨텐츠 수 : 4개</h1>
-            <h1 className='mt-3'>학습한 컨텐츠 수 : {correct}개</h1>
+            <h1 className='mt-3'>학습한 컨텐츠 수 : {count}개</h1>
             <h1 className='mt-3'>학습한 횟수 : {sum}번</h1>
             <h1 className='mt-3'>학습한 시간 : </h1>
           </div>
