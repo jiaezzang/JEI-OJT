@@ -6,34 +6,32 @@ import graphLogo from '../../assets/img/graph_icon.png';
 import Modal from '../../components/Modal'
 import Button from '../../components/Button'
 import NavBar from '../../components/NavBar';
-import { postMain } from '../../api/main';
+import { postMain } from '../../api/Main';
+import { postCount } from '../../api/Count';
 
 export default function Main() {
   //첫화면 애니메이션
   const [content, setContent] = useState("/content5/index.html");
   const [num, setNum] = useState(0);
-  const [count, setCount] = useState(0);
-  const [sum, setSum] = useState(0);
+  //const [count, setCount] = useState(0);
+
 
   //iframe 메세지 수신
   useEffect(()=>{
     const getMessage = (e: MessageEvent<any>) => {
 
-      for(let i=1; i<5; i++){
-        if(e.data === `success${i}`){
-          if(i === 3){
-            setNum(1);
-          }else if(i === 4){
-            setNum(4);
-          }else {
-            setNum(i + 1);
-          }
-          setSum(sum => sum + 1);
-          if(count<4){
-            //각 학습 컨텐츠마다 딱 한번만 count할 수 있도록 처리해주어야 함
-            setCount(count => count + 1);
-          }
-        }
+      if(e.data ==='success3'){
+        setNum(1);
+        postCount(e.data, name)
+      }else if(e.data ==='success1'){
+        setNum(2)
+        postCount(e.data, name)
+      }else if(e.data ==='success2'){
+        setNum(3);
+        postCount(e.data, name)
+      }else if(e.data ==='success4'){
+         setNum(4);
+         postCount(e.data, name)
       }
     }
     window.addEventListener("message",getMessage);
@@ -41,6 +39,7 @@ export default function Main() {
     return ()=>{window.removeEventListener("message", getMessage)
     }
   },[])
+
 
   //모달
   const [modalOpen, setModalOpen] = useState(false);
@@ -100,11 +99,9 @@ export default function Main() {
   }
 
   const MoveToMyPage = () => {
-    postMain(name, count, sum)
+    postMain(name)
     .then(response => {
-      const name2 = response.data.name 
-      navigate('/mypage', { state: { name: name2 }});
-      console.log(name2)
+      navigate('/mypage', { state: { name: response.data.name }});
     })
   }
 

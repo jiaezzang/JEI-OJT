@@ -5,24 +5,20 @@ import studyLogo from '../../assets/img/study_icon.png';
 import NavBar from '../../components/NavBar';
 import Modal from '../../components/Modal';
 import Chart from '../../components/Chart';
-import { postMyPage } from '../../api/myPage';
+import { postMyPage } from '../../api/MyPage';
 
 export default function MyPage() {
   //학습 페이지에서 데이터 전송받기
   const location = useLocation();
   const name = location.state.name;
-  let count = 0;
-  let sum = 0;
+  const [count, setCount] = useState(0)
+  const [sum, setSum] = useState(0)
 
   postMyPage(name)
   .then(response => {
-    count = response.data.count;
-    sum = response.data.sum;
-    console.log(response.data)
+    setCount(response.data.count);
+    setSum(response.data.sum);
   })
-  .catch((error) => {
-
-  });
 
   //페이지 이동
   const navigate = useNavigate();
@@ -61,7 +57,6 @@ export default function MyPage() {
             <h1 className='mt-3'>총 컨텐츠 수 : 4개</h1>
             <h1 className='mt-3'>학습한 컨텐츠 수 : {count}개</h1>
             <h1 className='mt-3'>학습한 횟수 : {sum}번</h1>
-            <h1 className='mt-3'>학습한 시간 : </h1>
           </div>
         </div>
       </div>

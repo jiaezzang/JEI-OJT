@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import {default as poy} from  "../../assets/img/포이.svg";
 import Modal from '../../components/Modal'
 import Input from '../../components/Input'
-import Button from '../../components/Button'
-import axios from 'axios';
 
-import {  postSignIn } from '../../api/user';
+import {  postSignIn } from '../../api/User';
 
 export default function SignIn() {
   //페이지 이동
@@ -46,20 +44,17 @@ export default function SignIn() {
   const onSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     postSignIn(id, password)
-    .then(response => {
-      const user = response.data;
-      console.log(user)
-      navigate('/main', { state: user });
-    })
-    .catch((error) => {
-      console.log(error.response.status)
-      if(error.response.status === 400){
-        openPwModal();
-      } else if (error.response.status === 500){
-        openIdModal();
-      }
-    })
-
+      .then(response => {
+        const user = response.data;
+        navigate('/main', { state: user });
+      })
+      .catch((error) => {
+        if(error.response.status === 400){
+          openPwModal();
+        } else if (error.response.status === 500){
+          openIdModal();
+        }
+      })
   };
 
   return (
