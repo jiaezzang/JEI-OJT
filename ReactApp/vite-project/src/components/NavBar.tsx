@@ -2,9 +2,9 @@ import Icon from './Icon'
 interface NavBarProps {
     src1: string;
     src2: string;
-    onClick1?: (e: any) => void;
-    onClick2?: (e: any) => void;
-    name: any;
+    onClick1?: any;
+    onClick2?: any;
+    name: string;
 }
 const NavBar = ({name, src1, src2, onClick1, onClick2}: NavBarProps) => {
     return (
