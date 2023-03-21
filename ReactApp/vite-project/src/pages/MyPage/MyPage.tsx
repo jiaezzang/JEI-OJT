@@ -5,9 +5,6 @@ import studyLogo from '../../assets/img/study_icon.png';
 import NavBar from '../../components/NavBar';
 import Modal from '../../components/Modal';
 import Chart from '../../components/Chart';
-
-import axios from "axios";
-import AxiosMockAdapter from "axios-mock-adapter";
 import { postMyPage } from '../../api/myPage';
 
 export default function MyPage() {
@@ -21,6 +18,10 @@ export default function MyPage() {
   .then(response => {
     count = response.data.count;
     sum = response.data.sum;
+    console.log(response.data)
+  })
+  .catch((error) => {
+
   });
 
   //페이지 이동
@@ -48,7 +49,7 @@ export default function MyPage() {
   const closeModal = () => {
     setModalOpen(false);
   };
-  
+
 
   return (
       <div className="flex flex-col items-center justify-center w-full h-screen bg-violet-100">
