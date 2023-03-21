@@ -46,7 +46,6 @@ export const createFakeAPI = (client:AxiosInstance)=>{
                 el.sum += body.sum;
             }
         })
-        localStorage.setItem('users', JSON.stringify(users2));
 
         if(user) return [200, {name: user.name}]
         else return [500]
@@ -56,8 +55,6 @@ export const createFakeAPI = (client:AxiosInstance)=>{
         const body = JSON.parse(data)
         const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
         const user = users.find(el=>el.name === body.name)
-
-        
         if(user) return [200, {count: user.count, sum: user.sum}]
         else return [500]
     })
