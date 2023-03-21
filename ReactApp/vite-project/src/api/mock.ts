@@ -23,8 +23,6 @@ interface User {
 export const createFakeAPI = (client:AxiosInstance)=>{
     const mock = new AxiosMockAdapter(client);
 
-    
-
     mock.onPost("/sign-in").reply(({data})=>{
         const body = JSON.parse(data)
         const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
@@ -39,13 +37,6 @@ export const createFakeAPI = (client:AxiosInstance)=>{
         const body = JSON.parse(data)
         const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
         const user = users.find(el=>el.name === body.name)
-        let users2 = [...users];
-        users2.map(el => {
-            if(el.name = body.name){
-                el.count = body.count;
-                el.sum += body.sum;
-            }
-        })
 
         if(user) return [200, {name: user.name}]
         else return [500]
@@ -64,20 +55,20 @@ export const createFakeAPI = (client:AxiosInstance)=>{
         const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
         let users2 = [...users];
         const user: any = users2.find(el=>el.name === body.name) || undefined
-        const userCount = [user.a, user.b, user.c, user.d];
 
+        const userCount = [user.a, user.b, user.c, user.d];
         for(let i=0; i<4; i++){
             if(body.message === `success${i+1}`){
-                user.count++
-                userCount[i] = false;
+                if(userCount[i]){
+                    user.count++
+                    userCount[i] = false;
+                }
             }
         }
         
         user.sum++;
 
         localStorage.setItem('users', JSON.stringify(users2));
-        console.log(users)
-        //user.count = data.count
         if(user) return [200, {count: user.count, sum: user.sum}]
         else return [500]
     })
