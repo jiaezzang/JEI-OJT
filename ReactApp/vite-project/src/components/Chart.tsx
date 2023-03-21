@@ -1,4 +1,4 @@
-const Chart = ({correct}: any) => {
+const Chart = ({correct}: {correct: number}) => {
     return(
         <div style={{width: '200px', height: '200px'}}>
             <svg viewBox = "0 0 300 300" >

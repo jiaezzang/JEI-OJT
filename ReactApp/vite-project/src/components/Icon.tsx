@@ -1,6 +1,6 @@
 interface InputProps {
     src: string;
-    onClick: React.MouseEventHandler<HTMLImageElement>;
+    onClick: React.MouseEventHandler<HTMLImageElement> | undefined;
   }
 
 const Icon = ({src, onClick} : InputProps) => {

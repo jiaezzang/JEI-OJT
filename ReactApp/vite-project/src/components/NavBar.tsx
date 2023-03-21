@@ -2,8 +2,8 @@ import Icon from './Icon'
 interface NavBarProps {
     src1: string;
     src2: string;
-    onClick1?: any;
-    onClick2?: any;
+    onClick1?: React.MouseEventHandler<HTMLImageElement> | undefined;
+    onClick2?: React.MouseEventHandler<HTMLImageElement> | undefined;
     name: string;
 }
 const NavBar = ({name, src1, src2, onClick1, onClick2}: NavBarProps) => {
