@@ -86,11 +86,6 @@ export default function Main() {
   //로그인 페이지에서 데이터 전송받기
   const location = useLocation();
   const { name } = location.state;
-
-    postMain(name, count, sum)
-    .then(response => {
-  
-    })
   
 
 
@@ -105,9 +100,15 @@ export default function Main() {
   }
 
   const MoveToMyPage = () => {
-    navigate('/mypage', { state: { name: name, correct: count, sum: sum } });
+    postMain(name, count, sum)
+    .then(response => {
+      const name2 = response.data.name 
+      navigate('/mypage', { state: { name: name2 }});
+      console.log(name2)
+    })
   }
 
+  
 
   //버튼 클릭 시 콘텐츠 변경
   const btnHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
