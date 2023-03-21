@@ -114,7 +114,11 @@ export default function Main() {
 
   return (
       <div className="flex flex-col items-center justify-center w-full h-screen px-4 bg-violet-100">
-        <Modal class="md:w-1/2 md:h-1/2 w-full h-full" open={modalOpen} close={closeModal} submit={submitEvent} header={header}>{modalMsg}</Modal>
+        <Modal open={modalOpen} close={closeModal} submit={submitEvent} header={header}>
+          <div className='md:w-1/2 md:h-1/2 w-full h-full'>
+            {modalMsg}
+          </div>
+        </Modal>
         <NavBar src1={graphLogo} onClick1={MoveToMyPage} src2={logoutLogo} onClick2={MoveToSignIn} name={name}/>
         <div className="p-2 md:p-2 w-full flex flex-col min-w-max max-w-screen-md">
           <div className="w-full h-0 relative" style={{ paddingTop: '62.7%' }}>

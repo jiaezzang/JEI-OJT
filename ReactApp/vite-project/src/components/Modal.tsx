@@ -1,8 +1,15 @@
-import React from "react";
+import { ReactNode } from "react";
 import '../../src/css/modal.css'
 
-const Modal = (props: any) => {
-    const { open, close, header, submit} = props;
+interface Props {
+    open: boolean;
+    close: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    header: string;
+    submit: React.MouseEventHandler<HTMLButtonElement> | undefined;
+    children?: ReactNode;
+  }
+
+const Modal = ({ open, close, header, submit, children }: Props) => {
 
     return (
         <div className={open ? 'openModal modal' : 'modal'}>
@@ -14,7 +21,7 @@ const Modal = (props: any) => {
                             &times;
                         </button>
                     </header>
-                    <main>{props.children}</main>
+                    <main>{children}</main>
                     <footer>
                         <button className="submit" onClick={submit}>
                             확인
