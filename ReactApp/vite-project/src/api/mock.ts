@@ -20,23 +20,21 @@ export const createFakeAPI = (client:AxiosInstance)=>{
 
     mock.onPost("/main").reply(({data}) => {
         const body = JSON.parse(data)
-        //count, sum 업데이트하기
+        const user = users.find(el=>el.name === body.name)
         users.map(el => {
             if(el.name = body.name){
                 el.count = body.count;
                 el.sum += body.sum;
             }
         })
-        console.log()
 
-        return [200]
+        if(user) return [200, {name: user.name}]
+        else return [500]
     })
 
     mock.onPost("/mypage").reply(({data})=> {
         const body = JSON.parse(data)
         const user = users.find(el=>el.name === body.name)
-        console.log(user)
-        console.log(user?.count);
         
         //user.count = data.count
         if(user) return [200, {count: user.count, sum: user.sum}]
