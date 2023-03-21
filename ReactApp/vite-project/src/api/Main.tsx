@@ -3,7 +3,7 @@ import { createFakeAPI } from './mock';
 
 const axiosInstance = axios.create();
 
-export const postMain = (name:string, count: number, sum: number) =>
-  axiosInstance.post("/main",{name, count, sum})
+export const postMain = (name:string) =>
+  axiosInstance.post("/main",{name})
 
   createFakeAPI(axiosInstance)  
