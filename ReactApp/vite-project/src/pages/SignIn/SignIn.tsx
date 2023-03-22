@@ -4,7 +4,7 @@ import {default as poy} from  "../../assets/img/포이.svg";
 import Modal from '../../components/Modal'
 import Input from '../../components/Input'
 
-import {  postSignIn } from '../../api/user';
+import {  postSignIn } from '../../api/User';
 
 export default function SignIn() {
   //페이지 이동
