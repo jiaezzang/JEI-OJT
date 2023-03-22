@@ -6,7 +6,7 @@ path {
   @keyframes stroke-ani {
 
     from {
-      stroke-dashoffset: 0.9;
+      stroke-dashoffset: 1;
     }
     to {
       stroke-dashoffset: attr(data-dashoffset);
