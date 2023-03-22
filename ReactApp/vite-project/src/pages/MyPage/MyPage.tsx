@@ -5,7 +5,7 @@ import studyLogo from '../../assets/img/study_icon.png';
 import NavBar from '../../components/NavBar';
 import Modal from '../../components/Modal';
 import Chart from '../../components/Chart';
-import { postMyPage } from '../../api/myPage';
+import { postMyPage } from '../../api/MyPage';
 
 export default function MyPage() {
   //학습 페이지에서 데이터 전송받기
