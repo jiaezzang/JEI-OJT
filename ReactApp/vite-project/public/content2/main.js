@@ -13,6 +13,9 @@ circle.style.strokeDasharray = circle.getTotalLength();
 circle.style.strokeDashoffset = circle.getTotalLength();
 circle.pathLength = path.getTotalLength();
 
+//컨텐츠 시작 메세지 
+window.parent.postMessage('start2', '*');
+
 //svg좌표 변환
 var pt = svg.createSVGPoint();  // Created once for document
 let stX = 0;

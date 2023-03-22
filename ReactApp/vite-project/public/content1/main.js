@@ -2,6 +2,9 @@ const next = document.querySelector("#next");
 const retry = document.querySelector("#retry");
 const speaker = document.querySelector("#speaker");
 
+//컨텐츠 시작 메세지 
+window.parent.postMessage('start1', '*');
+
 //랜덤하게 문제 주기
 let words = ['#num1', '#num2', '#num3', '#num4', '#num5', '#num6', '#num7', '#num8']
 function shuffle(array) {

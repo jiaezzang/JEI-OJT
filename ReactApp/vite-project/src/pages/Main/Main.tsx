@@ -15,10 +15,13 @@ export default function Main() {
   const [num, setNum] = useState(0);
   //const [count, setCount] = useState(0);
 
+  const [startMessage, setStartMessage] =  useState("");
+  const [endMessage, setEndMessage] = useState("");
 
   //iframe 메세지 수신
   useEffect(()=>{
     const getMessage = (e: MessageEvent<any>) => {
+      setEndMessage(e.data);
 
       if(e.data ==='success3'){
         setNum(1);
@@ -39,6 +42,29 @@ export default function Main() {
     return ()=>{window.removeEventListener("message", getMessage)
     }
   },[])
+
+
+  useEffect(()=>{
+    window.addEventListener("message", e => {
+      setStartMessage(e.data)
+    });
+    return ()=>{window.removeEventListener("message", e => {
+      setStartMessage(e.data)
+    })
+    }
+  },[])
+
+  const [oldTime, setOldTime] = useState(0);
+  const [currTime, setCurrTime] = useState(0);
+
+  //학습 시작, 종료 시간 측정
+  useEffect(()=> {
+    setOldTime(Date.now());
+  }, [startMessage])
+
+  useEffect(()=> {
+    setCurrTime(Date.now());
+  }, [endMessage]);
 
 
   //모달
