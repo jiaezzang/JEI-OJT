@@ -1,0 +1,14 @@
+path {
+    stroke-dasharray: 691;
+    animation: stroke-ani 3s forwards;
+  }
+
+  @keyframes stroke-ani {
+
+    from {
+      stroke-dashoffset: 0.9;
+    }
+    to {
+      stroke-dashoffset: attr(data-dashoffset);
+    }
+  }
