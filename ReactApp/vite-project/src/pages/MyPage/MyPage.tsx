@@ -18,7 +18,6 @@ export default function MyPage() {
   .then(response => {
     setCount(response.data.count);
     setSum(response.data.sum);
-    console.log(response.data)
   })
 
   //페이지 이동
