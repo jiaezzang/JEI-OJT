@@ -1,6 +1,7 @@
 const canvas = new fabric.Canvas('canvas');
 
-
+//컨텐츠 시작 메세지 
+window.parent.postMessage('start4', '*');
 
 function resizeCanvas() {
     const canvasContainer = document.getElementById('canvasContainer');

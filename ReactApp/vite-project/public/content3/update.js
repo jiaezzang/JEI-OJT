@@ -1,6 +1,10 @@
 let currentAnimationFrame;
 let startCount = 0;
 let voice = true;
+
+//컨텐츠 시작 메세지 
+window.parent.postMessage('start3', '*');
+
 const update = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
