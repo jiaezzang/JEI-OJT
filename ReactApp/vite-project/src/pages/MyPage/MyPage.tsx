@@ -13,11 +13,14 @@ export default function MyPage() {
   const name = location.state.name;
   const [count, setCount] = useState(0)
   const [sum, setSum] = useState(0)
+  const [time,setTime] = useState("")
 
   postMyPage(name)
   .then(response => {
     setCount(response.data.count);
     setSum(response.data.sum);
+    setTime(response.data.time);
+    console.log(response.data)
   })
 
   //페이지 이동
@@ -57,6 +60,7 @@ export default function MyPage() {
             <h1 className='mt-3'>총 컨텐츠 수 : 4개</h1>
             <h1 className='mt-3'>학습한 컨텐츠 수 : {count}개</h1>
             <h1 className='mt-3'>학습한 횟수 : {sum}번</h1>
+            <h1 className='mt-3'>학습한 시간 : {time}</h1>
           </div>
         </div>
       </div>
