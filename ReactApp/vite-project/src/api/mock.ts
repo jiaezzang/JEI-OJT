@@ -54,39 +54,22 @@ export const createFakeAPI = (client:AxiosInstance)=>{
         const body = JSON.parse(data)
         const users: User[] = JSON.parse(localStorage.getItem('users') || '[]');
         let users2 = [...users];
-        const user: any = users2.find(el=>el.name === body.name) || undefined
+        const user: any = users2.find(el=>el.name === body.name)
 
-        // const userCount = [user.a, user.b, user.c, user.d];
-        // for(let i=0; i<4; i++){
-        //     if(body.message === `success${i+1}`){
-        //         if(userCount[i]){
-        //             user.count++
-        //             userCount[i] = false;
-        //         }
-        //     }
-        // }
+        const userCount = [user.a, user.b, user.c, user.d];
 
-        if(body.message === 'success1'){
-            if(user.a){
-                user.count++;
-                user.a = false;
-            }
-        }else if(body.message === 'success2'){
-            if(user.b){
-                user.count++;
-                user.b = false;
-            }
-        }else if(body.message === 'success3'){
-            if(user.c){
-                user.count++;
-                user.c = false;
-            }
-        }else if(body.message === 'success4'){
-            if(user.d){
-                user.count++;
-                user.d = false;
+        for(let i=0; i<4; i++){
+            if(body.message === `success${i+1}`){
+                if(userCount[i]){
+                    user.count++
+                    userCount[i] = false;
+                }
             }
         }
+        user.a = userCount[0];
+        user.b = userCount[1];
+        user.c = userCount[2];
+        user.d = userCount[3];
         
         user.sum++;
 
