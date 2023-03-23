@@ -8,6 +8,7 @@ import Button from '../../components/Button'
 import NavBar from '../../components/NavBar';
 import { postMain } from '../../api/Main';
 import { postCount } from '../../api/Count';
+import { postTimer } from '../../api/Timer';
 
 export default function Main() {
   //첫화면 애니메이션
@@ -16,25 +17,27 @@ export default function Main() {
   //const [count, setCount] = useState(0);
 
   const [startMessage, setStartMessage] =  useState("");
-  const [endMessage, setEndMessage] = useState("");
+  const [endMessage, setEndMessage] =  useState("");
 
   //iframe 메세지 수신
   useEffect(()=>{
     const getMessage = (e: MessageEvent<any>) => {
-      setEndMessage(e.data);
-
       if(e.data ==='success3'){
         setNum(1);
-        postCount(e.data, name)
+        postCount(e.data, name);
+        setEndMessage(e.data);
       }else if(e.data ==='success1'){
-        setNum(2)
-        postCount(e.data, name)
+        setNum(2);
+        postCount(e.data, name);
+        setEndMessage(e.data);
       }else if(e.data ==='success2'){
         setNum(3);
-        postCount(e.data, name)
+        postCount(e.data, name);
+        setEndMessage(e.data);
       }else if(e.data ==='success4'){
          setNum(4);
-         postCount(e.data, name)
+         postCount(e.data, name);
+         setEndMessage(e.data);
       }
     }
     window.addEventListener("message",getMessage);
@@ -45,27 +48,34 @@ export default function Main() {
 
 
   useEffect(()=>{
-    window.addEventListener("message", e => {
-      setStartMessage(e.data)
-    });
-    return ()=>{window.removeEventListener("message", e => {
-      setStartMessage(e.data)
-    })
+
+    const getStartMsg = (e: MessageEvent<any>) => {
+      if(e.data === 'start1'||e.data === 'start2'||e.data === 'start3'||e.data === 'start4'){
+        setStartMessage(e.data)
+      }
+    }
+    window.addEventListener("message", getStartMsg);
+    return ()=>{window.removeEventListener("message", getStartMsg)
     }
   },[])
 
   const [oldTime, setOldTime] = useState(0);
   const [currTime, setCurrTime] = useState(0);
+  const [diff, setDiff] = useState(0);
 
   //학습 시작, 종료 시간 측정
   useEffect(()=> {
     setOldTime(Date.now());
+    setCurrTime(Date.now());
   }, [startMessage])
 
   useEffect(()=> {
-    setCurrTime(Date.now());
-  }, [endMessage]);
-
+    const newCurrTime = Date.now();
+    const newDiff = newCurrTime - oldTime;
+    setCurrTime(newCurrTime);
+    setDiff(newDiff);
+    postTimer(name, diff)
+  }, [num]);
 
   //모달
   const [modalOpen, setModalOpen] = useState(false);
@@ -92,21 +102,21 @@ export default function Main() {
 
   //다음 학습으로 진행
   const submitEvent = () => {
-  setModalOpen(false);
-  for(let i=1; i<5; i++){
-    if(num === i && i < 3){
-      setContent(`content${i}/index.html`)
-    }else if(num === i){
-      setContent(`content${i+1}/index.html`)
-      if(num === 4){
-        setNum(0);
+    setModalOpen(false);
+    for(let i=1; i<5; i++){
+      if(num === i && i < 3){
+        setContent(`content${i}/index.html`)
+      }else if(num === i){
+        setContent(`content${i+1}/index.html`)
+        if(num === 4){
+          setNum(0);
+        }
       }
     }
+    if(num === 5){
+      navigate('/log-in', {replace: true});
+    }
   }
-  if(num === 5){
-    navigate('/log-in', {replace: true});
-  }
-}
 
   //로그인 페이지에서 데이터 전송받기
   const location = useLocation();
@@ -125,10 +135,7 @@ export default function Main() {
   }
 
   const MoveToMyPage = () => {
-    postMain(name)
-    .then(response => {
-      navigate('/mypage', { state: { name: response.data.name }});
-    })
+      navigate('/mypage', { state: { name: name }});
   }
 
   
